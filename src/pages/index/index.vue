@@ -5,7 +5,9 @@
       src="/static/logo.png"
     ></image>
     <view>
-      <u-button>这是一个按钮</u-button>
+      <u-button
+        type="danger"
+      >这是一个按钮</u-button>
     </view>
   </view>
 </template>

@@ -4,7 +4,7 @@
  * @desc 计算组件的class属性
  * @remark
  */
-const PREFIX = 'u-';
+const PREFIX = 'uv-';
 function join(name, mods) {
   name = PREFIX + name;
   mods = mods.map(function (mod) {

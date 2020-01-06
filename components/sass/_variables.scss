@@ -1,0 +1,68 @@
+$black: #000;
+$white: #fff;
+$gray-1: #f7f8fa;
+$gray-2: #f2f3f5;
+$gray-3: #ebedf0;
+$gray-4: #dcdee0;
+$gray-5: #c8c9cc;
+$gray-6: #969799;
+$gray-7: #646566;
+$gray-8: #323233;
+$green: #07c160;
+$blue: #1989fa;
+$red: #ee0a24;
+$orange: #ff976a;
+$colors: () !default;
+$colors: map-merge(
+		(
+			"blue": $blue,
+			"red": $red,
+			"orange": $orange,
+			"green": $green,
+			"white": $white,
+		),
+		$colors
+);
+$primary: $green;
+$info: $blue;
+$danger: $red;
+$warning: $orange;
+$theme-colors: () !default;
+$theme-colors: map-merge(
+		(
+			"primary": $primary,
+			"info": $info,
+			"warning": $warning,
+			"danger": $danger,
+		),
+		$theme-colors
+);
+
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark: $gray-8 !default;
+$yiq-text-light: $white !default;
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold:  150 !default;
+
+// Border
+$border-color: $gray-3;
+
+// Component Colors
+$text-color: $gray-8;
+
+// Font
+$font-size-xs: 10px;
+$font-size-sm: 12px;
+$font-size-md: 14px;
+$font-size-lg: 16px;
+$font-weight-bold: 500;
+
+// Padding
+$padding-base: 4px;
+$padding-xs: $padding-base * 2;
+$padding-sm: $padding-base * 3;
+$padding-md: $padding-base * 4;
+$padding-lg: $padding-base * 6;
+$padding-xl: $padding-base * 8;
+
+$PREFIX: ".uv-";
