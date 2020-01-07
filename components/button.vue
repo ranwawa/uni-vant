@@ -3,44 +3,42 @@
 <!-- desc: 按钮组件 -->
 <!-- remark:  -->
 <template>
-  <view class="container">
-    <button
-      :class="classes"
-      :id="id"
-      hover-class="uv-button_active hover-class"
-      :type="type"
-      :size="size"
-    >
-      <slot />
-    </button>
-    <!--:plain="plain"-->
-    <!--:disabled="disabled"-->
-    <!--:loading="loading"-->
-    <!--:form-type="formType"-->
-    <!--:open-type="openType"-->
-    <!--:hover-top-propagation="hoverTopPropagation"-->
-    <!--:hover-start-time="hoverStartTime"-->
-    <!--:hover-stay-time="hoverStayTime"-->
-    <!--:lang="lang"-->
-    <!--:session-from="sessionFrom"-->
-    <!--:send-message-title="sendMessageTitle"-->
-    <!--:send-message-path="sendMessagePath"-->
-    <!--:send-message-img="sendMessageImg"-->
-    <!--:app-parameter="appParameter"-->
-    <!--:show-message-card="showMessageCard"-->
-    <!--@getuserinfo="$emit('getuserinfo')"-->
-    <!--@contact="$emit('contact')"-->
-    <!--@getphonenumber="$emit('getphonenumber')"-->
-    <!--@error="$emit('error')"-->
-    <!--@opensetting="$emit('opensetting')"-->
-    <!--@launchapp="$emit('launchapp')"-->
-  </view>
+  <button
+    :class="classes"
+    :id="id"
+    hover-class="uv-btn_active hover-class"
+    :type="type"
+    :size="size"
+  >
+    <slot />
+  </button>
+  <!--:plain="plain"-->
+  <!--:disabled="disabled"-->
+  <!--:loading="loading"-->
+  <!--:form-type="formType"-->
+  <!--:open-type="openType"-->
+  <!--:hover-top-propagation="hoverTopPropagation"-->
+  <!--:hover-start-time="hoverStartTime"-->
+  <!--:hover-stay-time="hoverStayTime"-->
+  <!--:lang="lang"-->
+  <!--:session-from="sessionFrom"-->
+  <!--:send-message-title="sendMessageTitle"-->
+  <!--:send-message-path="sendMessagePath"-->
+  <!--:send-message-img="sendMessageImg"-->
+  <!--:app-parameter="appParameter"-->
+  <!--:show-message-card="showMessageCard"-->
+  <!--@getuserinfo="$emit('getuserinfo')"-->
+  <!--@contact="$emit('contact')"-->
+  <!--@getphonenumber="$emit('getphonenumber')"-->
+  <!--@error="$emit('error')"-->
+  <!--@opensetting="$emit('opensetting')"-->
+  <!--@launchapp="$emit('launchapp')"-->
 </template>
 <script>
 import bem from './bem';
 
 export default {
-  name: 'u-button',
+  name: 'uv-btn',
   data() {
     return {
       classes: '',
@@ -72,7 +70,7 @@ export default {
     },
   },
   mounted() {
-    this.classes = bem('button', [
+    this.classes = bem('btn', [
       this.type,
       this.size,
     ]);
@@ -85,7 +83,7 @@ export default {
 >
   @import "sass/index";
 
-  $button-sizes: (
+  $btn-sizes: (
     /* min-width height padding font-size */
     "large": 100% 50px (0) $font-size-lg,
     "normal": auto 44px (0 15px) $font-size-md,
@@ -93,7 +91,7 @@ export default {
     "mini": 50px 22px (0) $font-size-xs,
   );
 
-  $button-types: (
+  $btn-types: (
     "primary": $primary $primary $white,
     "info": $info $info $white,
     "warning": $warning $warning $white,
@@ -102,8 +100,8 @@ export default {
   );
 
   /* type相关样式 */
-  @each $type, $values in $button-types {
-    #{$PREFIX}button_#{$type} {
+  @each $type, $values in $btn-types {
+    #{$PREFIX}btn_#{$type} {
       border: 1px solid nth($values, 1);
       background-color: nth($values, 2);
       color: nth($values, 3);
@@ -111,8 +109,8 @@ export default {
   }
 
   /* size相关样式 */
-  @each $size, $values in $button-sizes {
-    #{$PREFIX}button_#{$size} {
+  @each $size, $values in $btn-sizes {
+    #{$PREFIX}btn_#{$size} {
       min-width: nth($values, 1);
       height: nth($values, 2);
       padding: nth($values, 3);
@@ -120,7 +118,7 @@ export default {
     }
   }
 
-  .uv-button {
+  .uv-btn {
     position: relative;
     box-sizing: border-box;
     display: inline-flex;
