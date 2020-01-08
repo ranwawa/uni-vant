@@ -7,13 +7,16 @@
     <view>
       <u-button
         type="danger"
-      >这是一个按钮</u-button>
+        plain
+      >
+        这是一个按钮
+      </u-button>
     </view>
   </view>
 </template>
 
 <script>
-import uButton from '../../../components/button';
+import uButton from '@/components/button.vue';
 
 export default {
   components: {
@@ -30,18 +33,4 @@ export default {
 };
 </script>
 
-<style>
-  .content {
-    text-align: center;
-    height: 400 upx;
-  }
-  .logo {
-    height: 200 upx;
-    width: 200 upx;
-    margin-top: 200 upx;
-  }
-  .title {
-    font-size: 36 upx;
-    color: #8f8f94;
-  }
-</style>
+<style></style>

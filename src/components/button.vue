@@ -9,6 +9,7 @@
     hover-class="uv-btn_active hover-class"
     :type="type"
     :size="size"
+    :disabled="disabled"
   >
     <slot />
   </button>
@@ -68,20 +69,62 @@ export default {
         return ['normal', 'large', 'small', 'mini'].includes(value);
       },
     },
+    // 朴素按钮
+    plain: {
+      type: Boolean,
+      default: false,
+    },
+    // 块级元素
+    block: {
+      type: Boolean,
+      default: false,
+    },
+    // 圆形按钮
+    round: {
+      type: Boolean,
+      default: false,
+    },
+    // 方形按钮
+    square: {
+      type: Boolean,
+      default: false,
+    },
+    // 禁用按钮
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   mounted() {
+    const {
+      type,
+      size,
+      plain,
+      block,
+      round,
+      square,
+      disabled,
+    } = this;
     this.classes = bem('btn', [
-      this.type,
-      this.size,
+      type,
+      size,
+      {
+        plain,
+        block,
+        round,
+        square,
+        disabled,
+        unclickable: disabled,
+      },
     ]);
   },
 };
 </script>
-<style
-  lang="scss"
-  scoped
->
+<style lang="scss">
   @import "sass/index";
+
+  // 样式前缀
+  $comp: #{$PREFIX}btn;
 
   $btn-sizes: (
     /* min-width height padding font-size */
@@ -92,6 +135,7 @@ export default {
   );
 
   $btn-types: (
+    /* border-color background-color color */
     "primary": $primary $primary $white,
     "info": $info $info $white,
     "warning": $warning $warning $white,
@@ -99,13 +143,30 @@ export default {
     "default": $border-color $white $text-color,
   );
 
+  @mixin get-plain($class-name, $color) {
+    #{$comp}_plain {
+      background-color: $white;
+
+      &#{$class-name} {
+        color: $color;
+      }
+    }
+  }
+
   /* type相关样式 */
   @each $type, $values in $btn-types {
-    #{$PREFIX}btn_#{$type} {
-      border: 1px solid nth($values, 1);
-      background-color: nth($values, 2);
-      color: nth($values, 3);
+    $class-name: #{$comp}_#{$type};
+    $bd-color: nth($values, 1);
+    $bg-color: nth($values, 2);
+    $color: nth($values, 3);
+
+    #{$class-name} {
+      border: 1px solid $bd-color;
+      background-color: $bg-color;
+      color: $color;
     }
+
+    @include get-plain($class-name, $bg-color);
   }
 
   /* size相关样式 */
@@ -118,14 +179,21 @@ export default {
     }
   }
 
-  .uv-btn {
+  #{$comp} {
     position: relative;
     box-sizing: border-box;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    border-radius: $border-radius-sm;
     text-align: center;
     vertical-align: middle;
+    transition: opacity $animation-duration-fast;
+    /* 主要是禁用ios下button的默认样式 */
+    -webkit-appearance: none;
+    /* 主要是让小屏幕的手机字号看上去大一些 */
+    -webkit-text-size-adjust: 100%;
+
     /* 隐藏小程序上面的默认边框 */
     &::after {
       border: none;
@@ -139,7 +207,8 @@ export default {
       left: 50%;
       width: 100%;
       height: 100%;
-      /* todo 继承边框和圆角的目的是什么? */
+      /* 继承边框和圆角的目的是什么? */
+      /* 如果不继承的话,button有圆角时,这个的边框就会超出button范围 */
       /* 用css过渡实现点击态的想法确实妙 */
       border: inherit {
         color: $black;
@@ -154,8 +223,37 @@ export default {
       background-color: $black;
     }
 
+    /* uni在h5里面已经实现了active时根据Hover-class添加对应类名 */
     &_active::before {
       opacity: 0.15;
+    }
+
+    &_mini {
+      /* 这个紧邻后代选择器用得非常妙 */
+      & + & {
+        margin-left: 5px;
+      }
+    }
+
+    &_block {
+      display: flex;
+      width: 100%;
+    }
+
+    &_round {
+      border-radius: $border-radius-max;
+    }
+
+    &_square {
+      border-radius: 0;
+    }
+
+    &_unclickable {
+      display: none;
+    }
+
+    &_disabled {
+      opacity: $disabled-opacity;
     }
   }
 </style>

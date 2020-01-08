@@ -46,9 +46,14 @@ $yiq-contrasted-threshold:  150 !default;
 
 // Border
 $border-color: $gray-3;
+$border-width-base: 1px;
+$border-radius-sm: 2px;
+$border-radius-md: 4px;
+$border-radius-max: 999px;
 
 // Component Colors
 $text-color: $gray-8;
+$disabled-opacity: .5;
 
 // Font
 $font-size-xs: 10px;
@@ -64,5 +69,9 @@ $padding-sm: $padding-base * 3;
 $padding-md: $padding-base * 4;
 $padding-lg: $padding-base * 6;
 $padding-xl: $padding-base * 8;
+
+// Animation
+$animation-duration-base: .3s;
+$animation-duration-fast: .2s;
 
 $PREFIX: ".uv-";
