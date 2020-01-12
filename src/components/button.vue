@@ -5,35 +5,52 @@
 <template>
   <button
     :class="classes"
+    :style="computedStyle"
     :id="id"
     hover-class="uv-btn_active hover-class"
     :type="type"
     :size="size"
     :disabled="disabled"
+    :lang="lang"
+    :open-type="openType"
+    :session-from="sessionFrom"
+    :send-message-title="sendMessageTitle"
+    :send-message-path="sendMessagePath"
+    :send-message-img="sendMessageImg"
+    :app-parameter="appParameter"
+    :show-message-card="showMessageCard"
+    @click="handleClick"
+    @getuserinfo="emit('getuserinfo', $event)"
+    @contact="emit('contact', $event)"
+    @getphonenumber="emit('getphonenumber', $event)"
+    @error="emit('error', $event)"
+    @opensetting="emit('opensetting', $event)"
+    @launchapp="emit('launchapp', $event)"
   >
-    <slot />
+    <template v-if="loading">
+      <!-- todo -->
+      loading组件
+      <view
+        v-if="loadingText"
+        class="uv-btn_loading-text"
+      >
+        {{ loadingText }}
+      </view>
+    </template>
+    <template v-else>
+      <!-- todo -->
+      图标组件
+      <text>
+        <slot />
+      </text>
+    </template>
   </button>
-  <!--:plain="plain"-->
-  <!--:disabled="disabled"-->
   <!--:loading="loading"-->
   <!--:form-type="formType"-->
-  <!--:open-type="openType"-->
   <!--:hover-top-propagation="hoverTopPropagation"-->
   <!--:hover-start-time="hoverStartTime"-->
   <!--:hover-stay-time="hoverStayTime"-->
-  <!--:lang="lang"-->
-  <!--:session-from="sessionFrom"-->
-  <!--:send-message-title="sendMessageTitle"-->
-  <!--:send-message-path="sendMessagePath"-->
-  <!--:send-message-img="sendMessageImg"-->
-  <!--:app-parameter="appParameter"-->
-  <!--:show-message-card="showMessageCard"-->
-  <!--@getuserinfo="$emit('getuserinfo')"-->
-  <!--@contact="$emit('contact')"-->
-  <!--@getphonenumber="$emit('getphonenumber')"-->
-  <!--@error="$emit('error')"-->
-  <!--@opensetting="$emit('opensetting')"-->
-  <!--@launchapp="$emit('launchapp')"-->
+
 </template>
 <script>
 import bem from './bem';
@@ -61,6 +78,11 @@ export default {
         ].includes(value);
       },
     },
+    // 按钮颜色
+    color: {
+      type: String,
+      default: '',
+    },
     // 按钮尺寸
     size: {
       type: String,
@@ -68,6 +90,11 @@ export default {
       validator(value) {
         return ['normal', 'large', 'small', 'mini'].includes(value);
       },
+    },
+    // 自定义样式
+    customStyle: {
+      type: String,
+      default: '',
     },
     // 朴素按钮
     plain: {
@@ -94,6 +121,93 @@ export default {
       type: Boolean,
       default: false,
     },
+    // 加载状态
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+    // 加载状态提示文字
+    loadingText: {
+      type: String,
+      default: '',
+    },
+    // 返回用户信息的语言
+    lang: {
+      type: String,
+      default: 'en',
+      validator(value) {
+        return ['en', 'zh_TW', 'zh_CN'].includes(value);
+      },
+    },
+    // 开放能力
+    openType: {
+      type: String,
+      default: '',
+      validator(value) {
+        return [
+          '',
+          'contact',
+          'share',
+          'getPhoneNumber',
+          'getUserInfo',
+          'launchApp',
+          'openSetting',
+          'feedback',
+        ].includes(value);
+      },
+    },
+    // 会话来源
+    sessionFrom: {
+      type: String,
+      default: '',
+    },
+    // 会话内消息卡片点击跳转小程序路径
+    sendMessagePath: {
+      type: String,
+      default: '',
+    },
+    // 会话内消息卡片图片
+    sendMessageImg: {
+      type: String,
+      default: '',
+    },
+    // 会话内消息卡片标题
+    sendMessageTitle: {
+      type: String,
+      default: '',
+    },
+    // 是否显示会话内消息卡片
+    showMessageCard: {
+      type: Boolean,
+      default: false,
+    },
+    // 打开 APP 时，向 APP 传递的参数
+    appParameter: {
+      type: String,
+      default: '',
+    },
+  },
+  computed: {
+    computedStyle() {
+      const color = this.color;
+      let style = '';
+      if (color) {
+        let textColor = color;
+        // 非朴素按钮
+        // 边框,背景为设置的颜色
+        // 前景色为白色
+        if (!this.plain) {
+          style = `border-color: ${color}; background: ${color};`;
+          textColor = '#fff';
+        }
+        style += `color: ${textColor};`;
+        /* 渐变色去掉边框 */
+        if (color.indexOf('gradient') !== -1) {
+          style += 'border-width: 0;';
+        }
+      }
+      return `${style}${this.customStyle}`;
+    },
   },
   mounted() {
     const {
@@ -104,6 +218,7 @@ export default {
       round,
       square,
       disabled,
+      loading,
     } = this;
     this.classes = bem('btn', [
       type,
@@ -114,9 +229,19 @@ export default {
         round,
         square,
         disabled,
-        unclickable: disabled,
+        unclickable: disabled || loading,
       },
     ]);
+  },
+  methods: {
+    emit(event, { detail }) {
+      this.$emit(event, detail);
+    },
+    handleClick() {
+      if (!this.disabled && !this.loading) {
+        this.$emit('click');
+      }
+    },
   },
 };
 </script>
@@ -189,9 +314,7 @@ export default {
     text-align: center;
     vertical-align: middle;
     transition: opacity $animation-duration-fast;
-    /* 主要是禁用ios下button的默认样式 */
     -webkit-appearance: none;
-    /* 主要是让小屏幕的手机字号看上去大一些 */
     -webkit-text-size-adjust: 100%;
 
     /* 隐藏小程序上面的默认边框 */
@@ -207,9 +330,6 @@ export default {
       left: 50%;
       width: 100%;
       height: 100%;
-      /* 继承边框和圆角的目的是什么? */
-      /* 如果不继承的话,button有圆角时,这个的边框就会超出button范围 */
-      /* 用css过渡实现点击态的想法确实妙 */
       border: inherit {
         color: $black;
       };
@@ -217,9 +337,6 @@ export default {
       transform: translate(-50%, -50%);
       opacity: 0;
       content: ' ';
-
-      /* 为啥要把边框和背景设置成黑色呢? */
-      /* 就是为了透明过渡嘛,点一下就从 0变成 0.15 即透明变成一点暗灰 */
       background-color: $black;
     }
 
@@ -229,7 +346,6 @@ export default {
     }
 
     &_mini {
-      /* 这个紧邻后代选择器用得非常妙 */
       & + & {
         margin-left: 5px;
       }

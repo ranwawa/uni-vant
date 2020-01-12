@@ -17,8 +17,6 @@ function traversing(mods, conf) {
   if (!conf) {
     return;
   }
-  // todo 直接用Array.isArray和Object.keys应该可以呀
-  // 为啥还要自己写一个方法???
   if (typeof conf === 'string' || typeof conf === 'number') {
     mods.push(conf);
   } else if (Array.isArray(conf)) {

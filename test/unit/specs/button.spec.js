@@ -7,6 +7,20 @@
 import { mount } from '@vue/test-utils';
 import Button from '@/components/button.vue';
 
+let wrapper = mount(Button);
+let wrapper2 = mount(Button, {
+  propsData: {
+    plain: true,
+    block: true,
+    round: true,
+    square: true,
+    disabled: true,
+    lang: 'zh_CN',
+    openType: 'contact',
+    color: 'red',
+    customStyle: 'height: 1em;',
+  },
+});
 describe('button.vue', () => {
   it('the first test', () => {
     console.log(12341234);
@@ -15,7 +29,6 @@ describe('button.vue', () => {
   });
 });
 describe('wrapper测试', () => {
-  const wrapper = mount(Button);
   it('组件名是uv-btn', () => {
     expect(wrapper.name()).toBe('uv-btn');
   });
@@ -33,7 +46,7 @@ describe('wrapper测试', () => {
   });
 });
 describe('prop type测试', function () {
-  const wrapper = mount(Button, {
+  let wrapper = mount(Button, {
     propsData: {
       type: 'primary',
     },
@@ -52,7 +65,7 @@ describe('prop type测试', function () {
   // });
 });
 describe('prop size测试', function () {
-  const wrapper = mount(Button, {
+  let wrapper = mount(Button, {
     propsData: {
       size: 'mini',
     },
@@ -65,16 +78,11 @@ describe('prop size测试', function () {
   });
 });
 describe('prop plain测试', function () {
-  const wrapper = mount(Button);
   it('默认情况下,plain是false', () => {
     expect(wrapper.props('plain')).toBeFalsy();
   });
-  /* todo 这里多创建一个实例,明显有点不科学 */
-  const wrapper2 = mount(Button, {
-    propsData: {
-      plain: true,
-    },
-  });
+  /* 这里多创建一个实例,明显有点不科学 */
+  /* 那就在外部定义一个,里面重复调用就行 */
   it('传递值后,plain为true', () => {
     expect(wrapper2.props('plain')).toBeTruthy();
   });
@@ -83,14 +91,8 @@ describe('prop plain测试', function () {
   });
 });
 describe('prop block测试', function () {
-  const wrapper = mount(Button);
   it('默认情况下,block是false', () => {
     expect(wrapper.props('block')).toBeFalsy();
-  });
-  const wrapper2 = mount(Button, {
-    propsData: {
-      block: true,
-    },
   });
   it('传递值后,block要变成true', () => {
     expect(wrapper2.props('block')).toBeTruthy();
@@ -100,14 +102,8 @@ describe('prop block测试', function () {
   });
 });
 describe('prop round测试', function () {
-  const wrapper = mount(Button);
   it('默认情况下,round是false', () => {
     expect(wrapper.props('round')).toBeFalsy();
-  });
-  const wrapper2 = mount(Button, {
-    propsData: {
-      round: true,
-    },
   });
   it('传递值后,round要变成true', () => {
     expect(wrapper2.props('round')).toBeTruthy();
@@ -117,14 +113,8 @@ describe('prop round测试', function () {
   });
 });
 describe('prop square测试', function () {
-  const wrapper = mount(Button);
   it('默认情况下,square是false', () => {
     expect(wrapper.props('square')).toBeFalsy();
-  });
-  const wrapper2 = mount(Button, {
-    propsData: {
-      square: true,
-    },
   });
   it('传递值后,square要变成true', () => {
     expect(wrapper2.props('square')).toBeTruthy();
@@ -134,7 +124,6 @@ describe('prop square测试', function () {
   });
 });
 describe('prop disable测试', function () {
-  const wrapper = mount(Button);
   it('默认情况下,disable是false', () => {
     expect(wrapper.props('disable')).toBeFalsy();
   });
@@ -144,11 +133,6 @@ describe('prop disable测试', function () {
   it('默认情况下,没有uv-btn_disabled类名', () => {
     expect(wrapper.classes('uv-btn_disabled')).toBeFalsy();
   });
-  const wrapper2 = mount(Button, {
-    propsData: {
-      disabled: true,
-    },
-  });
   it('传递值后,disabled要变成true', () => {
     expect(wrapper2.props('disabled')).toBeTruthy();
   });
@@ -156,5 +140,56 @@ describe('prop disable测试', function () {
     expect(wrapper2.classes('uv-btn_unclickable')).toBeTruthy();
   });
 });
-
+describe('prop lang测试', function () {
+  it('lang的默认值是en', () => {
+    expect(wrapper.attributes('lang')).toBe('en');
+  });
+  it('lang值修改后,组件相应的要发生变化', () => {
+    expect(wrapper2.props('lang')).toBe('zh_CN');
+  });
+});
+describe('prop openType测试', function () {
+  it('open-type的默认值是空字符串', () => {
+    expect(wrapper.props('openType')).toBe('');
+  });
+  it('open-type传入contact后,节点上要有相应的属性值', () => {
+    expect(wrapper2.attributes('open-type')).toBe('contact');
+  });
+});
+describe('prop color测试', function () {
+  it('默认情况下style属性为空字符串', () => {
+    expect(wrapper.attributes('style')).toBeUndefined();
+  });
+  it('color设置为red时,style的文字颜色要是red', () => {
+    expect(wrapper2.attributes('style')).toContain('color: red;');
+  });
+});
+describe('prop customStyle', function () {
+  it('传入customStyle后,节点属性要跟着变', () => {
+    expect(wrapper2.attributes('style')).toContain('height: 1em;');
+  });
+  it('渐变色要去掉边框', done => {
+    wrapper2.setProps({
+      color: 'linear-gradient(#000, #fff)',
+    });
+    wrapper2.vm.$nextTick(() => {
+      expect(wrapper2.element.style.border).toBe('0px');
+      done();
+    });
+  });
+});
+describe('自定义事件', function () {
+  wrapper.vm.$emit('getuserinfo');
+  wrapper.vm.$emit('contact');
+  wrapper.vm.$emit('getphonenumber');
+  wrapper.vm.$emit('error');
+  wrapper.vm.$emit('opensetting');
+  wrapper.vm.$emit('launchapp');
+  it('触发getuserinfo事件', () => {
+    expect(wrapper.emitted('getuserinfo')).toBeTruthy();
+  });
+  it('所有事件全部触发', () => {
+    expect(wrapper.emittedByOrder().length).toBe(6);
+  });
+});
 
