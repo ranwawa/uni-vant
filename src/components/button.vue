@@ -250,7 +250,6 @@ export default {
 
   // 样式前缀
   $comp: #{$PREFIX}btn;
-
   $btn-sizes: (
     /* min-width height padding font-size */
     "large": 100% 50px (0) $font-size-lg,
@@ -258,7 +257,6 @@ export default {
     "small": 60px 30px (0 $padding-xs) $font-size-sm,
     "mini": 50px 22px (0) $font-size-xs,
   );
-
   $btn-types: (
     /* border-color background-color color */
     "primary": $primary $primary $white,
@@ -306,14 +304,14 @@ export default {
 
   #{$comp} {
     position: relative;
-    box-sizing: border-box;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: $border-radius-sm;
+    box-sizing: border-box;
+    transition: opacity $animation-duration-fast;
     text-align: center;
     vertical-align: middle;
-    transition: opacity $animation-duration-fast;
+    border-radius: $border-radius-sm;
     -webkit-appearance: none;
     -webkit-text-size-adjust: 100%;
 
@@ -330,13 +328,13 @@ export default {
       left: 50%;
       width: 100%;
       height: 100%;
-      border: inherit {
-        color: $black;
-      };
-      border-radius: inherit; /* inherit parent's border radius */
+      content: ' ';;
       transform: translate(-50%, -50%);
       opacity: 0;
-      content: ' ';
+      border: inherit {
+        color: $black;
+      }
+      border-radius: inherit; /* inherit parent's border radius */
       background-color: $black;
     }
 

@@ -44,7 +44,6 @@
 //     ],
 //   ], plugins,
 // };
-console.log(111111111111);
 module.exports = {
   'presets': [['env', { 'modules': false }]],
   'env': {
