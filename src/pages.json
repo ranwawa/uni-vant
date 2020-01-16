@@ -1,16 +1,74 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/loading",
+      "style": {
+        "navigationBarTitleText": "loading"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-vant",
+    // todo 这个属性好像失效了?
+    "navigationBarShadow": "red",
+    // 窗口背景色? 下拉刷新状态下的背景效果
+    // 这个属性在支付宝小程序开发者工具里面,会使整个页面背景变色
+    // 而在支付宝小程序手机端,则会变成黑色
+    // 所以最好别单独下拉刷新状态的背景色
+    "backgroundColor": "#F8F8F8",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true,
+    // todo IOS回弹区域颜色,需要看看是啥
+    "backgroundColorTop": "red",
+    "backgroundColorBottom": "red",
+    "titleImage": "",
+    // todo 这个auto在h5下有问题,还得验证一下支付宝APP的效果
+    "transparentTitle": "none",
+    // todo 这个需要验证后面元素有事件时的效果
+    "titlePenetrate": "NO",
+    // todo 横屏配置,需要在微信小程序上验证一下
+    "pageOrientation": "portrait",
+    // todo 3个App相关的,有空了验证一下
+    "animationType": "pop-in",
+    "animationDuration": 300,
+    "app-plus": {},
+    "h5": {
+      "titleNView": {
+        "backgroundColor": "#000",
+        // todo 这里还有好多属性,空了来看
+        "buttons": [
+          {
+            "type": "back"
+          }
+        ],
+        "titleColor": "#999",
+        "titleText": "uni-vant-h5",
+        "titleSize": "25px",
+        // todo 这个设置透明后transparent后,整个标题都看不见啦
+        "type": "default"
+      },
+      "pullToRefresh": {}
+    },
+    "mp-alipay": {
+    },
+    "mp-weixin": {
+    },
+    "mp-baidu": {
+    },
+    "mp-toutiao": {
+    },
+    "mp-qq": {
+    },
+    "usingComponents": {
+    }
+  }
 }

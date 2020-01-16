@@ -53,7 +53,7 @@
 
 </template>
 <script>
-import bem from './bem';
+import bem from './utils/bem';
 
 export default {
   name: 'uv-btn',

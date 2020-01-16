@@ -13,7 +13,7 @@
   </view>
 </template>
 <script>
-import bem from './bem';
+import bem from './utils/bem';
 
 export default {
   name: 'uv-info',
@@ -33,6 +33,11 @@ export default {
       type: String,
       default: '',
     },
+    // 外部样式类
+    customClass: {
+      type: String,
+      default: '',
+    },
   },
   computed: {
     isShowUvInfo() {
@@ -42,9 +47,10 @@ export default {
       return this.dot ? '' : this.info;
     },
     classes() {
-      return bem('info', {
+      const bemClass = bem('info', {
         dot: this.dot,
       });
+      return `${this.customClass} ${bemClass}`;
     },
   },
 };
