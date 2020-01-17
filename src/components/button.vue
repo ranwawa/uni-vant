@@ -28,8 +28,12 @@
     @launchapp="emit('launchapp', $event)"
   >
     <template v-if="loading">
-      <!-- todo -->
-      loading组件
+      <uv-loading
+        :type="loadingType"
+        custom-class="loading-class"
+        :size="loadingSize"
+        :color="computedLoadingColor"
+      />
       <view
         v-if="loadingText"
         class="uv-btn_loading-text"
@@ -39,11 +43,18 @@
     </template>
     <template v-else>
       <!-- todo -->
+      <uv-icon
+        v-if="icon"
+        :name="icon"
+        size="1.2em"
+        custom-style="line-height: inherit;"
+        custom-class="vuv-btn-icon"
+      />
       图标组件
-      <text>
-        <slot />
-      </text>
     </template>
+    <text class="uv-button-text">
+      <slot />
+    </text>
   </button>
   <!--:loading="loading"-->
   <!--:form-type="formType"-->
@@ -54,9 +65,15 @@
 </template>
 <script>
 import bem from './utils/bem';
+import uvIcon from './icon.vue';
+import uvLoading from './loading';
 
 export default {
   name: 'uv-btn',
+  components: {
+    uvIcon,
+    uvLoading,
+  },
   data() {
     return {
       classes: '',
@@ -92,7 +109,14 @@ export default {
       },
     },
     // 自定义样式
+    // todo 这两个属性要抽成mixins或者父类继承
+    // 包括相关的computed属性也是一样
     customStyle: {
+      type: String,
+      default: '',
+    },
+    // 自定义类名
+    customClass: {
       type: String,
       default: '',
     },
@@ -121,6 +145,11 @@ export default {
       type: Boolean,
       default: false,
     },
+    // 图标样式
+    icon: {
+      type: String,
+      default: ''
+    },
     // 加载状态
     loading: {
       type: Boolean,
@@ -130,6 +159,16 @@ export default {
     loadingText: {
       type: String,
       default: '',
+    },
+    // 加载状态图片
+    loadingType: {
+      type: String,
+      default: 'circular',
+    },
+    // 加载状态大小
+    loadingSize: {
+      type: String,
+      default: '20px',
     },
     // 返回用户信息的语言
     lang: {
@@ -156,6 +195,7 @@ export default {
         ].includes(value);
       },
     },
+    // todo 会话这几个要测一下具体是啥效果
     // 会话来源
     sessionFrom: {
       type: String,
@@ -208,6 +248,9 @@ export default {
       }
       return `${style}${this.customStyle}`;
     },
+    computedLoadingColor() {
+      return this.type === 'default' ? '#c9c9c9' : 'white';
+    },
   },
   mounted() {
     const {
@@ -220,7 +263,7 @@ export default {
       disabled,
       loading,
     } = this;
-    this.classes = bem('btn', [
+    const bemClass = bem('btn', [
       type,
       size,
       {
@@ -232,6 +275,7 @@ export default {
         unclickable: disabled || loading,
       },
     ]);
+    return `${this.customClass} ${bemClass}`;
   },
   methods: {
     emit(event, { detail }) {
@@ -245,6 +289,13 @@ export default {
   },
 };
 </script>
+<style lang="css">
+  .uv-btn-icon {
+    min-width: 1em;
+    vertical-align: top;
+    line-height: inherit !important;
+  }
+</style>
 <style lang="scss">
   @import "sass/index";
 
@@ -368,6 +419,11 @@ export default {
 
     &_disabled {
       opacity: $disabled-opacity;
+    }
+
+    &_loading-text,
+    &_icon + &_text:not(:empty) {
+      margin-left: $padding-base;
     }
   }
 </style>
