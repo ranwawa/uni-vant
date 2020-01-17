@@ -89,7 +89,6 @@ export default {
     classes() {
       let pre = this.classPrefix;
       let icon = this.isImage ? '' : `${pre}-${this.name}`;
-      console.log(`${this.customClass} ${pre} ${icon}`, 333);
       return `${this.customClass} ${pre} ${icon}`;
     },
     computedStyle() {
@@ -117,6 +116,8 @@ export default {
   scoped
 >
   @import "./sass/index";
+  /* todo 本地资源会增加首包大小,也无法及时同步 */
+  @import "./sass/font";
 
   $comp: #{$PREFIX}icon;
 
