@@ -94,10 +94,20 @@ export default {
       return `${pre} ${icon} ${this.customClass}`;
     },
     computedStyle() {
-      const style = computeStyle({
-        color: this.color,
-        'font-size': addUnit(this.size),
-      });
+      const size = addUnit(this.size);
+      const other = {};
+      if (this.size !== 'inherit') {
+        if (this.isImage) {
+          other.width = size;
+          other.height = size;
+        } else {
+          other['font-size'] = size;
+        }
+      }
+      if (this.color !== 'inherit') {
+        other.color = this.color;
+      }
+      const style = computeStyle(other);
       return `${this.customStyle} ${style}`;
     },
   },
@@ -124,9 +134,7 @@ export default {
   $comp: #{$PREFIX}icon;
 
   #{$comp} {
-    &-image {
-      width: 1em;
-      height: 1em;
-    }
+    position: relative;
+    display: inline-block;
   }
 </style>
