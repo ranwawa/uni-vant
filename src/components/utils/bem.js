@@ -8,7 +8,7 @@ const PREFIX = 'uv-';
 function join(name, mods) {
   name = PREFIX + name;
   mods = mods.map(function (mod) {
-    return name + '_' + mod;
+    return name + '-' + mod;
   });
   mods.unshift(name);
   return mods.join(' ');
