@@ -13,6 +13,7 @@ export default {
 </script>
 
 <style lang="scss">
+  @import "assets/font/iconfont.css";
   @import "components/common/index..css";
   .uv-doc {
     min-height: calc(100vh - 56px);
@@ -23,7 +24,7 @@ export default {
 
       &_title {
         display: block;
-        margin: 32px 0;
+        margin: 18px 0;
         color: rgba(69, 90, 100, 0.6);
         font-size: 14px;
         font-weight: normal;
