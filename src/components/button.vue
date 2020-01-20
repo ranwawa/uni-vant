@@ -3,6 +3,7 @@
 <!-- desc: 按钮组件 -->
 <!-- remark:  -->
 <template>
+  <!-- TODO button上的id为啥无法挂载呢?icon上的就可以 -->
   <button
     :class="classes"
     :style="computedStyle"
@@ -30,7 +31,7 @@
     <template v-if="loading">
       <uv-loading
         :type="loadingType"
-        custom-class="loading-class"
+        :custom-class="loadingClass"
         :size="loadingSize"
         :color="computedLoadingColor"
       />
@@ -42,20 +43,19 @@
       </view>
     </template>
     <template v-else>
-      <!-- todo -->
       <uv-icon
         v-if="icon"
         :name="icon"
         size="1.2em"
         custom-style="line-height: inherit;"
-        custom-class="vuv-btn-icon"
+        custom-class="uv-btn-icon"
       />
-      图标组件
+      <text class="uv-btn-text">
+        <slot />
+      </text>
     </template>
-    <text class="uv-button-text">
-      <slot />
-    </text>
   </button>
+  <!-- todo 这里有很多小程序的属性需要迁移过来 -->
   <!--:loading="loading"-->
   <!--:form-type="formType"-->
   <!--:hover-top-propagation="hoverTopPropagation"-->
@@ -67,9 +67,11 @@
 import bem from './utils/bem';
 import uvIcon from './icon.vue';
 import uvLoading from './loading';
+import mixins from '@/components/utils/mixins';
 
 export default {
   name: 'uv-btn',
+  mixins: [mixins],
   components: {
     uvIcon,
     uvLoading,
@@ -80,11 +82,6 @@ export default {
     };
   },
   props: {
-    // 标识符
-    id: {
-      type: String,
-      default: '',
-    },
     // 按钮类型
     type: {
       type: String,
@@ -107,18 +104,6 @@ export default {
       validator(value) {
         return ['normal', 'large', 'small', 'mini'].includes(value);
       },
-    },
-    // 自定义样式
-    // todo 这两个属性要抽成mixins或者父类继承
-    // 包括相关的computed属性也是一样
-    customStyle: {
-      type: String,
-      default: '',
-    },
-    // 自定义类名
-    customClass: {
-      type: String,
-      default: '',
     },
     // 朴素按钮
     plain: {
@@ -148,7 +133,7 @@ export default {
     // 图标样式
     icon: {
       type: String,
-      default: ''
+      default: '',
     },
     // 加载状态
     loading: {
@@ -164,6 +149,11 @@ export default {
     loadingType: {
       type: String,
       default: 'circular',
+    },
+    // 自定义加载状态类
+    loadingClass: {
+      type: String,
+      default: '',
     },
     // 加载状态大小
     loadingSize: {
@@ -275,7 +265,7 @@ export default {
         unclickable: disabled || loading,
       },
     ]);
-    return `${this.customClass} ${bemClass}`;
+    return this.classes = `${bemClass} ${this.customClass}`;
   },
   methods: {
     emit(event, { detail }) {
@@ -289,15 +279,10 @@ export default {
   },
 };
 </script>
-<style lang="css">
-  .uv-btn-icon {
-    min-width: 1em;
-    vertical-align: top;
-    line-height: inherit !important;
-  }
-</style>
+
 <style lang="scss">
   @import "sass/index";
+  @import "sass/hariline";
 
   // 样式前缀
   $comp: #{$PREFIX}btn;
@@ -421,8 +406,7 @@ export default {
       opacity: $disabled-opacity;
     }
 
-    &_loading-text,
-    &_icon + &_text:not(:empty) {
+    &_loading-text {
       margin-left: $padding-base;
     }
   }

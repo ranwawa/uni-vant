@@ -13,6 +13,7 @@ export default {
 </script>
 
 <style lang="scss">
+  @import "components/common/index..css";
   .uv-doc {
     min-height: calc(100vh - 56px);
     padding: 0 16px;

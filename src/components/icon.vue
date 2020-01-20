@@ -31,9 +31,11 @@
 <script>
 import uvInfo from '@/components/info.vue';
 import { addUnit, computeStyle } from './utils/index';
+import mixins from '@/components/utils/mixins';
 
 export default {
-  name: 'uv-icon',
+  name: 'icon',
+  mixins: [mixins],
   components: {
     uvInfo,
   },
@@ -89,7 +91,7 @@ export default {
     classes() {
       let pre = this.classPrefix;
       let icon = this.isImage ? '' : `${pre}-${this.name}`;
-      return `${this.customClass} ${pre} ${icon}`;
+      return `${pre} ${icon} ${this.customClass}`;
     },
     computedStyle() {
       const style = computeStyle({
