@@ -51,7 +51,7 @@
         custom-class="uv-btn-icon"
       />
       <!-- the gutter between icon and text-->
-      <text :class="{'uv-btn-text': !!$slots.default}">
+      <text :class="{'uv-btn-text': !!$slots.default && icon}">
         <slot />
       </text>
     </template>
@@ -304,7 +304,8 @@ export default {
     "large": 100% 50px (0) $font-size-lg,
     "normal": auto 44px (0 15px) $font-size-md,
     "small": 60px 30px (0 $padding-xs) $font-size-sm,
-    "mini": 50px 22px (0) $font-size-xs,
+    // compatible with WeiXin button[size=mini]
+    "mini": 50px (22px !important) (0) ($font-size-xs !important),
   );
   $btn-types: (
     /* border-color background-color color */
@@ -393,12 +394,6 @@ export default {
     /* uni在h5里面已经实现了active时根据Hover-class添加对应类名 */
     &-active::before {
       opacity: 0.15;
-    }
-
-    &-mini {
-      & + & {
-        margin-left: 5px;
-      }
     }
 
     &-block {
