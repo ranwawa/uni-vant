@@ -7,7 +7,7 @@
     <uv-section title="基础用法">
       <uv-icon name="chat-o" />
       <uv-icon
-        name="https://b.yzcdn.cn/vant/icon-demo-1126.png"
+        name="https://img.yzcdn.cn/vant/logo.png"
         size="1em"
       />
     </uv-section>
