@@ -50,7 +50,8 @@
         custom-style="line-height: inherit;"
         custom-class="uv-btn-icon"
       />
-      <text class="uv-btn-text">
+      <!-- the gutter between icon and text-->
+      <text :class="{'uv-btn-text': !!$slots.default}">
         <slot />
       </text>
     </template>
@@ -149,6 +150,9 @@ export default {
     loadingType: {
       type: String,
       default: 'circular',
+      validate(value) {
+        return ['circular', 'spinner'].includes(value);
+      },
     },
     // 自定义加载状态类
     loadingClass: {
@@ -271,6 +275,7 @@ export default {
     },
   },
   mounted() {
+    console.log(this.$slots.default);
   },
   methods: {
     emit(event, { detail }) {
@@ -409,7 +414,7 @@ export default {
       border-radius: 0;
     }
 
-    &-unclickable {
+    &-unclickable::after {
       display: none;
     }
 
@@ -428,7 +433,7 @@ export default {
       &::after {
         border-width: 1px;
         border-color: inherit;
-        border-radius: calc($border-radius-sm * 2);
+        border-radius: $border-radius-sm * 2;
       }
 
       &.uv-btn-round::after {
@@ -438,6 +443,10 @@ export default {
       &.uv-btn-square::after {
         border-radius: 0;
       }
+    }
+
+    &-text {
+      margin-left: 4px;
     }
   }
 </style>
