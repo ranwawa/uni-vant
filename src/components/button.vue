@@ -8,7 +8,7 @@
     :class="classes"
     :style="computedStyle"
     :id="id"
-    hover-class="uv-btn_active hover-class"
+    hover-class="uv-btn-active hover-class"
     :type="type"
     :size="size"
     :disabled="disabled"
@@ -37,7 +37,7 @@
       />
       <view
         v-if="loadingText"
-        class="uv-btn_loading-text"
+        class="uv-btn-loading_text"
       >
         {{ loadingText }}
       </view>
@@ -299,11 +299,11 @@ export default {
     "info": $info $info $white,
     "warning": $warning $warning $white,
     "danger": $danger $danger $white,
-    "default": $border-color $white $text-color,
+    "default": $border-color ($white !important) $text-color,
   );
 
   @mixin get-plain($class-name, $color) {
-    #{$comp}_plain {
+    #{$comp}-plain {
       background-color: $white;
 
       &#{$class-name} {
@@ -314,7 +314,7 @@ export default {
 
   /* type相关样式 */
   @each $type, $values in $btn-types {
-    $class-name: #{$comp}_#{$type};
+    $class-name: #{$comp}-#{$type};
     $bd-color: nth($values, 1);
     $bg-color: nth($values, 2);
     $color: nth($values, 3);
@@ -330,7 +330,7 @@ export default {
 
   /* size相关样式 */
   @each $size, $values in $btn-sizes {
-    #{$PREFIX}btn_#{$size} {
+    #{$comp}-#{$size} {
       min-width: nth($values, 1);
       height: nth($values, 2);
       padding: nth($values, 3);
@@ -375,38 +375,38 @@ export default {
     }
 
     /* uni在h5里面已经实现了active时根据Hover-class添加对应类名 */
-    &_active::before {
+    &-active::before {
       opacity: 0.15;
     }
 
-    &_mini {
+    &-mini {
       & + & {
         margin-left: 5px;
       }
     }
 
-    &_block {
+    &-block {
       display: flex;
       width: 100%;
     }
 
-    &_round {
+    &-round {
       border-radius: $border-radius-max;
     }
 
-    &_square {
+    &-square {
       border-radius: 0;
     }
 
-    &_unclickable {
+    &-unclickable {
       display: none;
     }
 
-    &_disabled {
+    &-disabled {
       opacity: $disabled-opacity;
     }
 
-    &_loading-text {
+    &-loading_text {
       margin-left: $padding-base;
     }
   }
