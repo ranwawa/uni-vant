@@ -325,6 +325,9 @@ export default {
       color: $color;
     }
 
+    @if $class-name == '#{$comp}-default' {
+      $bg-color: $color;
+    }
     @include get-plain($class-name, $bg-color);
   }
 
