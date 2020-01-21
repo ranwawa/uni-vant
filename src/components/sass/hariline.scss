@@ -1,3 +1,6 @@
+@import "./variables";
+@import "./mixins";
+
 $comp: #{$PREFIX}hairline;
 #{$comp},
 #{$comp}-top,

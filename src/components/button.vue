@@ -5,7 +5,7 @@
 <template>
   <!-- TODO button上的id为啥无法挂载呢?icon上的就可以 -->
   <button
-    :class="classes"
+    :class="computedClass"
     :style="computedStyle"
     :id="id"
     hover-class="uv-btn-active hover-class"
@@ -76,11 +76,6 @@ export default {
     uvIcon,
     uvLoading,
   },
-  data() {
-    return {
-      classes: '',
-    };
-  },
   props: {
     // 按钮类型
     type: {
@@ -107,6 +102,11 @@ export default {
     },
     // 朴素按钮
     plain: {
+      type: Boolean,
+      default: false,
+    },
+    // 细边框
+    hairline: {
       type: Boolean,
       default: false,
     },
@@ -241,31 +241,36 @@ export default {
     computedLoadingColor() {
       return this.type === 'default' ? '#c9c9c9' : 'white';
     },
-  },
-  mounted() {
-    const {
-      type,
-      size,
-      plain,
-      block,
-      round,
-      square,
-      disabled,
-      loading,
-    } = this;
-    const bemClass = bem('btn', [
-      type,
-      size,
-      {
+    computedClass() {
+      const {
+        type,
+        size,
         plain,
         block,
         round,
         square,
         disabled,
-        unclickable: disabled || loading,
-      },
-    ]);
-    return this.classes = `${bemClass} ${this.customClass}`;
+        loading,
+        hairline,
+      } = this;
+      const bemClass = bem('btn', [
+        type,
+        size,
+        {
+          plain,
+          block,
+          round,
+          square,
+          disabled,
+          hairline,
+          unclickable: disabled || loading,
+        },
+      ]);
+      return `${bemClass} ${this.customClass} ${hairline ?
+        'uv-hairline-surround' : ''}`;
+    },
+  },
+  mounted() {
   },
   methods: {
     emit(event, { detail }) {
@@ -283,6 +288,9 @@ export default {
 <style lang="scss">
   @import "sass/index";
   @import "sass/hariline";
+
+
+  $border-radius-sm: 2px;
 
   // 样式前缀
   $comp: #{$PREFIX}btn;
@@ -356,7 +364,7 @@ export default {
 
     /* 隐藏小程序上面的默认边框 */
     &::after {
-      border: none;
+      border-width: 0;
       line-height: 20px;
     }
 
@@ -411,6 +419,25 @@ export default {
 
     &-loading_text {
       margin-left: $padding-base;
+    }
+
+    &-hairline {
+      padding-top: 1px; // add 1px padding for text vertical align middle
+      border-width: 0;
+
+      &::after {
+        border-width: 1px;
+        border-color: inherit;
+        border-radius: calc($border-radius-sm * 2);
+      }
+
+      &.uv-btn-round::after {
+        border-radius: $border-radius-sm;
+      }
+
+      &.uv-btn-square::after {
+        border-radius: 0;
+      }
     }
   }
 </style>
