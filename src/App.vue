@@ -14,7 +14,8 @@ export default {
 
 <style lang="scss">
   @import "assets/font/iconfont.css";
-  @import "components/common/index..css";
+  @import "components/common/index.css";
+  @import "components/sass/hariline";
   .uv-doc {
     min-height: calc(100vh - 56px);
     padding: 0 16px;
