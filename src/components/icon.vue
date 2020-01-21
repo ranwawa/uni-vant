@@ -119,9 +119,7 @@ export default {
     align-items: center;
     justify-content: center;
   }
-  .uv-icon-info {
-    z-index: 1;
-  }
+
 </style>
 <style
   lang="scss"
@@ -136,5 +134,7 @@ export default {
   #{$comp} {
     position: relative;
     display: inline-block;
+    // fix the vertical align with text
+    line-height: 1;
   }
 </style>

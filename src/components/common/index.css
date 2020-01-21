@@ -3,3 +3,6 @@
   vertical-align: top;
   line-height: inherit !important;
 }
+.uv-icon-info {
+  z-index: 1;
+}
