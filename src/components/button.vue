@@ -234,7 +234,7 @@ export default {
           style = `border-color: ${color}; background: ${color};`;
           textColor = '#fff';
         }
-        style += `color: ${textColor};`;
+        style += `color: ${textColor}; border-color: ${textColor};`;
         /* 渐变色去掉边框 */
         if (color.indexOf('gradient') !== -1) {
           style += 'border-width: 0;';
@@ -313,7 +313,7 @@ export default {
     "info": $info $info $white,
     "warning": $warning $warning $white,
     "danger": $danger $danger $white,
-    "default": $border-color ($white !important) $text-color,
+    "default": $border-color $white $text-color,
   );
 
   @mixin get-plain($class-name, $color) {
