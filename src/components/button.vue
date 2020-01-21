@@ -274,9 +274,6 @@ export default {
         'uv-hairline-surround' : ''}`;
     },
   },
-  mounted() {
-    console.log(this.$slots.default);
-  },
   methods: {
     emit(event, { detail }) {
       this.$emit(event, detail);
