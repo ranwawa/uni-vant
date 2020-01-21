@@ -6,3 +6,7 @@
 .uv-icon-info {
   z-index: 1;
 }
+.uv-cell_left-icon {
+  vertical-align: middle;
+  line-height: 20px;
+}
