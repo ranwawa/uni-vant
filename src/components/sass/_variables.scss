@@ -78,4 +78,11 @@ $padding-xl: $padding-base * 8;
 $animation-duration-base: .3s;
 $animation-duration-fast: .2s;
 
+// CellGroup
+$cell-group-background-color: $white;
+$cell-group-title-color: $gray-6;
+$cell-group-title-padding: $padding-md $padding-md $padding-xs;
+$cell-group-title-font-size: $font-size-md;
+$cell-group-title-line-height: 16px;
+
 $PREFIX: ".uv-";
