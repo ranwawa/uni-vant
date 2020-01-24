@@ -78,8 +78,8 @@ describe('props之color,size', function () {
   it('默认情况下,color为空', () => {
     expect(wrapperIconStyle.color).toBe('');
   });
-  it('默认情况下,字号继承父元素', () => {
-    expect(wrapperIconStyle['font-size']).toBe('inherit');
+  it('默认情况下,字号为空', () => {
+    expect(wrapperIconStyle['font-size']).toBe('');
   });
   it('传入#fff后,也要变成#fff', () => {
     // 注意 color设置为Inherit时会自动置空

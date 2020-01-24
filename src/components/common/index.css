@@ -6,7 +6,15 @@
 .uv-icon-info {
   z-index: 1;
 }
+.uv-cell-hover {
+  background-color: #f2f3f5;
+}
 .uv-cell_left-icon {
   vertical-align: middle;
+  line-height: 20px;
+}
+.uv-cell_right-icon {
+  margin-left: 5px;
+  color: #969799;
   line-height: 20px;
 }

@@ -12,8 +12,6 @@ export default {
       default: '',
     },
     // 自定义样式
-    // todo 这两个属性要抽成mixins或者父类继承
-    // 包括相关的computed属性也是一样
     customStyle: {
       type: String,
       default: '',
