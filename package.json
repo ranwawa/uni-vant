@@ -22,7 +22,7 @@
     "dev:mp-toutiao": "cross-env NODE_ENV=development UNI_PLATFORM=mp-toutiao vue-cli-service uni-build --watch",
     "dev:mp-weixin": "cross-env NODE_ENV=development UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch",
     "info": "node node_modules/@dcloudio/vue-cli-plugin-uni/commands/info.js",
-    "test": "jest ./test/unit/specs/cell-group.spec.js"
+    "test": "jest ./test/unit/specs/field.spec.js"
   },
   "dependencies": {
     "@dcloudio/uni-app-plus": "^2.0.0-alpha-25120200103006",
@@ -44,6 +44,7 @@
     "node-sass": "^4.13.0",
     "regenerator-runtime": "^0.12.1",
     "sass-loader": "^8.0.0",
+    "sinon": "^8.1.1",
     "vue": "^2.6.10",
     "vue-jest": "^3.0.5",
     "vuex": "^3.0.1"

@@ -6,10 +6,12 @@
  */
 import bem from '@/components/utils/bem';
 import addUnit from '@/components/utils/add_unit';
-import computeStyle from '@/components/utils/compute_style'
+import computeStyle from '@/components/utils/compute_style';
+import { getSystemInfoSync } from '@/components/utils/utils';
 
 export {
   bem,
   addUnit,
   computeStyle,
+  getSystemInfoSync,
 };
