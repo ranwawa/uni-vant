@@ -262,25 +262,6 @@ export default {
 >
   @import './sass/index';
 
-  $cell-font-size: $font-size-md;
-  $cell-line-height: 24px;
-  $cell-vertical-padding: 10px;
-  $cell-horizontal-padding: $padding-md;
-  $cell-text-color: $text-color;
-  $cell-background-color: $white;
-  $cell-border-color: $border-color;
-  $cell-active-color: $active-color;
-  $cell-required-color: $red;
-  $cell-label-color: $gray-6;
-  $cell-label-font-size: $font-size-sm;
-  $cell-label-line-height: 18px;
-  $cell-label-margin-top: 3px;
-  $cell-value-color: $gray-6;
-  $cell-icon-size: 16px;
-  $cell-right-icon-color: $gray-6;
-  $cell-large-vertical-padding: $padding-sm;
-  $cell-large-title-font-size: $font-size-lg;
-  $cell-large-label-font-size: $font-size-md;
   $comp: #{$PREFIX}cell;
 
   $cell-line-height: 24px;
