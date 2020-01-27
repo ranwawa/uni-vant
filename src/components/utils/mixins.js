@@ -4,10 +4,10 @@
  * @desc 公共组件方法
  * @remark
  */
-export default {
+const baseMixin = {
   props: {
     // 标识符
-    id: {
+    customId: {
       type: String,
       default: '',
     },
@@ -21,5 +21,23 @@ export default {
       type: String,
       default: '',
     },
-  }
-}
+  },
+};
+const getRect = {
+  methods: {
+    getRect(selector, all) {
+      return new Promise(resolve => {
+        const query = uni.createSelectorQuery().in(this);
+        const method = all ? 'selectAll' : 'select';
+        query[method](selector)
+          .boundingClientRect(rect => resolve(rect))
+          .exec();
+      });
+    },
+  },
+};
+export default baseMixin;
+export {
+  getRect,
+  baseMixin,
+};
