@@ -48,6 +48,11 @@ export default {
       type: Function,
       default: null,
     },
+    // 是否禁用固定功能
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     computedRootStyle() {
@@ -77,9 +82,15 @@ export default {
         this.setStyle();
       });
     },
+    disabled(newValue) {
+      newValue ? this.disconnectObserver() : this.initObserver();
+    },
   },
   methods: {
     async initObserver() {
+      if (this.disabled) {
+        return;
+      }
       this.disconnectObserver();
       const rect = await this.getRect(ROOT_ELEMENT);
       this.height = rect.height;
@@ -108,14 +119,20 @@ export default {
           ROOT_ELEMENT,
           res => {
             this.setFixed(res.boundingClientRect.top);
-          }
+          },
         );
     },
     observeContent() {
+      if (this.disabled) {
+        return;
+      }
       const { offsetTop } = this;
       this.createObserver('contentObserver', -offsetTop);
     },
     async observeContainer() {
+      if (this.disabled) {
+        return;
+      }
       if (typeof this.container !== 'function') {
         return;
       }
