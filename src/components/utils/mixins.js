@@ -154,44 +154,44 @@ const transition = {
       return `transition-duration: ${computedDuration}ms;${
         display ? '' : 'display: none;'}`;
     },
-    mounted() {
-      this.show && this.enter();
-    },
-    methods: {
-      async enter() {
-        this.enterFunc.before();
-        await later();
-        this.enterFunc.ing();
-        await later();
-        this.enterFunc.to();
-      },
-      async leave() {
-        if (!this.display) { return; }
-        this.leaveFunc.before();
-        await later();
-        this.leaveFunc.ing();
-        await later();
-        this.leaveFunc.to();
-      },
-      handleTransitionEnd() {
-        if (this.transitionEnd) { return; }
-        this.transitionEnd = true;
-        this.$emit(`after-${this.name}`);
-        if (!this.show && this.display) {
-          this.display = false;
-        }
-      },
-      checkStatus(status) {
-        if (status !== this.status) {
-          throw new Error(`incongruent status: ${status}`);
-        }
-      },
-    },
   },
   watch: {
     show(newValue) {
       debugger;
       newValue ? this.enter() : this.leave();
+    },
+  },
+  mounted() {
+    this.show && this.enter();
+  },
+  methods: {
+    async enter() {
+      this.enterFunc.before();
+      await later();
+      this.enterFunc.ing();
+      await later();
+      this.enterFunc.to();
+    },
+    async leave() {
+      if (!this.display) { return; }
+      this.leaveFunc.before();
+      await later();
+      this.leaveFunc.ing();
+      await later();
+      this.leaveFunc.to();
+    },
+    handleTransitionEnd() {
+      if (this.transitionEnd) { return; }
+      this.transitionEnd = true;
+      this.$emit(`after-${this.name}`);
+      if (!this.show && this.display) {
+        this.display = false;
+      }
+    },
+    checkStatus(status) {
+      if (status !== this.status) {
+        throw new Error(`incongruent status: ${status}`);
+      }
     },
   },
 };
