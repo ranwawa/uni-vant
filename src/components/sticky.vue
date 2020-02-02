@@ -151,13 +151,11 @@ export default {
     },
     setFixed(top) {
       const { offsetTop, height, containerHeight } = this;
-      console.log(offsetTop, height, containerHeight);
       // todo 这一坨后面再来细究
       const fixed =
         containerHeight && height
           ? top > height - containerHeight && top < offsetTop
           : top < offsetTop;
-      console.log(fixed);
       this.fixed = fixed;
       this.$emit(
         'scroll',

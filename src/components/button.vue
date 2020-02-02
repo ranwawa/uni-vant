@@ -7,7 +7,7 @@
   <button
     :class="computedClass"
     :style="computedStyle"
-    :id="id"
+    :id="customId"
     hover-class="uv-btn-active hover-class"
     :type="type"
     :size="size"
