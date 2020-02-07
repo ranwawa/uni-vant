@@ -10,17 +10,25 @@
     :required="required"
     :clickable="clickable"
     :arrow-direction="arrowDirection"
+    title-class="uv-field-label"
     :custom-class="customClass"
     :custom-style="customStyle"
+    :custom-id="customId"
   >
-    <slot
-      name="left-icon"
+    <view
+      v-if="$slots.icon"
       slot="icon"
-    />
-    <slot
-      name="label"
+      class="uv-field-slot_left-icon"
+    >
+      <slot name="left-icon" />
+    </view>
+    <view
+      v-if="$slots.label"
       slot="title"
-    />
+      class="uv-field-slot_label"
+    >
+      <slot name="label" />
+    </view>
     <!-- 主体部分 -->
     <view :class="computedBodyClass">
       <textarea
@@ -75,7 +83,7 @@
         size="16px"
         name="clear"
         custom-class="van-field_clear-root van-field_icon-root"
-        @touchstart.capture="handleClear"
+        @touchstart.native.stop="handleClear"
       />
       <view
         v-if="computedIsShowRightIcon"
@@ -98,7 +106,7 @@
       </view>
     </view>
     <view
-      v-if="error"
+      v-if="errorMessage"
       class="uv-field_error-message"
       :class="computedErrorClass"
     >
@@ -110,12 +118,12 @@
 <script>
 import uvCell from './cell';
 import uvIcon from './icon';
-import mixins from './utils/mixins';
+import { baseMixin } from './utils/mixins';
 import { bem, getSystemInfoSync } from './utils';
 
 export default {
   name: 'field',
-  mixins,
+  mixins: [baseMixin],
   // todo 要验证一下，这个最终打包到小程序的js属性里面了么
   behaviors: ['wx://form-field'],
   components: {
@@ -126,8 +134,7 @@ export default {
     return {
       // 系统型号
       // todo 如何测这种依赖方法的属性方法？
-      // system: getSystemInfoSync().split(' ').shift().toLowerCase(),
-      system: 'ios',
+      system: getSystemInfoSync().split(' ').shift().toLowerCase(),
       focused: false,
     };
   },
@@ -147,14 +154,14 @@ export default {
       default: '',
     },
     // 左侧标题
-    title: {
+    label: {
       type: String,
       default: '',
     },
     // 标题宽度
     titleWidth: {
       type: [String, Number],
-      default: '',
+      default: '90px',
     },
     // 内容垂直居中
     center: {
@@ -410,6 +417,10 @@ export default {
       return this.rightIcon || this.$slots['right-icon'];
     },
   },
+  mounted() {
+    // todo 需要验证支付宝等其他小程序的情况
+    console.log(this.$slots);
+  },
   methods: {
     handleInput(e) {
       const { value = '' } = e.detail || {};
@@ -454,7 +465,7 @@ export default {
 >
   @import "./sass/index";
 
-  $comp: #{$PREFIX}-field;
+  $comp: #{$PREFIX}field;
 
   #{$comp} {
     &-body {
@@ -466,8 +477,7 @@ export default {
         min-height: $cell-line-height;
       }
 
-      &-textarea,
-      &-ios {
+      &-textarea.uv-filed-body-ios {
         margin-top: -4.5px;
       }
     }
@@ -485,6 +495,8 @@ export default {
       border: 0;
       resize: none;
       color: $field-input-text-color;
+      /* 兼容h5 uni会自动生成一个16px的尺寸 */
+      font-size: $font-size-md;
       height: $cell-line-height;
       min-height: $cell-line-height;
 
@@ -540,7 +552,7 @@ export default {
       }
     }
 
-    &-error {
+    &_error {
       text-align: left;
       font-size: $field-error-message-text-font-size;
       color: $field-error-message-color;

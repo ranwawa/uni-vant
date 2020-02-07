@@ -7,6 +7,7 @@
     :class="computedClass"
     :style="customStyle"
     :hover-class="computedHoverClass"
+    :id="customId"
     hover-stay-item="70"
     @click="handleClick"
   >
@@ -75,18 +76,16 @@
   </view>
 </template>
 <script>
-import { bem } from '@/components/utils';
-import mixins from '@/components/utils/mixins';
+import { bem } from './utils';
+import { baseMixin } from './utils/mixins';
 import uvIcon from './icon';
 
 export default {
-  name: 'cell',
+  name: 'uv-cell',
   components: {
     uvIcon,
   },
-  mixins: {
-    mixins,
-  },
+  mixins: [baseMixin],
   props: {
     // 左侧标题样式类
     titleClass: {
@@ -317,13 +316,14 @@ export default {
         left: $padding-xs;
         color: $cell-required-color;
         font-size: $cell-label-font-size;
-        content: ' ';
+        content: '*';
       }
     }
 
     &-center {
       align-items: center;
     }
+
     &-clickable {
       background-color: $cell-active-color;
     }

@@ -8,6 +8,7 @@
     </view>
     <view
       class="uv-cell-group"
+      :id="customId"
       :class="computedClass"
       :style="customStyle"
     >
@@ -17,11 +18,11 @@
 </template>
 
 <script>
-import mixins from './utils/mixins';
+import { baseMixin } from './utils/mixins';
 
 export default {
-  mixins,
   name: 'cell-group',
+  mixins: [baseMixin],
   props: {
     // 标题
     title: {
