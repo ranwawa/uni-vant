@@ -309,7 +309,7 @@ export default {
     "info": $info $info $white,
     "warning": $warning $warning $white,
     "danger": $danger $danger $white,
-    "default": $border-color $white $text-color,
+    "default": $border-color ($white !important) $text-color,
   );
 
   @mixin get-plain($class-name, $color) {
