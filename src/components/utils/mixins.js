@@ -195,7 +195,6 @@ const transition = {
     },
   },
 };
-export default baseMixin;
 export {
   getRect,
   baseMixin,

@@ -65,10 +65,9 @@
 
 </template>
 <script>
-import { bem } from './utils/index';
+import { bem, baseMixin } from './utils/index';
 import uvIcon from './icon.vue';
 import uvLoading from './loading';
-import { baseMixin } from './utils/mixins';
 
 export default {
   name: 'uv-btn',

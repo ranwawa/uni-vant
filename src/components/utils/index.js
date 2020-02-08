@@ -5,13 +5,13 @@
  * @remark
  */
 import Touch from './touch';
-import addUnit from '@/components/utils/add_unit';
-import eventBus from '@/components/utils/event_bus';
-import computeStyle from '@/components/utils/compute_style';
+import addUnit from './add_unit';
+import eventBus from './event_bus';
+import computeStyle from './compute_style';
 
-export { bem } from '@/components/utils/bem';
-export { getSystemInfoSync, pick } from '@/components/utils/utils';
-export { getRect, baseMixin } from '@/components/utils/mixins';
+export { bem } from './bem';
+export { getSystemInfoSync, pick } from './utils';
+export { getRect, baseMixin } from './mixins';
 export {
   Touch,
   addUnit,

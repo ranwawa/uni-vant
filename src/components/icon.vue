@@ -29,13 +29,12 @@
   </view>
 </template>
 <script>
-import uvInfo from '@/components/info.vue';
-import { addUnit, computeStyle } from './utils/index';
-import mixins from '@/components/utils/mixins';
+import uvInfo from './info.vue';
+import { addUnit, computeStyle, baseMixin } from './utils/index';
 
 export default {
   name: 'icon',
-  mixins: [mixins],
+  mixins: [baseMixin],
   components: {
     uvInfo,
   },
