@@ -16,15 +16,17 @@
 
 <script>
 import { baseMixin, bem, getRect } from './utils/index';
-
+// clip from this.data as it will throw an observe bug in vue
+const OBSERVER = {
+  contentObserver: null,
+  containerObserver: null,
+};
 const ROOT_ELEMENT = '.uv-sticky';
 export default {
   name: 'uv-sticky',
   mixins: [baseMixin, getRect],
   data() {
     return {
-      contentObserver: null,
-      containerObserver: null,
       height: 0,
       fixed: false,
       wrapStyle: '',
@@ -109,10 +111,14 @@ export default {
     },
     createObserver(observerName, top) {
       this.disconnectObserver(observerName);
-      const observer = uni.createIntersectionObserver({
-        thresholds: [0, 1],
-      });
-      this.contentObserver = observer;
+      // todo 传入this后,会在h5下报错
+      const observer = uni.createIntersectionObserver(
+        // #ifdef MP
+        this,
+        // #endif
+        { thresholds: [0, 1] },
+      );
+      OBSERVER[observerName] = observer;
       observer
         .relativeToViewport({ top })
         .observe(
