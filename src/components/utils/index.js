@@ -4,14 +4,17 @@
  * @desc 集中导出公共方法
  * @remark
  */
-import bem from '@/components/utils/bem';
+import Touch from './touch';
 import addUnit from '@/components/utils/add_unit';
+import eventBus from '@/components/utils/event_bus';
 import computeStyle from '@/components/utils/compute_style';
-import { getSystemInfoSync } from '@/components/utils/utils';
 
+export { bem } from '@/components/utils/bem';
+export { getSystemInfoSync, pick } from '@/components/utils/utils';
+export { getRect, baseMixin } from '@/components/utils/mixins';
 export {
-  bem,
+  Touch,
   addUnit,
+  eventBus,
   computeStyle,
-  getSystemInfoSync,
 };

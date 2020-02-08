@@ -27,8 +27,11 @@ function traversing(mods, conf) {
       .forEach(key => conf[key] && mods.push(key));
   }
 }
-export default function bem(name, conf) {
+function bem(name, conf) {
   const mods = [];
   traversing(mods, conf);
   return join(name, mods);
 }
+export {
+  bem,
+};
