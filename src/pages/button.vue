@@ -77,7 +77,6 @@
 import uvButton from '@/components/button';
 
 export default {
-  name: 'button',
   components: {
     uvButton,
   },

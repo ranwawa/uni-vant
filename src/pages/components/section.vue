@@ -19,7 +19,7 @@
 </template>
 <script>
 export default {
-  name: 'section',
+  name: 'uv-section',
   props: {
     title: {
       type: String,
