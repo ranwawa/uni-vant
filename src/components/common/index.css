@@ -1,13 +1,16 @@
+.uv-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .uv-btn-icon {
   min-width: 1em;
   vertical-align: top;
   line-height: inherit !important;
 }
-
 .uv-icon-info {
   z-index: 1;
 }
-
 .uv-cell-hover {
   background-color: #f2f3f5;
 }
@@ -20,7 +23,6 @@
   color: #969799;
   line-height: 20px;
 }
-
 .uv-field_icon-root {
   display: flex;
   align-items: center;
@@ -41,7 +43,10 @@
 }
 .uv-field-placeholder {
   position: absolute;
+  /* 兼容uni-h5 */
+  /* #ifdef MP */
   top: 0;
+  /* #endif */
   right: 0;
   left: 0;
   pointer-events: none;
@@ -49,4 +54,44 @@
 }
 .uv-field-placeholder-error {
   color: #ee0a24;
+}
+.uv-tab_title-info {
+  position: relative !important;
+  top: -1px !important;
+  display: inline-block;
+  transform: translateX(0) !important;
+}
+.uv-tabs-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  height: 3px;
+  border-radius: 3px;
+  background-color: #ee0a24;
+}
+.uv-popup_close-icon {
+  position: absolute;
+  z-index: 1;
+  color: #969799;
+  font-size: 18px;
+}
+.uv-popup_close-icon-top-left {
+  top: 16px;
+  left: 16px;
+}
+.uv-popup_close-icon-top-right {
+  top: 16px;
+  right: 16px;
+}
+.uv-popup_close-icon-bottom-left {
+  bottom: 16px;
+  left: 16px;
+}
+.uv-popup_close-icon-bottom-right {
+  right: 16px;
+  bottom: 16px;
+}
+.uv-popup_close-icon:active {
+  opacity: 0.6;
 }
