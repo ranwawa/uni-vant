@@ -117,4 +117,22 @@ $field-error-message-color: $red;
 $field-error-message-text-font-size: $font-size-sm;
 $field-text-area-min-height: 18px;
 
+// Uploader
+$uploader-size: 80px;
+$uploader-icon-size: 24px;
+$uploader-icon-color: $gray-6;
+$uploader-text-color: $gray-6;
+$uploader-text-font-size: $font-size-sm;
+$uploader-upload-border-color: $gray-3;
+$uploader-upload-border-radius: 4px;
+$uploader-upload-background-color: $white;
+$uploader-delete-color: $gray-6;
+$uploader-delete-icon-size: 18px;
+$uploader-delete-background-color: $white;
+$uploader-file-background-color: $background-color;
+$uploader-file-icon-size: 20px;
+$uploader-file-icon-color: $gray-7;
+$uploader-file-name-font-size: $font-size-sm;
+$uploader-file-name-text-color: $gray-7;
+
 $PREFIX: ".uv-";
