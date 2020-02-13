@@ -79,6 +79,20 @@
 import uvIcon from './icon';
 import { addUnit } from './utils';
 
+function adaptorGetDefaultMethod() {
+  let method = 'chooseImage';
+  // #ifdef MP-WEIXIN || MP-QQ
+  method = 'chooseMessageFile';
+  // #endif
+  return method;
+}
+function adaptorCheckImageType(item) {
+  let prefix = 'http://tmp';
+  // #ifdef H5
+  prefix = 'blob';
+  // #endif
+  return item.path.indexOf(prefix) === 0;
+}
 export default {
   name: 'uv-uploader',
   components: {
@@ -164,8 +178,8 @@ export default {
     // 文件上传数量限制
     maxCount: {
       type: Number,
-      default: -1,
-      validate: (value) => value < 100,
+      default: 100,
+      validate: (value) => value <= 100,
     },
     // 是否开启文件读取前事件
     useBeforeRead: {
@@ -211,11 +225,13 @@ export default {
             item.showSrc = item.url || item.path;
             item.showAlt = item.name || `图片${index}`;
             item.showFileName = item.name || item.showSrc;
-            return {
+            let { isImage } = item;
+            if (typeof isImage === 'undefined') {
+              isImage = adaptorCheckImageType(item);
+            }
+          return {
               ...item,
-              isImage: typeof item.isImage
-                ? item.type.indexOf('image') === 0
-                : false,
+              isImage,
             };
           },
         );
@@ -230,13 +246,13 @@ export default {
     },
     doPreview(url) {
       if (!this.previewFullImage) { return; }
-      const images = this.data.lists
+      const images = this.lists
         .filter(item => item.isImage)
         .map(item => item.url || item.path);
       this.$emit(
         'click-preview', {
           url,
-          name: this.data.name,
+          name: this.name,
         },
       );
       uni
@@ -248,11 +264,13 @@ export default {
           if (err) {
             throw err;
           } else {
-            console.log(data);
           }
-        }).catch(err => throw err);
+        }).catch(err => console.error(err));
     },
     startUpload() {
+      if (this.disabled) {
+        return;
+      }
       const {
         name = '',
         accept,
@@ -261,14 +279,14 @@ export default {
         useBeforeRead = false, // 是否定义了 beforeRead
       } = this;
       this
-        .chooseFile
+        .chooseFile()
         .then(([err, data]) => {
           if (err) {
             throw err;
           } else {
-            const file = this.getFileInfo(accept, data);
-            if (this.checkFileSize(file, maxSize)) {
-              return this.$emit('oversize', { name });
+            const file = this.getFileInfo(accept, data, multiple);
+            if (!this.checkFileSize(file, maxSize)) {
+              return this.$emit('oversize', { name, file });
             }
             const emitAfterRead = () => this.$emit(
               'after-read',
@@ -283,12 +301,9 @@ export default {
             }
             emitAfterRead();
           }
-        }).catch(err => throw err);
+        }).catch(err => console.error(err));
     },
     chooseFile() {
-      if (this.disabled) {
-        return;
-      }
       const {
         capture: sourceType,
         maxCount,
@@ -323,7 +338,7 @@ export default {
         }
         default: {
           const count = multiple ? newMaxCount : 1;
-          uni.chooseMessageFile({
+          uni[adaptorGetDefaultMethod()]({
             count,
             type: 'file',
           });
@@ -332,7 +347,7 @@ export default {
       }
       return chooseFile;
     },
-    getFileInfo(accept, data) {
+    getFileInfo(accept, data, multiple) {
       let file = null;
       if (accept === 'video') {
         file = {
@@ -346,8 +361,8 @@ export default {
     },
     checkFileSize(file, maxSize) {
       return file instanceof Array
-        ? file.every(ele => ele.size > maxSize)
-        : file.size > maxSize;
+        ? file.every(ele => ele.size <= maxSize)
+        : file.size <= maxSize;
     },
   },
 };

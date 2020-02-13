@@ -103,13 +103,14 @@
   font-size: 24px;
 }
 .uv-uploader-preview-delete {
-  position: absolute;
-  top: -8px;
-  right: -8px;
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  border-radius: 100%;
+  background-color: #fff;
   color: #969799;
   font-size: 18px;
-  background-color: #fff;
-  border-radius: 100%;
+  transform: translate3d(50%, -50%, 0);
 }
 .uv-uploader-preview-icon {
   display: inline-block;
