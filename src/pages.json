@@ -20,6 +20,12 @@
       }
     },
     {
+      "path": "pages/uploader",
+      "style": {
+        "navigationBarTitleText": "uploader"
+      }
+    },
+    {
       "path": "pages/loading",
       "style": {
         "navigationBarTitleText": "loading"
