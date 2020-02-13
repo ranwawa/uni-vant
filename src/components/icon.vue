@@ -5,6 +5,9 @@
 <template>
   <view
     class="uv-icon"
+    :class="customClass"
+    :style="customStyle"
+    :id="customId"
     @click="$emit('click')"
   >
     <uv-info
@@ -64,20 +67,10 @@ export default {
       type: [String, Number],
       default: 'inherit',
     },
-    // 自定义样式
-    customStyle: {
-      type: String,
-      default: '',
-    },
     // 类前缀
     classPrefix: {
       type: String,
       default: 'van-icon',
-    },
-    // 外部样式类
-    customClass: {
-      type: String,
-      default: '',
     },
   },
   computed: {
@@ -90,7 +83,7 @@ export default {
     classes() {
       let pre = this.classPrefix;
       let icon = this.isImage ? '' : `${pre}-${this.name}`;
-      return `${pre} ${icon} ${this.customClass}`;
+      return `${pre} ${icon}`;
     },
     computedStyle() {
       const size = addUnit(this.size);
@@ -106,8 +99,7 @@ export default {
       if (this.color !== 'inherit') {
         other.color = this.color;
       }
-      const style = computeStyle(other);
-      return `${this.customStyle} ${style}`;
+      return computeStyle(other);
     },
   },
 };
