@@ -3,7 +3,12 @@
 <!-- desc:  -->
 <!-- remark:  -->
 <template>
-  <view class="uv-uploader">
+  <view
+    :class="customClass"
+    :style="customStyle"
+    class="uv-uploader"
+    :id="customId"
+  >
     <!-- 预览样式 -->
     <template v-if="previewImage">
       <view
@@ -77,7 +82,7 @@
 </template>
 <script>
 import uvIcon from './icon';
-import { addUnit } from './utils';
+import { addUnit, baseMixin } from './utils';
 
 function adaptorGetDefaultMethod() {
   let method = 'chooseImage';
@@ -98,6 +103,7 @@ export default {
   components: {
     uvIcon,
   },
+  mixins: [baseMixin],
   data() {
     return {};
   },
@@ -229,7 +235,7 @@ export default {
             if (typeof isImage === 'undefined') {
               isImage = adaptorCheckImageType(item);
             }
-          return {
+            return {
               ...item,
               isImage,
             };

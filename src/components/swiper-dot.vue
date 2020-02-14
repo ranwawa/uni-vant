@@ -75,6 +75,8 @@
 </template>
 
 <script>
+import  {baseMixin} from './utils';
+
 /**
  * SwiperDot 轮播图指示点
  * @description 自定义轮播图指示点
@@ -92,6 +94,7 @@
  */
 export default {
   name: 'uv-swiper-dot',
+  mixins: [baseMixin],
   props: {
     info: {
       type: Array,
