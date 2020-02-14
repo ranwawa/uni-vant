@@ -134,7 +134,7 @@ export default {
     return {
       // 系统型号
       // todo 如何测这种依赖方法的属性方法？
-      system: getSystemInfoSync().split(' ').shift().toLowerCase(),
+      system: getSystemInfoSync().system.split(' ').shift().toLowerCase(),
       focused: false,
     };
   },
