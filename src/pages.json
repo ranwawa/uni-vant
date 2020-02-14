@@ -26,6 +26,12 @@
       }
     },
     {
+      "path": "pages/swiper-dot",
+      "style": {
+        "navigationBarTitleText": "swiper-dot"
+      }
+    },
+    {
       "path": "pages/loading",
       "style": {
         "navigationBarTitleText": "loading"
