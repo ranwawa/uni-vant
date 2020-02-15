@@ -31,6 +31,7 @@ export default {
       fixed: false,
       wrapStyle: '',
       containerStyle: '',
+      windowTop: uni.getSystemInfoSync().windowTop,
     };
   },
   props: {
@@ -120,7 +121,7 @@ export default {
       );
       OBSERVER[observerName] = observer;
       observer
-        .relativeToViewport({ top })
+        .relativeToViewport({ top: top - (this.windowTop || 0) })
         .observe(
           ROOT_ELEMENT,
           res => {
@@ -172,11 +173,11 @@ export default {
       );
     },
     setStyle() {
-      const { offsetTop, height, fixed, zIndex } = this;
+      const { offsetTop, height, fixed, zIndex, windowTop } = this;
       this.wrapStyle = '';
       this.containerStyle = '';
       if (fixed) {
-        this.wrapStyle = `top: ${offsetTop}px;`;
+        this.wrapStyle = `top: ${offsetTop + (windowTop || 0)}px;`;
         this.containerStyle = `height: ${height}px; z-index: ${zIndex};`;
       }
     },

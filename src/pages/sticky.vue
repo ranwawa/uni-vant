@@ -1,18 +1,18 @@
 <template>
   <view class="uv-doc">
     <uv-section title="基础用法">
-      <uv-sticky :offset-top="50" custom-class="a">
+      <uv-sticky custom-class="a">
         <view class="wrapper">
           <uv-button>基础用法</uv-button>
         </view>
       </uv-sticky>
     </uv-section>
-    <!--<uv-section title="吸顶距离">-->
-    <!--  <uv-sticky :offset-top="20" custom-class="b">-->
-    <!--    <uv-button type="info" custom-style="margin-left: 120px;">吸顶距离-->
-    <!--    </uv-button>-->
-    <!--  </uv-sticky>-->
-    <!--</uv-section>-->
+    <uv-section title="吸顶距离">
+      <uv-sticky :offset-top="50" custom-class="b">
+        <uv-button type="info" custom-style="margin-left: 120px;">吸顶距离
+        </uv-button>
+      </uv-sticky>
+    </uv-section>
     <!--<uv-section title="指定容器">-->
     <!--  <view-->
     <!--    id="container"-->
