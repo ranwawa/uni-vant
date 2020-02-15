@@ -36,6 +36,24 @@
       "style": {
         "navigationBarTitleText": "loading"
       }
+    },
+    {
+      "path": "pages/sticky",
+      "style": {
+        "navigationBarTitleText": "sticky"
+      }
+    },
+    {
+      "path": "pages/field",
+      "style": {
+        "navigationBarTitleText": "field"
+      }
+    },
+    {
+      "path": "pages/transition",
+      "style": {
+        "navigationBarTitleText": "transition"
+      }
     }
   ],
   "globalStyle": {
