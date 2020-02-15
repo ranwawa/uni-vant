@@ -19,6 +19,8 @@
   line-height: 20px;
 }
 .uv-cell_right-icon {
+  display: inline-flex !important;
+  align-items: center;
   margin-left: 5px;
   color: #969799;
   line-height: 20px;
