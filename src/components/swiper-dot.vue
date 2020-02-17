@@ -13,7 +13,7 @@
       <view
         v-for="(item,index) in info"
         :key="index"
-        :style="methodDefaultStyle(index)"
+        :style="methodStyle"
         class="uv-swiper__dots-item uv-swiper__dots-bar"
       />
     </view>
@@ -25,7 +25,8 @@
       <view
         v-for="(item,index) in info"
         :key="index"
-        :style="methodDotStyle(index)"
+        :style="{
+        'width': dots.width + 'px','height':dots.height +'px' ,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border':index !==current ? dots.border:dots.selectedBorder}"
         class="uv-swiper__dots-item"
       />
     </view>
@@ -38,7 +39,8 @@
         v-for="(item,index) in info"
         :key="index"
         :class="[index === current&&'uv-swiper__dots-long']"
-        :style="methodRoundStyle(index)"
+        :style="{
+		    'width':(index === current? dots.width*3:dots.width ) + 'px','height':dots.height +'px' ,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border':index !==current ? dots.border:dots.selectedBorder}"
         class="uv-swiper__dots-item "
       />
     </view>
@@ -72,7 +74,7 @@
 </template>
 
 <script>
-import { baseMixin, computeStyle } from './utils';
+import  {baseMixin, computeStyle} from './utils';
 
 /**
  * SwiperDot 轮播图指示点
@@ -121,6 +123,11 @@ export default {
       default: '',
     },
   },
+  computed: {
+    computedStyle() {
+      return this.data;
+    },
+  },
   data() {
     return {
       dots: {
@@ -157,39 +164,13 @@ export default {
     this.dots = Object.assign(this.dots, this.dotsStyles);
   },
   methods: {
-    methodDefaultStyle(index) {
-      const { current, dots } = this;
+    methodStyle(index) {
+      const { current, dots} = this;
       const obj = {
-        width: (index === current ? dots.width * 2 : dots.width) + 'px',
-        height: dots.width / 3 + 'px',
-        'background-color': index !== current
-          ? dots.backgroundColor
-          : dots.selectedBackgroundColor,
-        'border-radius': '0px',
-      };
-      return computeStyle(obj);
-    },
-    methodDotStyle(index) {
-      const { current, dots } = this;
-      const obj = {
-        'width': dots.width + 'px',
-        'height': dots.height + 'px',
-        'background-color': index !== current
-          ? dots.backgroundColor
-          : dots.selectedBackgroundColor,
-        'border': index !== current ? dots.border : dots.selectedBorder,
-      };
-      return computeStyle(obj);
-    },
-    methodRoundStyle(index) {
-      const { current, dots } = this;
-      const obj = {
-        'width': (index === current ? dots.width * 3 : dots.width) + 'px',
-        'height': dots.height + 'px',
-        'background-color': index !== current
-          ? dots.backgroundColor
-          : dots.selectedBackgroundColor,
-        'border': index !== current ? dots.border : dots.selectedBorder,
+        width: (index === current? dots.width*2:dots.width ) + 'px',
+        height: dots.width/3 +'px',
+        'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,
+        'border-radius':'0px',
       };
       return computeStyle(obj);
     },
