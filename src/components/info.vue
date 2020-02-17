@@ -8,17 +8,15 @@
     :class="classes"
     :style="customStyle"
     class="uv-info"
-    :id="customId"
   >
     {{ uvInfo }}
   </view>
 </template>
 <script>
-import { bem, baseMixin } from './utils';
+import bem from './utils/bem';
 
 export default {
   name: 'uv-info',
-  mixins: [baseMixin],
   props: {
     // 小红点
     dot: {
@@ -28,6 +26,16 @@ export default {
     // 提示文字
     info: {
       type: [String, Number],
+      default: '',
+    },
+    // 自定义样式
+    customStyle: {
+      type: String,
+      default: '',
+    },
+    // 外部样式类
+    customClass: {
+      type: String,
       default: '',
     },
   },

@@ -2,7 +2,6 @@
   <uv-transition
     class="uv-overlay"
     :custom-class="customClass"
-    :custom-style="customStyle"
     :custom-id="customId"
     :show="show"
     :duration="duration"

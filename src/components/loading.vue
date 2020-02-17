@@ -6,8 +6,6 @@
 <template>
   <view
     :class="classes"
-    :style="customStyle"
-    :id="customId"
     class="uv-loading"
   >
     <view
@@ -42,11 +40,10 @@
   </view>
 </template>
 <script>
-import { addUnit, bem, computeStyle, baseMixin } from './utils/index';
+import { addUnit, bem, computeStyle } from './utils/index';
 
 export default {
   name: 'uv-loading',
-  mixins: [baseMixin],
   props: {
     // 颜色
     color: {
@@ -76,7 +73,12 @@ export default {
       type: Boolean,
       default: false,
     },
- },
+    // 自定义类
+    customClass: {
+      type: String,
+      default: '',
+    },
+  },
   computed: {
     classes() {
       const bemClass = bem('loading', {

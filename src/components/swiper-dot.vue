@@ -13,7 +13,8 @@
       <view
         v-for="(item,index) in info"
         :key="index"
-        :style="methodStyle"
+        :style="{
+        'width': (index === current? dots.width*2:dots.width ) + 'px','height':dots.width/3 +'px' ,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border-radius':'0px'}"
         class="uv-swiper__dots-item uv-swiper__dots-bar"
       />
     </view>
@@ -74,8 +75,6 @@
 </template>
 
 <script>
-import  {baseMixin, computeStyle} from './utils';
-
 /**
  * SwiperDot 轮播图指示点
  * @description 自定义轮播图指示点
@@ -93,7 +92,6 @@ import  {baseMixin, computeStyle} from './utils';
  */
 export default {
   name: 'uv-swiper-dot',
-  mixins: [baseMixin],
   props: {
     info: {
       type: Array,
@@ -121,11 +119,6 @@ export default {
     field: {
       type: String,
       default: '',
-    },
-  },
-  computed: {
-    computedStyle() {
-      return this.data;
     },
   },
   data() {
@@ -162,18 +155,6 @@ export default {
       this.dots.height = 20;
     }
     this.dots = Object.assign(this.dots, this.dotsStyles);
-  },
-  methods: {
-    methodStyle(index) {
-      const { current, dots} = this;
-      const obj = {
-        width: (index === current? dots.width*2:dots.width ) + 'px',
-        height: dots.width/3 +'px',
-        'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,
-        'border-radius':'0px',
-      };
-      return computeStyle(obj);
-    },
   },
 };
 </script>

@@ -36,7 +36,7 @@ import uvInfo from './info.vue';
 import { addUnit, computeStyle, baseMixin } from './utils/index';
 
 export default {
-  name: 'uv-icon',
+  name: 'icon',
   mixins: [baseMixin],
   components: {
     uvInfo,

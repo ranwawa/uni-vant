@@ -21,7 +21,7 @@
 import { baseMixin } from './utils/mixins';
 
 export default {
-  name: 'uv-cell-group',
+  name: 'cell-group',
   mixins: [baseMixin],
   props: {
     // 标题

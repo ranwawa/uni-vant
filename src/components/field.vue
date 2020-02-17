@@ -122,7 +122,7 @@ import { baseMixin } from './utils/mixins';
 import { bem, getSystemInfoSync } from './utils';
 
 export default {
-  name: 'uv-field',
+  name: 'field',
   mixins: [baseMixin],
   // todo 要验证一下，这个最终打包到小程序的js属性里面了么
   behaviors: ['wx://form-field'],
