@@ -137,10 +137,10 @@ const transition = {
     computedNameClasses() {
       const { name } = this;
       return {
-        enter: `uv-${name}-enter`,
-        'enter-to': `uv-${name}-enter-to`,
-        leave: `uv-${name}-leave`,
-        'leave-to': `uv-${name}-leave-to`,
+          enter: `uv-${name}-enter uv-${name}-enter-active enter-class enter-active-class`,
+          'enter-to': `uv-${name}-enter-to uv-${name}-enter-active enter-to-class enter-active-class`,
+          leave: `uv-${name}-leave uv-${name}-leave-active leave-class leave-active-class`,
+          'leave-to': `uv-${name}-leave-to uv-${name}-leave-active leave-to-class leave-active-class`
       };
     },
     computedDuration() {
@@ -157,7 +157,6 @@ const transition = {
   },
   watch: {
     show(newValue) {
-      debugger;
       newValue ? this.enter() : this.leave();
     },
   },

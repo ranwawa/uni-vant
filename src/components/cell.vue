@@ -324,7 +324,7 @@ export default {
       align-items: center;
     }
 
-    &-clickable {
+    &-clickable.uv-cell-hover {
       background-color: $cell-active-color;
     }
 

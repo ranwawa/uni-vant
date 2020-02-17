@@ -22,9 +22,10 @@
     "dev:mp-toutiao": "cross-env NODE_ENV=development UNI_PLATFORM=mp-toutiao vue-cli-service uni-build --watch",
     "dev:mp-weixin": "cross-env NODE_ENV=development UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch",
     "info": "node node_modules/@dcloudio/vue-cli-plugin-uni/commands/info.js",
-    "test": "jest ./test/unit/specs/field.spec.js"
+    "test": "jest ./test/unit/specs/touch.spec.js"
   },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@dcloudio/uni-app-plus": "^2.0.0-alpha-25120200103006",
     "@dcloudio/uni-h5": "^2.0.0-alpha-25120200103006",
     "@dcloudio/uni-helper-json": "*",
