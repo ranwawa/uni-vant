@@ -24,7 +24,7 @@
         </swiper>
       </uv-swiper-dot>
     </uv-section>
-    <uv-section title="">
+    <uv-section title="变化样式">
       <uv-swiper-dot
         :info="list"
         :current="currentItem"
@@ -132,7 +132,6 @@ export default {
   },
   methods: {
     handleChange(e) {
-      console.log(e.detail.current);
       this.currentItem = e.detail.current;
     },
   },

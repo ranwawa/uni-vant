@@ -13,8 +13,7 @@
       <view
         v-for="(item,index) in info"
         :key="index"
-        :style="{
-        'width': (index === current? dots.width*2:dots.width ) + 'px','height':dots.width/3 +'px' ,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border-radius':'0px'}"
+        :style="methodDefaultStyle(index)"
         class="uv-swiper__dots-item uv-swiper__dots-bar"
       />
     </view>
@@ -26,8 +25,7 @@
       <view
         v-for="(item,index) in info"
         :key="index"
-        :style="{
-        'width': dots.width + 'px','height':dots.height +'px' ,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border':index !==current ? dots.border:dots.selectedBorder}"
+        :style="methodDotStyle(index)"
         class="uv-swiper__dots-item"
       />
     </view>
@@ -40,8 +38,7 @@
         v-for="(item,index) in info"
         :key="index"
         :class="[index === current&&'uv-swiper__dots-long']"
-        :style="{
-		    'width':(index === current? dots.width*3:dots.width ) + 'px','height':dots.height +'px' ,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border':index !==current ? dots.border:dots.selectedBorder}"
+        :style="methodRoundStyle(index)"
         class="uv-swiper__dots-item "
       />
     </view>
@@ -75,7 +72,7 @@
 </template>
 
 <script>
-import  {baseMixin} from './utils';
+import { baseMixin, computeStyle } from './utils';
 
 /**
  * SwiperDot 轮播图指示点
@@ -158,6 +155,44 @@ export default {
       this.dots.height = 20;
     }
     this.dots = Object.assign(this.dots, this.dotsStyles);
+  },
+  methods: {
+    methodDefaultStyle(index) {
+      const { current, dots } = this;
+      const obj = {
+        width: (index === current ? dots.width * 2 : dots.width) + 'px',
+        height: dots.width / 3 + 'px',
+        'background-color': index !== current
+          ? dots.backgroundColor
+          : dots.selectedBackgroundColor,
+        'border-radius': '0px',
+      };
+      return computeStyle(obj);
+    },
+    methodDotStyle(index) {
+      const { current, dots } = this;
+      const obj = {
+        'width': dots.width + 'px',
+        'height': dots.height + 'px',
+        'background-color': index !== current
+          ? dots.backgroundColor
+          : dots.selectedBackgroundColor,
+        'border': index !== current ? dots.border : dots.selectedBorder,
+      };
+      return computeStyle(obj);
+    },
+    methodRoundStyle(index) {
+      const { current, dots } = this;
+      const obj = {
+        'width': (index === current ? dots.width * 3 : dots.width) + 'px',
+        'height': dots.height + 'px',
+        'background-color': index !== current
+          ? dots.backgroundColor
+          : dots.selectedBackgroundColor,
+        'border': index !== current ? dots.border : dots.selectedBorder,
+      };
+      return computeStyle(obj);
+    },
   },
 };
 </script>
