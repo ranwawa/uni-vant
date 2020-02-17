@@ -2,6 +2,7 @@
 <!-- since: 2020/2/14 -->
 <!-- desc:  -->
 <!-- remark:  -->
+<!-- eslint-disable max-len -->
 <template>
   <view class="uv-swiper__warp">
     <slot />
