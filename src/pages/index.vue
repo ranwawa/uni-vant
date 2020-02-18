@@ -1,0 +1,66 @@
+<template>
+  <view class="uv-doc">
+    <uv-section
+      v-for="(item, key) in componentList"
+      :key="key"
+      :title="key"
+    >
+      <uv-cell-group>
+        <uv-cell
+          v-for="ele in item"
+          :key="ele.name"
+          :title="ele.name"
+          :disabled="!ele.isComplete"
+          :is-link="ele.isComplete"
+          @click="handleClick(ele.name)"
+        />
+      </uv-cell-group>
+    </uv-section>
+  </view>
+</template>
+
+<script>
+import uvCell from '@/components/cell';
+import uvCellGroup from '@/components/cell-group';
+
+export default {
+  components: {
+    uvCell,
+    uvCellGroup,
+  },
+  data() {
+    return {
+      title: 'uni-vant',
+      componentList: {
+        '基础组件': [
+          { name: 'Button 按钮', isComplete: true },
+          { name: 'Cell 单元格', isComplete: true },
+          { name: 'Icon 图标', isComplete: true },
+          { name: 'Image 图片', isComplete: false },
+          { name: 'Layout 布局', isComplete: false },
+          { name: 'Popup 弹出层', isComplete: false },
+          { name: 'Transition 动画', isComplete: true },
+        ],
+        '表单组件': [
+          { name: 'Field 输入框', isComplete: true },
+          { name: 'Uploader 文件上传', isComplete: true },
+        ],
+        '反馈组件': [
+          { name: 'Overlay 遮罩层', isComplete: true },
+        ],
+        '展示组件': [
+          { name: 'Sticky 粘性布局', isComplete: true },
+        ],
+      },
+    };
+  },
+  methods: {
+    handleClick(name) {
+      const url = name.split(' ')[0].toLocaleLowerCase();
+      uni.navigateTo({ url });
+    },
+  },
+};
+</script>
+
+<style></style>
