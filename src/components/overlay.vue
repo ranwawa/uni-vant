@@ -1,11 +1,11 @@
 <template>
   <uv-transition
-    class="uv-overlay"
-    :custom-class="customClass"
+    :style="computedStyle"
+    :custom-class="computedCustomClass"
+    :custom-style="computedCustomStyle"
     :custom-id="customId"
     :show="show"
     :duration="duration"
-    :style="computedStyle"
     @click.native="handleClick"
     @touchmove.stop
   >
@@ -21,7 +21,7 @@ import uvTransition from './transition';
 export default {
   name: 'uv-overlay',
   components: {
-    uvTransition
+    uvTransition,
   },
   mixins: [baseMixin],
   props: {
@@ -47,6 +47,12 @@ export default {
       const { customStyle, zIndex } = this;
       return `z-index: ${zIndex};${customStyle}`;
     },
+    computedCustomClass() {
+      return `uv-overlay ${this.customClass}`;
+    },
+    computedCustomStyle() {
+      return `${this.customClass}${this.computedStyle}`;
+    }
   },
   methods: {
     handleClick() {
@@ -55,21 +61,3 @@ export default {
   },
 };
 </script>
-
-<style
-  scoped
-  lang="scss"
->
-  @import './sass/_index.scss';
-
-  $comp: #{$PREFIX}overlay;
-
-  #{$comp} {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $overlay-background-color;
-  }
-</style>

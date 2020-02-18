@@ -54,6 +54,12 @@
       "style": {
         "navigationBarTitleText": "transition"
       }
+    },
+    {
+      "path": "pages/overlay",
+      "style": {
+        "navigationBarTitleText": "overlay"
+      }
     }
   ],
   "globalStyle": {

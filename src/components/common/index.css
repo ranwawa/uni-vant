@@ -37,11 +37,11 @@
   color: #969799;
 }
 .uv-field_clear-root {
-  line-height: inherit;
-  vertical-align: middle;
-  padding: 0 8px;
-  margin-right: -8px;
   flex-shrink: 0;
+  margin-right: -8px;
+  padding: 0 8px;
+  vertical-align: middle;
+  line-height: inherit;
 }
 .uv-field-placeholder {
   position: absolute;
@@ -65,9 +65,9 @@
 }
 .uv-tabs-line {
   position: absolute;
+  z-index: 1;
   bottom: 0;
   left: 0;
-  z-index: 1;
   height: 3px;
   border-radius: 3px;
   background-color: #ee0a24;
@@ -108,11 +108,11 @@
   position: absolute !important;
   top: 0;
   right: 0;
+  transform: translate3d(50%, -50%, 0);
+  color: #969799;
   border-radius: 100%;
   background-color: #fff;
-  color: #969799;
   font-size: 18px;
-  transform: translate3d(50%, -50%, 0);
 }
 .uv-uploader-preview-icon {
   display: inline-block;
@@ -120,5 +120,13 @@
   height: 20px;
   color: #646566;
   font-size: 20px;
-
+}
+/* overlay */
+.uv-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
 }
