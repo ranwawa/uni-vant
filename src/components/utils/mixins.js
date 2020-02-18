@@ -183,8 +183,8 @@ const transition = {
       this.leaveFunc.to();
     },
     handleTransitionEnd() {
-      if (this.transitionEnd) { return; }
-      this.transitionEnd = true;
+      if (this.transitionEnded) { return; }
+      this.transitionEnded = true;
       this.$emit(`after-${this.name}`);
       if (!this.show && this.display) {
         this.display = false;
