@@ -3,7 +3,7 @@
     class="uv-transition"
     :id="customId"
     :style="computedStyle"
-    :class="methodClass"
+    :class="computedRootClass"
     @transitionend="handleTransitionEnd"
   >
     <slot />

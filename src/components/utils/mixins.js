@@ -134,6 +134,9 @@ const transition = {
     },
   },
   computed: {
+    computedRootClass() {
+      return `${this.methodClass} ${this.customClass}`;
+    },
     computedNameClasses() {
       const { name } = this;
       return {
@@ -150,9 +153,9 @@ const transition = {
         : duration.enter;
     },
     computedStyle() {
-      const { computedDuration, display } = this;
+      const { computedDuration, display, customStyle } = this;
       return `transition-duration: ${computedDuration}ms;${
-        display ? '' : 'display: none;'}`;
+        display ? '' : 'display: none;'}${customStyle}`;
     },
   },
   watch: {
