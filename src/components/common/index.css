@@ -1,16 +1,20 @@
+/* 通用 */
 .uv-ellipsis {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+/* 按钮 */
 .uv-btn-icon {
   min-width: 1em;
   vertical-align: top;
   line-height: inherit !important;
 }
+/* 图标 */
 .uv-icon-info {
   z-index: 1;
 }
+/* 单元格 */
 .uv-cell-hover {
   background-color: #f2f3f5;
 }
@@ -25,6 +29,7 @@
   color: #969799;
   line-height: 20px;
 }
+/* 输入框 */
 .uv-field_icon-root {
   display: flex;
   align-items: center;
@@ -57,6 +62,7 @@
 .uv-field-placeholder-error {
   color: #ee0a24;
 }
+/* 标签栏 */
 .uv-tab_title-info {
   position: relative !important;
   top: -1px !important;
@@ -72,6 +78,7 @@
   border-radius: 3px;
   background-color: #ee0a24;
 }
+/* 弹出框 */
 .uv-popup_close-icon {
   position: absolute;
   z-index: 1;
@@ -121,7 +128,7 @@
   color: #646566;
   font-size: 20px;
 }
-/* overlay */
+/* 遮罩 */
 .uv-overlay {
   position: fixed;
   top: 0;
