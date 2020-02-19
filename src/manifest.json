@@ -51,16 +51,18 @@
   "quickapp": {
   },
   "mp-weixin": {
-    "appid": "wx80c3f509ae42be51",
+    "appid": "wx986cccb54633df9b",
     "setting": {
       "urlCheck": false
     },
     "usingComponents": true
   },
   "mp-alipay": {
+    "appid": "2019053165475033",
     "usingComponents": true
   },
   "mp-baidu": {
+    "appid": "14760815",
     "usingComponents": true
   },
   "mp-toutiao": {
