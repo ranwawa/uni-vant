@@ -6,6 +6,7 @@
 }
 /* 按钮 */
 .uv-btn-icon {
+  display: inline-flex !important;
   min-width: 1em;
   vertical-align: top;
   line-height: inherit !important;

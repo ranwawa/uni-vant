@@ -349,6 +349,7 @@ export default {
       height: nth($values, 2);
       padding: nth($values, 3);
       font-size: nth($values, 4);
+      line-height: nth($values, 2);
     }
   }
 
