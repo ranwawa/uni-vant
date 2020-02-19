@@ -230,7 +230,8 @@ export default {
         // 边框,背景为设置的颜色
         // 前景色为白色
         if (!this.plain) {
-          style = `border-color: ${color}; background: ${color};`;
+          style =
+            `border-color: ${color} !important; background: ${color} !important;`;
           textColor = '#fff';
         }
         style += `color: ${textColor}; border-color: ${textColor};`;
