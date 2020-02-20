@@ -32,7 +32,7 @@ export default {
     return {
       title: 'uni-vant',
       componentList: {
-        '基础组件': [
+        基础组件: [
           { name: 'Button 按钮', isComplete: true },
           { name: 'Cell 单元格', isComplete: true },
           { name: 'Icon 图标', isComplete: true },
@@ -41,14 +41,14 @@ export default {
           { name: 'Popup 弹出层', isComplete: false },
           { name: 'Transition 动画', isComplete: true },
         ],
-        '表单组件': [
+        表单组件: [
           { name: 'Field 输入框', isComplete: true },
           { name: 'Uploader 文件上传', isComplete: true },
         ],
-        '反馈组件': [
+        反馈组件: [
           { name: 'Overlay 遮罩层', isComplete: true },
         ],
-        '展示组件': [
+        展示组件: [
           { name: 'Sticky 粘性布局', isComplete: true },
         ],
       },
