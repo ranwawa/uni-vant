@@ -42,7 +42,7 @@ function later() {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve();
-    }, 333);
+    }, 8);
   });
 }
 const transition = {
