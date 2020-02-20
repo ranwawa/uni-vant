@@ -26,11 +26,11 @@ const baseMixin = {
 const getRect = {
   methods: {
     getRect(selector, all) {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         const query = uni.createSelectorQuery().in(this);
         const method = all ? 'selectAll' : 'select';
         query[method](selector)
-          .boundingClientRect(rect => resolve(rect))
+          .boundingClientRect((rect) => resolve(rect))
           .exec();
       });
     },
@@ -119,16 +119,20 @@ const transition = {
     enterActiveClass: {
       type: String,
       default: '',
-    }, enterToClass: {
+    },
+    enterToClass: {
       type: String,
       default: '',
-    }, leaveClass: {
+    },
+    leaveClass: {
       type: String,
       default: '',
-    }, leaveActiveClass: {
+    },
+    leaveActiveClass: {
       type: String,
       default: '',
-    }, leaveToClass: {
+    },
+    leaveToClass: {
       type: String,
       default: '',
     },
@@ -140,10 +144,10 @@ const transition = {
     computedNameClasses() {
       const { name } = this;
       return {
-          enter: `uv-${name}-enter uv-${name}-enter-active enter-class enter-active-class`,
-          'enter-to': `uv-${name}-enter-to uv-${name}-enter-active enter-to-class enter-active-class`,
-          leave: `uv-${name}-leave uv-${name}-leave-active leave-class leave-active-class`,
-          'leave-to': `uv-${name}-leave-to uv-${name}-leave-active leave-to-class leave-active-class`
+        enter: `uv-${name}-enter uv-${name}-enter-active enter-class enter-active-class`,
+        'enter-to': `uv-${name}-enter-to uv-${name}-enter-active enter-to-class enter-active-class`,
+        leave: `uv-${name}-leave uv-${name}-leave-active leave-class leave-active-class`,
+        'leave-to': `uv-${name}-leave-to uv-${name}-leave-active leave-to-class leave-active-class`,
       };
     },
     computedDuration() {
@@ -160,11 +164,17 @@ const transition = {
   },
   watch: {
     show(newValue) {
-      newValue ? this.enter() : this.leave();
+      if (newValue) {
+        this.enter();
+      } else {
+        this.leave();
+      }
     },
   },
   mounted() {
-    this.show && this.enter();
+    if (this.show) {
+      this.enter();
+    }
   },
   methods: {
     async enter() {

@@ -74,7 +74,7 @@
   </view>
 </template>
 <script>
-import uvButton from '@/components/button';
+import uvButton from '@/components/button.vue';
 
 export default {
   components: {

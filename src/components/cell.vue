@@ -78,7 +78,7 @@
 <script>
 import { bem } from './utils';
 import { baseMixin } from './utils/mixins';
-import uvIcon from './icon';
+import uvIcon from './icon.vue';
 
 export default {
   name: 'uv-cell',
@@ -219,7 +219,7 @@ export default {
           clickable: isLink || clickable,
         },
       ]);
-      return `${customClass ? customClass + ' ' : ''}${bemClass}`;
+      return `${customClass ? `${customClass} ` : ''}${bemClass}`;
     },
     computedHoverClass() {
       return `uv-cell-hover ${this.hoverClass}`;

@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import uvCell from '@/components/cell';
-import uvCellGroup from '@/components/cell-group';
+import uvCell from '@/components/cell.vue';
+import uvCellGroup from '@/components/cell-group.vue';
 
 export default {
   components: {

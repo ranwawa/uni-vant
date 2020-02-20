@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import uvSticky from '@/components/sticky';
-import uvButton from '@/components/button';
+import uvSticky from '@/components/sticky.vue';
+import uvButton from '@/components/button.vue';
 
 export default {
   components: {

@@ -7,6 +7,6 @@
 
 const REGEXP = new RegExp(/^\d+(\.\d+)?$/);
 function addUnit(value) {
-  return REGEXP.test('' + value) ? value + 'px' : value;
+  return REGEXP.test(`${value}`) ? `${value}px` : value;
 }
 export default addUnit;

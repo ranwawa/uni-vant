@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import App from './App';
 import section from '@/pages/components/section.vue';
+import App from './App.vue';
 
 Vue.component('uv-section', section);
 Vue.config.productionTip = false;

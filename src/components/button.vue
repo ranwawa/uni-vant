@@ -67,7 +67,7 @@
 <script>
 import { bem, baseMixin } from './utils/index';
 import uvIcon from './icon.vue';
-import uvLoading from './loading';
+import uvLoading from './loading.vue';
 
 export default {
   name: 'uv-btn',
@@ -222,7 +222,7 @@ export default {
   },
   computed: {
     computedStyle() {
-      const color = this.color;
+      const { color } = this;
       let style = '';
       if (color) {
         let textColor = color;
@@ -230,8 +230,7 @@ export default {
         // 边框,背景为设置的颜色
         // 前景色为白色
         if (!this.plain) {
-          style =
-            `border-color: ${color} !important; background: ${color} !important;`;
+          style = `border-color: ${color} !important; background: ${color} !important;`;
           textColor = '#fff';
         }
         style += `color: ${textColor}; border-color: ${textColor};`;
@@ -270,8 +269,8 @@ export default {
           unclickable: disabled || loading,
         },
       ]);
-      return `${bemClass} ${this.customClass} ${hairline ?
-        'uv-hairline-surround' : ''}`;
+      return `${bemClass} ${this.customClass} ${hairline
+        ? 'uv-hairline-surround' : ''}`;
     },
   },
   methods: {

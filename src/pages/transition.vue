@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import uvCell from '@/components/cell';
-import uvCellGroup from '@/components/cell-group';
-import uvTransition from '@/components/transition';
+import uvCell from '@/components/cell.vue';
+import uvCellGroup from '@/components/cell-group.vue';
+import uvTransition from '@/components/transition.vue';
 
 export default {
   name: 'transition',

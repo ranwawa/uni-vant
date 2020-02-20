@@ -111,7 +111,7 @@
   </view>
 </template>
 <script>
-import uvSwiperDot from '@/components/swiper-dot';
+import uvSwiperDot from '@/components/swiper-dot.vue';
 
 export default {
   name: 'swiper-dot',

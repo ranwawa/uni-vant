@@ -10,7 +10,9 @@
 </template>
 
 <script>
-import { baseMixin, eventBus, bem, pick } from './utils/index';
+import {
+  baseMixin, eventBus, bem, pick,
+} from './utils/index';
 
 export default {
   name: 'uv-tab',

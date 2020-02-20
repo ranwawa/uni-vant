@@ -47,8 +47,8 @@
   </view>
 </template>
 <script>
-import uvUploader from '@/components/uploader';
-import uvButton from '@/components/button';
+import uvUploader from '@/components/uploader.vue';
+import uvButton from '@/components/button.vue';
 
 export default {
   name: 'uploader',

@@ -1,20 +1,23 @@
 export default class Touch {
   #DISTANCE = 50;
+
   startX = 0;
+
   startY = 0;
-  constructor() {
-  }
+
   setStartPoint(point) {
     const { clientX, clientY } = point;
     this.startX = clientX;
     this.startY = clientY;
   }
+
   getMoveDistance(clientX, clientY) {
     return {
       deltaX: clientX - this.startX,
       deltaY: clientY - this.startY,
     };
   }
+
   getDirection(point) {
     const { clientX, clientY } = point;
     const { deltaX, deltaY } = this.getMoveDistance(clientX, clientY);

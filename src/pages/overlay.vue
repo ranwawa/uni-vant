@@ -23,8 +23,8 @@
   </view>
 </template>
 <script>
-import uvButton from '@/components/button';
-import uvOverlay from '@/components/overlay';
+import uvButton from '@/components/button.vue';
+import uvOverlay from '@/components/overlay.vue';
 
 export default {
   name: 'overlay',

@@ -10,9 +10,9 @@
     />
     <view
       v-if="inited"
-      class="uv-popup"
       :class="methodClass"
       :style="computedRootStyle"
+      class="uv-popup"
       :id="customId"
     >
       <slot />
@@ -29,8 +29,8 @@
 <script>
 import { baseMixin, transition } from './utils/mixins';
 import { bem } from './utils/index';
-import uvOverlay from './overlay';
-import uvIcon from './icon';
+import uvOverlay from './overlay.vue';
+import uvIcon from './icon.vue';
 
 export default {
   name: 'uv-popup',
@@ -101,14 +101,14 @@ export default {
   },
   computed: {
     computedRootClass() {
-      let {
-        customClass,
+      const {
         methodClass,
         position,
         round,
         saveAreaInsetBottom,
         saveAreaInsetTop,
       } = this;
+      let { customClass } = this;
       customClass = customClass ? `${customClass} ` : '';
       const bemClass = bem(
         'popup',
@@ -124,12 +124,12 @@ export default {
       return `${customClass}${methodClass} ${bemClass}`;
     },
     computedRootStyle() {
-      let {
+      const {
         zIndex,
-        display,
         customStyle,
         computedDuration,
       } = this;
+      let { display } = this;
       display = display ? '' : 'display: none';
       return `z-index: ${zIndex}; transition-duration: ${
         computedDuration}; ${display}`;
@@ -163,9 +163,9 @@ export default {
 
   #{$comp} {
     position: fixed;
+    overflow-y: auto;
     box-sizing: border-box;
     max-height: 100%;
-    overflow-y: auto;
     transition-timing-function: ease;
     animation: ease both;
     -webkit-overflow-scrolling: touch;
@@ -219,7 +219,7 @@ export default {
         }
       }
 
-      &-bottom,&-safe {
+      &-bottom, &-safe {
         /* todo 这个constant和env是啥子玩意儿? */
         /*padding-bottom: constant(safe-area-inset-bottom);*/
         /*padding-bottom: env(safe-area-inset-bottom);*/

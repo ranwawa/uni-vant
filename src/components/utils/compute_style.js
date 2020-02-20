@@ -13,5 +13,4 @@ function computeStyle(obj) {
     .map(([key, val]) => `${key}: ${val};`)
     .join('');
 }
-
 export default computeStyle;

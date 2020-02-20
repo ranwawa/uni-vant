@@ -41,8 +41,7 @@
         v-for="(item,index) in info"
         :key="index"
         :class="[index === current&&'uv-swiper__dots-long']"
-        :style="{
-		    'width':(index === current? dots.width*3:dots.width ) + 'px','height':dots.height +'px' ,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border':index !==current ? dots.border:dots.selectedBorder}"
+        :style="{'width':(index === current? dots.width*3:dots.width ) + 'px','height':dots.height +'px' ,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border':index !==current ? dots.border:dots.selectedBorder}"
         class="uv-swiper__dots-item "
       />
     </view>
@@ -114,7 +113,9 @@ export default {
     mode: {
       type: String,
       default: 'default',
-      validate: value => ['default', 'round', 'nav', 'indexes'].includes(value),
+      validate: (value) => [
+        'default', 'round', 'nav', 'indexes',
+      ].includes(value),
     },
     // 只在 nav 模式下生效，变量名称
     field: {

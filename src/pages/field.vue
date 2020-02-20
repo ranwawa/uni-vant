@@ -68,7 +68,7 @@
             input-align="right"
           />
         </uv-cell-group>
-        
+
       </uv-section>
       <uv-section title="高度自适应">
         <uv-cell-group>
@@ -102,9 +102,9 @@
 </template>
 
 <script>
-import uvCellGroup from '@/components/cell-group';
-import uvButton from '@/components/button';
-import uvField from '@/components/field';
+import uvCellGroup from '@/components/cell-group.vue';
+import uvButton from '@/components/button.vue';
+import uvField from '@/components/field.vue';
 
 export default {
   name: 'uv-field-page',

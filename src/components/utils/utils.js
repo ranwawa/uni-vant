@@ -7,7 +7,7 @@ function getSystemInfoSync() {
 }
 function pick(obj, arr) {
   const newObj = {};
-  arr.forEach(key => {
+  arr.forEach((key) => {
     newObj[key] = obj[key];
   });
   return newObj;

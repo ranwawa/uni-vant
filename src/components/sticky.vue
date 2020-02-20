@@ -1,8 +1,8 @@
 <template>
   <view
-    class="uv-sticky"
     :class="customClass"
     :style="computedRootStyle"
+    class="uv-sticky"
     :id="customId"
   >
     <view
@@ -86,7 +86,11 @@ export default {
       });
     },
     disabled(newValue) {
-      newValue ? this.disconnectObserver() : this.initObserver();
+      if (newValue) {
+        this.disconnectObserver();
+      } else {
+        this.initObserver();
+      }
     },
   },
   methods: {
@@ -103,11 +107,15 @@ export default {
       });
     },
     disconnectObserver(observerName) {
-      if (observerName) {
-        this[observerName] && this[observerName].disconnect();
+      if (observerName && this[observerName]) {
+        this[observerName].disconnect();
       } else {
-        this.contentObserver && this.contentObserver.disconnect();
-        this.containerObserver && this.containerObserver.disconnect();
+        if (this.contentObserver) {
+          this.contentObserver.disconnect();
+        }
+        if (this.containerObserver) {
+          this.containerObserver.disconnect();
+        }
       }
     },
     createObserver(observerName, top) {
@@ -124,7 +132,7 @@ export default {
         .relativeToViewport({ top: top - (this.windowTop || 0) })
         .observe(
           ROOT_ELEMENT,
-          res => {
+          (res) => {
             this.setFixed(res.boundingClientRect.top);
           },
         );
@@ -150,7 +158,7 @@ export default {
     },
     getContainerRect() {
       const nodesRef = this.container();
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         nodesRef
           .boundingClientRect(resolve)
           .exact();
@@ -159,10 +167,9 @@ export default {
     setFixed(top) {
       const { offsetTop, height, containerHeight } = this;
       // todo 这一坨后面再来细究
-      const fixed =
-        containerHeight && height
-          ? top > height - containerHeight && top < offsetTop
-          : top < offsetTop;
+      const fixed = containerHeight && height
+        ? top > height - containerHeight && top < offsetTop
+        : top < offsetTop;
       this.fixed = fixed;
       this.$emit(
         'scroll',
@@ -173,7 +180,9 @@ export default {
       );
     },
     setStyle() {
-      const { offsetTop, height, fixed, zIndex, windowTop } = this;
+      const {
+        offsetTop, height, fixed, zIndex, windowTop,
+      } = this;
       this.wrapStyle = '';
       this.containerStyle = '';
       if (fixed) {

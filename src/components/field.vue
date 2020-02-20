@@ -116,8 +116,8 @@
 </template>
 
 <script>
-import uvCell from './cell';
-import uvIcon from './icon';
+import uvCell from './cell.vue';
+import uvIcon from './icon.vue';
 import { baseMixin } from './utils/mixins';
 import { bem, getSystemInfoSync } from './utils';
 
@@ -382,7 +382,7 @@ export default {
         param.push(type);
       }
       const bemClass = bem('field-input', param);
-      return `${inputClass && inputClass + ' '}${bemClass}`;
+      return `${inputClass && `${inputClass} `}${bemClass}`;
     },
     computedIsDisableInput() {
       return this.disabled || this.readonly;
@@ -397,7 +397,7 @@ export default {
       return this.clearable && this.focused && this.value && !this.readonly;
     },
     computedRightIconClass() {
-      return `van-field_icon-root${this.rightIconClass && ' ' + this.rightIconClass}`;
+      return `van-field_icon-root${this.rightIconClass && ` ${this.rightIconClass}`}`;
     },
     computedErrorClass() {
       const {

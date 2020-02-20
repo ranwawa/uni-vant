@@ -76,7 +76,7 @@
   </view>
 </template>
 <script>
-import uvIcon from './icon';
+import uvIcon from './icon.vue';
 import { addUnit } from './utils';
 
 function adaptorGetDefaultMethod() {
@@ -222,19 +222,18 @@ export default {
       return this
         .fileList
         .map((item, index) => {
-            item.showSrc = item.url || item.path;
-            item.showAlt = item.name || `图片${index}`;
-            item.showFileName = item.name || item.showSrc;
-            let { isImage } = item;
-            if (typeof isImage === 'undefined') {
-              isImage = adaptorCheckImageType(item);
-            }
+          item.showSrc = item.url || item.path;
+          item.showAlt = item.name || `图片${index}`;
+          item.showFileName = item.name || item.showSrc;
+          let { isImage } = item;
+          if (typeof isImage === 'undefined') {
+            isImage = adaptorCheckImageType(item);
+          }
           return {
-              ...item,
-              isImage,
-            };
-          },
-        );
+            ...item,
+            isImage,
+          };
+        });
     },
   },
   methods: {
@@ -247,8 +246,8 @@ export default {
     doPreview(url) {
       if (!this.previewFullImage) { return; }
       const images = this.lists
-        .filter(item => item.isImage)
-        .map(item => item.url || item.path);
+        .filter((item) => item.isImage)
+        .map((item) => item.url || item.path);
       this.$emit(
         'click-preview', {
           url,
@@ -263,9 +262,8 @@ export default {
         .then(([err, data]) => {
           if (err) {
             throw err;
-          } else {
           }
-        }).catch(err => console.error(err));
+        }).catch((err) => console.error(err));
     },
     startUpload() {
       if (this.disabled) {
@@ -286,22 +284,24 @@ export default {
           } else {
             const file = this.getFileInfo(accept, data, multiple);
             if (!this.checkFileSize(file, maxSize)) {
-              return this.$emit('oversize', { name, file });
+              this.$emit('oversize', { name, file });
+            } else {
+              const emitAfterRead = () => this.$emit(
+                'after-read',
+                { file, name },
+              );
+              if (useBeforeRead) {
+                this.$emit('before-read', {
+                  file,
+                  name,
+                  callback: (res) => (res ? emitAfterRead() : ''),
+                });
+              } else {
+                emitAfterRead();
+              }
             }
-            const emitAfterRead = () => this.$emit(
-              'after-read',
-              { file, name },
-            );
-            if (useBeforeRead) {
-              return this.$emit('before-read', {
-                file,
-                name,
-                callback: (res) => res ? emitAfterRead() : '',
-              });
-            }
-            emitAfterRead();
           }
-        }).catch(err => console.error(err));
+        }).catch((err) => console.error(err));
     },
     chooseFile() {
       const {
@@ -319,6 +319,7 @@ export default {
       const newMaxCount = maxCount - lists.length;
       switch (accept) {
         case 'image': {
+          // eslint-disable-next-line no-nested-ternary
           const count = multiple ? (newMaxCount > 9 ? 9 : newMaxCount) : 1;
           chooseFile = uni.chooseImage({
             count,
@@ -361,7 +362,7 @@ export default {
     },
     checkFileSize(file, maxSize) {
       return file instanceof Array
-        ? file.every(ele => ele.size <= maxSize)
+        ? file.every((ele) => ele.size <= maxSize)
         : file.size <= maxSize;
     },
   },

@@ -7,9 +7,7 @@
 const PREFIX = 'uv-';
 function join(name, mods) {
   name = PREFIX + name;
-  mods = mods.map(function (mod) {
-    return name + '-' + mod;
-  });
+  mods = mods.map((mod) => `${name}-${mod}`);
   mods.unshift(name);
   return mods.join(' ');
 }
@@ -20,11 +18,11 @@ function traversing(mods, conf) {
   if (typeof conf === 'string' || typeof conf === 'number') {
     mods.push(conf);
   } else if (Array.isArray(conf)) {
-    conf.forEach(item => traversing(mods, item));
+    conf.forEach((item) => traversing(mods, item));
   } else if (typeof conf === 'object') {
     Object
       .keys(conf)
-      .forEach(key => conf[key] && mods.push(key));
+      .forEach((key) => conf[key] && mods.push(key));
   }
 }
 function bem(name, conf) {
@@ -33,5 +31,6 @@ function bem(name, conf) {
   return join(name, mods);
 }
 export {
+  // eslint-disable-next-line import/prefer-default-export
   bem,
 };

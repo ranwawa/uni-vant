@@ -16,7 +16,7 @@
 
 <script>
 import { baseMixin, bem } from './utils/index';
-import uvTransition from './transition';
+import uvTransition from './transition.vue';
 
 export default {
   name: 'uv-overlay',
@@ -52,7 +52,7 @@ export default {
     },
     computedCustomStyle() {
       return `${this.customClass}${this.computedStyle}`;
-    }
+    },
   },
   methods: {
     handleClick() {

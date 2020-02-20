@@ -13,17 +13,17 @@
       <view :class="computedWrapClass">
         <slot name="nav-left" />
         <scroll-view
+          :class="computedScrollClass"
+          :style="computedScrollStyle"
           :scroll-x="scrollable"
           scroll-with-animation
           :scroll-left="scrollLeft"
-          :class="computedScrollClass"
-          :style="computedScrollStyle"
         >
           <view :class="computedNavClass">
             <view
               v-if="type === 'line'"
-              class="uv-tabs-line"
               :style="lineStyle"
+              class="uv-tabs-line"
             ></view>
             <view
               v-for="(item, index) in computedTabs"
@@ -60,9 +60,9 @@
       @touchcancel="handleTouch($event, 'end')"
     >
       <view
-        class="uv-tabs-track"
         :class="{'uv-tabs-track-animated': animated}"
         :style="computedTrackStyle"
+        class="uv-tabs-track"
       >
         <slot />
       </view>
@@ -71,10 +71,11 @@
 </template>
 
 <script>
-import { eventBus, baseMixin, Touch, bem, pick, addUnit, getRect } from
-    './utils/index';
-import uvSticky from './sticky';
-import uvInfo from './info';
+import {
+  eventBus, baseMixin, Touch, bem, pick, addUnit, getRect,
+} from './utils/index';
+import uvSticky from './sticky.vue';
+import uvInfo from './info.vue';
 
 const touch = new Touch();
 export default {
@@ -118,12 +119,12 @@ export default {
       type: Boolean,
       default: true,
     },
-    // 	底部条宽度 (px)
+    // 底部条宽度 (px)
     lineWidth: {
       type: [String, Number],
       default: -1,
     },
-    // 	底部条高度 (px)
+    // 底部条高度 (px)
     lineHeight: {
       type: [String, Number],
       default: '3px',
@@ -195,10 +196,9 @@ export default {
     },
     computedWrapClass() {
       const bemClass = bem('tabs-wrap', { scrollable: this.scrollable });
-      const otherClass =
-        this.type === 'line' && this.border
-          ? 'uv-hairline-top-bottom'
-          : '';
+      const otherClass = this.type === 'line' && this.border
+        ? 'uv-hairline-top-bottom'
+        : '';
       return `${bemClass} ${otherClass}`;
     },
     computedScrollClass() {
@@ -214,7 +214,7 @@ export default {
       const { ellipsis, tabClass } = this;
       const bemCls = bem('tab', { complete: !ellipsis });
       const tabCls = tabClass && `${tabClass} `;
-      const ellipsisCls = ellipsis && `uv-ellipsis `;
+      const ellipsisCls = ellipsis && 'uv-ellipsis ';
       return `${tabCls}${ellipsisCls}${bemCls}`;
     },
     computedLineStyle() {
@@ -228,6 +228,7 @@ export default {
         lineWidth,
         lineHeight,
       } = this;
+      return '';
     },
     computedTrackStyle() {
       if (!this.animate) {
@@ -276,7 +277,7 @@ export default {
   },
   methods: {
     async setLine(skipTransition) {
-      if (this.type !== 'line') {return;}
+      if (this.type !== 'line') { return; }
       const {
         color,
         duration,
@@ -286,13 +287,13 @@ export default {
       } = this;
       const rects = await this.getRect('.uv-tab', true);
       const rect = rects[currentIndex];
-      if (!rect) {return;}
+      if (!rect) { return; }
       const width = lineWidth !== -1 ? lineWidth : rect.width / 2;
-      const height =
-        lineHeight !== -1
-          ? `height: ${addUnit(lineHeight)}; border-radius: ${addUnit(
-          lineHeight)};`
-          : '';
+      const height = lineHeight !== -1
+        ? `height: ${addUnit(lineHeight)}; border-radius: ${addUnit(
+          lineHeight,
+        )};`
+        : '';
       let left = rects
         .slice(0, currentIndex)
         .reduce((prev, curr) => prev + curr.width, 0);
@@ -300,7 +301,6 @@ export default {
       const transition = skipTransition
         ? ''
         : `transition-duration: ${duration}s`;
-
       this.lineStyle = `
         ${height}
         width: ${addUnit(width)};
@@ -318,6 +318,7 @@ export default {
       if (activeTab) {
         return activeTab.getComputedName();
       }
+      return '';
     },
     handleTouch(e, m) {
       if (this.swipeable) {
@@ -354,7 +355,7 @@ export default {
     },
     handleClick(index) {
       const child = this.children[index];
-      if (children.disabled) {
+      if (child.disabled) {
         this.$emit('disable');
       } else {
         this.setCurrentIndex(index);
@@ -364,9 +365,9 @@ export default {
     setCurrentIndex(currentIndex) {
       const { children = [] } = this;
       if (
-        typeof currentIndex !== 'number' ||
-        currentIndex >= children.length ||
-        currentIndex < 0
+        typeof currentIndex !== 'number'
+        || currentIndex >= children.length
+        || currentIndex < 0
       ) {
         return;
       }
@@ -381,7 +382,7 @@ export default {
       });
       const shouldEmitChange = this.currentIndex !== null;
       this.currentIndex = currentIndex;
-      wx.nextTick(() => {
+      this.nextTick(() => {
         this.setLine();
         this.setTrack();
         this.scrollIntoView();
@@ -423,7 +424,7 @@ export default {
       if (color && isCard) {
         styles.push(`border-color: ${color};`);
         if (!disabled) {
-          if (active) {
+          if (this.active) {
             styles.push(`background-color: ${color}`);
           } else {
             styles.push(`color: ${color}`);
@@ -491,8 +492,8 @@ export default {
 
         .van-tab {
           color: $tabs-default-color;
-          line-height: calc($tabs-card-height - 2 * $border-width-base);
           border-right: $border-width-base solid $tabs-default-color;
+          /*line-height: calc($tabs-card-height - 2 * $border-width-base);*/
 
           &:last-child {
             border-right: none;

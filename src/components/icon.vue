@@ -81,8 +81,8 @@ export default {
       return this.name.indexOf('/') !== -1;
     },
     classes() {
-      let pre = this.classPrefix;
-      let icon = this.isImage ? '' : `${pre}-${this.name}`;
+      const pre = this.classPrefix;
+      const icon = this.isImage ? '' : `${pre}-${this.name}`;
       return `${pre} ${icon}`;
     },
     computedStyle() {
