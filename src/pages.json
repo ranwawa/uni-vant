@@ -65,6 +65,11 @@
       "style": {
         "navigationBarTitleText": "test"
       }
+    },{
+      "path": "pages/cell",
+      "style": {
+        "navigationBarTitleText": "cell"
+      }
     }
   ],
   "globalStyle": {
