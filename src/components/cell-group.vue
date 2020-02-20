@@ -51,7 +51,7 @@ export default {
 >
   @import "./sass/_index.scss";
 
-  $comp: #{$PREFIX};
+  $comp: #{$PREFIX}cell-group;
 
   #{$comp} {
     &-title {
