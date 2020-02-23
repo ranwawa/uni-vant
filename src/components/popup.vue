@@ -10,7 +10,7 @@
     />
     <view
       v-if="inited"
-      :class="methodClass"
+      :class="computedRootClass"
       :style="computedRootStyle"
       class="uv-popup"
       :id="customId"
@@ -132,7 +132,7 @@ export default {
       let { display } = this;
       display = display ? '' : 'display: none';
       return `z-index: ${zIndex}; transition-duration: ${
-        computedDuration}; ${display}`;
+        computedDuration}; ${display}${customStyle}`;
     },
     computedIconClass() {
       return `uv-popup_close-icon uv-popup_close-icon-${
@@ -159,16 +159,25 @@ export default {
 >
   @import './sass/_index.scss';
 
+  $popup-background-color: $white;
+  $popup-round-border-radius: 20px;
+  $popup-close-icon-size: 18px;
+  $popup-close-icon-color: $gray-6;
+  $popup-close-icon-margin: 16px;
+  $popup-close-icon-z-index: 1;
+
   $comp: #{$PREFIX}popup;
 
   #{$comp} {
     position: fixed;
-    overflow-y: auto;
     box-sizing: border-box;
     max-height: 100%;
+    overflow-y: auto;
     transition-timing-function: ease;
     animation: ease both;
     -webkit-overflow-scrolling: touch;
+    background-color: $popup-background-color;
+    font-size: $font-size-md;
 
     &-center {
       top: 50%;
@@ -185,50 +194,50 @@ export default {
       left: 0;
       width: 100%;
 
+    }
+    &.uv-popup-round {
+      border-radius: 0 0 $popup-round-border-radius $popup-round-border-radius;
+    }
+
+    &-right {
+      top: 50%;
+      right: 0;
+      transform: translate3d(0, -50%, 0);
+
       &.uv-popup-round {
-        border-radius: 0 0 $popup-round-border-radius $popup-round-border-radius;
+        border-radius: $popup-round-border-radius 0 0 $popup-round-border-radius;
       }
+    }
 
-      &-right {
-        top: 50%;
-        right: 0;
-        transform: translate3d(0, -50%, 0);
+    &-bottom {
+      bottom: 0;
+      left: 0;
+      width: 100%;
 
-        &.uv-popup-round {
-          border-radius: $popup-round-border-radius 0 0 $popup-round-border-radius;
-        }
+      &.uv-popup-round {
+        border-radius: $popup-round-border-radius $popup-round-border-radius 0 0;
       }
+    }
 
-      &-bottom {
-        bottom: 0;
-        left: 0;
-        width: 100%;
+    &-left {
+      top: 50%;
+      left: 0;
+      transform: translate3d(0, -50%, 0);
 
-        &.uv-popup-round {
-          border-radius: $popup-round-border-radius $popup-round-border-radius 0 0;
-        }
+      &.uv-popup-round {
+        border-radius: 0 $popup-round-border-radius $popup-round-border-radius 0;
       }
+    }
 
-      &-left {
-        top: 50%;
-        left: 0;
-        transform: translate3d(0, -50%, 0);
+    &-bottom, &-safe {
+      /* todo 这个constant和env是啥子玩意儿? */
+      /*padding-bottom: constant(safe-area-inset-bottom);*/
+      /*padding-bottom: env(safe-area-inset-bottom);*/
+    }
 
-        &.uv-popup-round {
-          border-radius: 0 $popup-round-border-radius $popup-round-border-radius 0;
-        }
-      }
-
-      &-bottom, &-safe {
-        /* todo 这个constant和env是啥子玩意儿? */
-        /*padding-bottom: constant(safe-area-inset-bottom);*/
-        /*padding-bottom: env(safe-area-inset-bottom);*/
-      }
-
-      &-safeTop {
-        /*padding-top: constant(safe-area-inset-top);*/
-        /*padding-top: env(safe-area-inset-top);*/
-      }
+    &-safeTop {
+      /*padding-top: constant(safe-area-inset-top);*/
+      /*padding-top: env(safe-area-inset-top);*/
     }
   }
 

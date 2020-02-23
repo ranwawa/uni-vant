@@ -38,7 +38,7 @@ export default {
           { name: 'Icon 图标', isComplete: true },
           { name: 'Image 图片', isComplete: false },
           { name: 'Layout 布局', isComplete: false },
-          { name: 'Popup 弹出层', isComplete: false },
+          { name: 'Popup 弹出层', isComplete: true },
           { name: 'Transition 动画', isComplete: true },
         ],
         表单组件: [

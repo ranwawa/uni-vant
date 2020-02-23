@@ -70,6 +70,12 @@
       "style": {
         "navigationBarTitleText": "cell"
       }
+    },
+    {
+      "path": "pages/popup",
+      "style": {
+        "navigationBarTitleText": "popup"
+      }
     }
   ],
   "globalStyle": {
