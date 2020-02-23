@@ -6,10 +6,14 @@
  */
 module.exports = {
   chainWebpack(webpackConfig) {
-    webpackConfig.module
-      .rule('vue')
-      .uses
-      .delete('uniapp-scoped');
+    webpackConfig
+      .module
+      .rule('eslint')
+      .use('eslint-loader')
+      .loader('eslint-loader')
+      .tap((options) => {
+        options.fix = true;
+        return options;
+      });
   },
 };
- 
