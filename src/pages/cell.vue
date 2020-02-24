@@ -38,39 +38,70 @@
       />
     </uv-section>
     <uv-section title="展示箭头">
-      <uv-cell title="单元格" is-link />
-      <uv-cell title="单元格" is-link value="内容" />
-      <uv-cell title="单元格" is-link value="内容" arrow-direction="down" />
+      <uv-cell
+        title="单元格"
+        is-link
+      />
+      <uv-cell
+        value="内容"
+        title="单元格"
+        is-link
+      />
+      <uv-cell
+        value="内容"
+        title="单元格"
+        is-link
+        arrow-direction="down"
+      />
     </uv-section>
     <uv-section title="页面跳转">
       <uv-cell
-        is-link
         title="单元格"
+        is-link
         link-type="redirectTo"
         url="/pages/index"
       />
     </uv-section>
     <uv-section title="分组标题">
       <uv-cell-group title="分组1">
-        <uv-cell title="单元格" value="内容" />
+        <uv-cell
+          value="内容"
+          title="单元格"
+        />
       </uv-cell-group>
       <uv-cell-group title="分组2">
-        <uv-cell title="单元格" value="内容" />
+        <uv-cell
+          value="内容"
+          title="单元格"
+        />
       </uv-cell-group>
     </uv-section>
     <uv-section title="使用插槽">
-      <uv-cell value="内容" icon="shop-o" is-link>
+      <uv-cell
+        value="内容"
+        icon="shop-o"
+        is-link
+      >
         <view slot="title">
           <view class="uv-cell-text">单元格</view>
           <!--<uv-tag type="danger">标签</uv-tag>-->
         </view>
       </uv-cell>
       <uv-cell title="单元格">
-        <uv-icon slot="right-icon" name="search" class="custom-icon" />
+        <uv-icon
+          name="search"
+          slot="right-icon"
+          custom-style="display: inline-flex;align-items: center;"
+        />
       </uv-cell>
     </uv-section>
     <uv-section title="垂直居中">
-      <uv-cell center title="单元格" value="内容" label="描述信息" />
+      <uv-cell
+        value="内容"
+        title="单元格"
+        center
+        label="描述信息"
+      />
     </uv-section>
   </view>
 </template>

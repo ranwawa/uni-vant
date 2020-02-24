@@ -65,10 +65,17 @@
       "style": {
         "navigationBarTitleText": "test"
       }
-    },{
+    },
+    {
       "path": "pages/cell",
       "style": {
         "navigationBarTitleText": "cell"
+      }
+    },
+    {
+      "path": "pages/result",
+      "style": {
+        "navigationBarTitleText": "result"
       }
     }
   ],
