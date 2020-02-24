@@ -184,7 +184,7 @@ export default {
       left: 50%;
       transform: translate3d(-50%, -50%, 0);
 
-      &.uv-popup-round {
+      .uv-popup-round {
         border-radius: $popup-round-border-radius;
       }
     }

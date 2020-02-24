@@ -34,6 +34,9 @@
       <uv-cell title="自定义图标" is-link @click="show4 = true" />
       <uv-cell title="图标位置" is-link @click="show5 = true" />
     </uv-section>
+    <uv-section title="圆角弹框">
+      <uv-cell title="圆角弹框" is-link @click="show6 = true" />
+    </uv-section>
     <uv-popup
       :show="show1"
       @close="show1 = false"
@@ -75,6 +78,13 @@
       custom-style="height: 20%"
       @close="show5 = false"
     />
+    <uv-popup
+      :show="show6"
+      round
+      position="bottom"
+      custom-style="height: 20%"
+      @close="show6 = false"
+    />
   </view>
 </template>
 
@@ -95,6 +105,7 @@ export default {
       show3: false,
       show4: false,
       show5: false,
+      show6: false,
       position: 'top',
     };
   },
