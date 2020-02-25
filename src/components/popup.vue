@@ -170,14 +170,14 @@ export default {
 
   #{$comp} {
     position: fixed;
+    overflow-y: auto;
     box-sizing: border-box;
     max-height: 100%;
-    overflow-y: auto;
     transition-timing-function: ease;
     animation: ease both;
-    -webkit-overflow-scrolling: touch;
     background-color: $popup-background-color;
     font-size: $font-size-md;
+    -webkit-overflow-scrolling: touch;
 
     &-center {
       top: 50%;
@@ -195,6 +195,7 @@ export default {
       width: 100%;
 
     }
+
     &.uv-popup-round {
       border-radius: 0 0 $popup-round-border-radius $popup-round-border-radius;
     }

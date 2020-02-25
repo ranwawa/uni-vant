@@ -170,6 +170,7 @@ export default {
   $comp: #{$PREFIX}swiper;
 
   #{$comp} {
+    font-size: $font-size-md;
     &__warp {
       /* #ifndef APP-NVUE */
       position: relative;

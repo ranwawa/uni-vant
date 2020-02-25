@@ -358,10 +358,11 @@ export default {
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    border-radius: $border-radius-sm;
     transition: opacity $animation-duration-fast;
     text-align: center;
+    font-size: $font-size-md;
     vertical-align: middle;
-    border-radius: $border-radius-sm;
     -webkit-appearance: none;
     -webkit-text-size-adjust: 100%;
 

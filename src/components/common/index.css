@@ -138,3 +138,16 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
 }
+/* 业务组件-结果页 */
+.uv-result_icon-success {
+  color: #07c160;
+}
+.uv-result_icon-info {
+  color: #1989fa;
+}
+.uv-result_icon-warning {
+  color: #ff976a;
+}
+.uv-result_icon-danger {
+  color: #ee0a24;
+}

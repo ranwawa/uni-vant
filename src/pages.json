@@ -65,7 +65,8 @@
       "style": {
         "navigationBarTitleText": "test"
       }
-    },{
+    },
+    {
       "path": "pages/cell",
       "style": {
         "navigationBarTitleText": "cell"
@@ -75,6 +76,12 @@
       "path": "pages/popup",
       "style": {
         "navigationBarTitleText": "popup"
+      }
+    },
+    {
+      "path": "pages/result",
+      "style": {
+        "navigationBarTitleText": "result"
       }
     }
   ],
