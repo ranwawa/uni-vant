@@ -73,6 +73,12 @@
       }
     },
     {
+      "path": "pages/popup",
+      "style": {
+        "navigationBarTitleText": "popup"
+      }
+    },
+    {
       "path": "pages/result",
       "style": {
         "navigationBarTitleText": "result"

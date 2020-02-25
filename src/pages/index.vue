@@ -38,7 +38,7 @@ export default {
           { name: 'Icon 图标', isComplete: true },
           { name: 'Image 图片', isComplete: false },
           { name: 'Layout 布局', isComplete: false },
-          { name: 'Popup 弹出层', isComplete: false },
+          { name: 'Popup 弹出层', isComplete: true },
           { name: 'Transition 动画', isComplete: true },
         ],
         表单组件: [
@@ -50,6 +50,9 @@ export default {
         ],
         展示组件: [
           { name: 'Sticky 粘性布局', isComplete: true },
+        ],
+        业务组件: [
+          { name: 'result 操作结果', isComplete: true },
         ],
       },
     };
