@@ -207,6 +207,7 @@ export default {
 
   #{$comp} {
     position: relative;
+    font-size: $font-size-md;
 
     &-wrap-fixed {
       position: fixed;

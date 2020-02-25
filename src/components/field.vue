@@ -468,6 +468,7 @@ export default {
   $comp: #{$PREFIX}field;
 
   #{$comp} {
+    font-size: $font-size-md;
     &-body {
       display: flex;
       align-items: center;

@@ -380,6 +380,7 @@ export default {
     position: relative;
     display: inline-flex;
     flex-wrap: wrap;
+    font-size: $font-size-md;
 
     &-slot:empty {
       display: none;

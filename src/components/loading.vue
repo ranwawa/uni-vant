@@ -139,6 +139,7 @@ export default {
     align-items: center;
     justify-content: center;
     color: $loading-spinner-color;
+    font-size: $font-size-md;
 
     &-icon {
       position: relative;

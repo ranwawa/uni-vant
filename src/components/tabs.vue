@@ -454,6 +454,7 @@ export default {
   #{$comp} {
     position: relative;
     -webkit-tap-highlight-color: transparent;
+    font-size: $font-size-md;
 
     &-wrap {
       display: flex;

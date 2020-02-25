@@ -37,7 +37,7 @@
         {{ contentDesc }}
       </view>
     </template>
-    <slot v-if="useButtonSlot" />
+    <slot v-if="useButtonSlot" name="button"/>
     <uv-button
       v-else
       :type="buttonType"
@@ -172,7 +172,9 @@ export default {
     display: flex;
     align-items: center;
     flex-direction: column;
+    padding-top: 40px;
     justify-content: center;
+    font-size: $font-size-md;
 
     &-title {
       margin: 15px auto 5px;

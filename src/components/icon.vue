@@ -125,6 +125,7 @@ export default {
   #{$comp} {
     position: relative;
     display: inline-block;
+    font-size: $font-size-md;
     // fix the vertical align with text
     line-height: 1;
   }

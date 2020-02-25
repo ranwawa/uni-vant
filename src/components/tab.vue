@@ -120,6 +120,7 @@ export default {
   }
 
   #{$comp} {
+    font-size: $font-size-md;
     &-pane {
       box-sizing: border-box;
       overflow-y: auto;
