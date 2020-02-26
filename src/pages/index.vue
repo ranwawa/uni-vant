@@ -10,6 +10,7 @@
           v-for="ele in item"
           :key="ele.name"
           :title="ele.name"
+          :label="ele.desc"
           :disabled="!ele.isComplete"
           :is-link="ele.isComplete"
           @click="handleClick(ele.name)"
@@ -47,12 +48,13 @@ export default {
         ],
         反馈组件: [
           { name: 'Overlay 遮罩层', isComplete: true },
+          { name: 'Swiper-dot 滑块指示器', isComplete: true, desc: '仿uni-app' },
         ],
         展示组件: [
           { name: 'Sticky 粘性布局', isComplete: true },
         ],
         业务组件: [
-          { name: 'result 操作结果', isComplete: true },
+          { name: 'result 操作结果', isComplete: true, desc: '自定义' },
         ],
       },
     };

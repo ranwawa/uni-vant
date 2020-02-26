@@ -1,5 +1,9 @@
 <template>
   <view class="uv-doc">
+    <uv-platform
+      html
+      weixin
+    />
     <uv-section title="基础用法">
       <uv-cell-group>
         <uv-cell

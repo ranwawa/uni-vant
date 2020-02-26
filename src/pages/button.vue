@@ -4,6 +4,10 @@
 <!-- remark:  -->
 <template>
   <view class="uv-doc">
+    <uv-platform
+      html
+      weixin
+    />
     <uv-section title="按钮类型">
       <uv-button>默认按钮</uv-button>
       <uv-button type="primary">主要按钮</uv-button>

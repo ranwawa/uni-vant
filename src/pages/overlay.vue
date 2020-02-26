@@ -4,6 +4,10 @@
 <!-- remark:  -->
 <template>
   <view class="uv-doc">
+    <uv-platform
+      html
+      weixin
+    />
     <uv-section title="基础用法">
       <uv-button @click="handleClick('show1')">显示遮罩层</uv-button>
     </uv-section>

@@ -4,6 +4,10 @@
 <!-- remark:  -->
 <template>
   <view class="uv-doc">
+    <uv-platform
+      html
+      weixin
+    />
     <uv-section title="加载类型">
       <uv-loading custom-class="demo-loading" />
       <uv-loading
