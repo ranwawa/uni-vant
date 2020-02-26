@@ -52,6 +52,7 @@ export default {
         ],
         展示组件: [
           { name: 'Sticky 粘性布局', isComplete: true },
+          { name: 'tag 标签', isComplete: true },
         ],
         业务组件: [
           { name: 'result 操作结果', isComplete: true, desc: '自定义' },

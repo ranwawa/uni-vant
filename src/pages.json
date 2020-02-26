@@ -83,6 +83,12 @@
       "style": {
         "navigationBarTitleText": "result"
       }
+    },
+    {
+      "path": "pages/tag",
+      "style": {
+        "navigationBarTitleText": "tag"
+      }
     }
   ],
   "globalStyle": {
