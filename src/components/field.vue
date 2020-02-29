@@ -15,12 +15,14 @@
     :custom-style="customStyle"
     :custom-id="customId"
   >
+    <!-- 左侧图标 -->
     <view
       slot="icon"
       class="uv-field-slot_left-icon"
     >
       <slot name="left-icon" />
     </view>
+    <!-- 标题 -->
     <view
       slot="title"
       class="uv-field-slot_label"
@@ -32,6 +34,7 @@
       <textarea
         v-if="computedIsShowTextarea"
         :class="computedInputClass"
+        id="textarea"
         :fixed="fixed"
         :focus="focus"
         :value="value"
@@ -76,6 +79,7 @@
         @focus="handleFocus"
         @confirm="handleConfirm"
       />
+      <!-- 清空图标 -->
       <uv-icon
         v-if="computedIsShowClearIcon"
         size="16px"
@@ -83,6 +87,7 @@
         custom-class="van-field_clear-root van-field_icon-root"
         @touchstart.stop="handleClear"
       />
+      <!-- 右侧自定义图标 -->
       <view
         class="uv-field_icon-container"
         @click="handleClickRightIcon"
@@ -98,10 +103,12 @@
           name="right-icon"
         />
       </view>
+      <!-- 右侧自定义按钮 -->
       <view class="uv-field-button">
         <slot name="button" />
       </view>
     </view>
+    <!-- 错误文字 -->
     <view
       v-if="errorMessage"
       class="uv-field_error-message"
@@ -117,6 +124,9 @@ import uvCell from './cell.vue';
 import uvIcon from './icon.vue';
 import { baseMixin } from './utils/mixins';
 import { bem, getSystemInfoSync } from './utils';
+// #ifdef MP-ALIPAY
+import { getCharacterLen } from './utils/utils';
+// #endif
 
 export default {
   name: 'uv-field',
@@ -133,6 +143,7 @@ export default {
       // todo 如何测这种依赖方法的属性方法？
       system: getSystemInfoSync().split(' ').shift().toLowerCase(),
       focused: false,
+      textareaAutoHeight: false,
     };
   },
   props: {
@@ -253,7 +264,7 @@ export default {
     // 提示文字样式
     placeholderStyle: {
       type: String,
-      default: '',
+      default: 'font-size: 14px;',
     },
     // 自适应高度
     autosize: {
@@ -367,12 +378,14 @@ export default {
         type,
         disabled,
         error,
+        textareaAutoHeight,
       } = this;
       const param = [
         inputAlign,
         {
           disabled,
           error,
+          'textarea_auto-height': textareaAutoHeight,
         },
       ];
       if (this.computedIsShowTextarea) {
@@ -411,7 +424,23 @@ export default {
       ]);
     },
   },
+  mounted() {
+    this.getTextAreaWidth();
+  },
   methods: {
+    getTextAreaWidth() {
+      // #ifdef MP-ALIPAY
+      if (!this.computedIsShowTextarea) { return; }
+      uni
+        .createSelectorQuery()
+        .select('textarea')
+        .boundingClientRect()
+        .exec((res) => {
+          const [{ width }] = res;
+          this.textareaWidthEm = Math.ceil(width / 14);
+        });
+      // #endif
+    },
     handleInput(e) {
       const { value = '' } = e.detail || {};
       // todo 这里加个tick的主要目的是？
@@ -444,6 +473,9 @@ export default {
     emitChange(e) {
       this.$emit('input', e);
       this.$emit('change', e);
+      // #ifdef MP-ALIPAY
+      this.textareaAutoHeight = getCharacterLen(e) > this.textareaWidthEm;
+      // #endif
     },
   },
 };
@@ -494,7 +526,7 @@ export default {
       border: 0;
       resize: none;
       color: $field-input-text-color;
-      /* 兼容h5 uni会自动生成一个16px的尺寸 */
+      /* 兼容h5,支付宝小程序 默认是16px */
       font-size: $font-size-md;
       height: $cell-line-height;
       min-height: $cell-line-height;
@@ -502,6 +534,15 @@ export default {
       &-textarea {
         height: $field-text-area-min-height;
         min-height: $field-text-area-min-height;
+        /* #ifdef MP-ALIPAY */
+        /* 支付宝小程序默认是2个em高 */
+        height: 1em !important;
+
+        &.uv-field-input-textarea_auto-height {
+          height: auto !important;
+        }
+
+        /* #endif */
       }
 
       &-error {
@@ -552,6 +593,10 @@ export default {
     }
 
     &_error {
+      /* #ifdef MP-ALIPAY */
+      // alipay's placeholder has 4px padding-left
+      padding-left: 4px;
+      /* #endif */
       text-align: left;
       font-size: $field-error-message-text-font-size;
       color: $field-error-message-color;
