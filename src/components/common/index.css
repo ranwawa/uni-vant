@@ -30,6 +30,17 @@
   color: #969799;
   line-height: 20px;
 }
+.uv-cell_left-icon-wrap,
+.uv-cell_right-icon-wrap {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  font-size: 16px;
+}
+
+.uv-cell_left-icon-wrap {
+  margin-right: 5px;
+}
 /* 输入框 */
 .uv-field_icon-root {
   display: flex;
