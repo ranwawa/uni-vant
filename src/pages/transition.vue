@@ -3,6 +3,7 @@
     <uv-platform
       html
       weixin
+      zhifubao
     />
     <uv-section title="基础用法">
       <uv-cell-group>

@@ -66,6 +66,12 @@ export default {
       uni.navigateTo({ url });
     },
   },
+  onPullDownRefresh() {
+    this.timer = setTimeout(uni.stopPullDownRefresh, 1688);
+  },
+  onUnLoad() {
+    this.timer && clearTimeout(this.timer);
+  },
 };
 </script>
 

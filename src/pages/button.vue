@@ -7,6 +7,7 @@
     <uv-platform
       html
       weixin
+      zhifubao
     />
     <uv-section title="按钮类型">
       <uv-button>默认按钮</uv-button>
