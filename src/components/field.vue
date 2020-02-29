@@ -83,7 +83,7 @@
         size="16px"
         name="clear"
         custom-class="van-field_clear-root van-field_icon-root"
-        @touchstart.native.stop="handleClear"
+        @touchstart.stop="handleClear"
       />
       <view
         v-if="computedIsShowRightIcon"

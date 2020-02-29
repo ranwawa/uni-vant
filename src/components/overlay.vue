@@ -6,7 +6,7 @@
     :custom-id="customId"
     :show="show"
     :duration="duration"
-    @click.native="handleClick"
+    @click="handleClick"
     @touchmove.stop
   >
     <slot />

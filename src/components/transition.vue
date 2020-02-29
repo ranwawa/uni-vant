@@ -5,6 +5,7 @@
     :style="computedStyle"
     :class="computedRootClass"
     @transitionend="handleTransitionEnd"
+    @click="$emit('click')"
   >
     <slot />
   </view>
