@@ -42,6 +42,9 @@
   margin-right: 5px;
 }
 /* 输入框 */
+.uv-field-label {
+  white-space: nowrap;
+}
 .uv-field_icon-root {
   display: flex;
   align-items: center;

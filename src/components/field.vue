@@ -16,14 +16,12 @@
     :custom-id="customId"
   >
     <view
-      v-if="$slots.icon"
       slot="icon"
       class="uv-field-slot_left-icon"
     >
       <slot name="left-icon" />
     </view>
     <view
-      v-if="$slots.label"
       slot="title"
       class="uv-field-slot_label"
     >
@@ -86,7 +84,6 @@
         @touchstart.stop="handleClear"
       />
       <view
-        v-if="computedIsShowRightIcon"
         class="uv-field_icon-container"
         @click="handleClickRightIcon"
       >
@@ -122,7 +119,7 @@ import { baseMixin } from './utils/mixins';
 import { bem, getSystemInfoSync } from './utils';
 
 export default {
-  name: 'field',
+  name: 'uv-field',
   mixins: [baseMixin],
   // todo 要验证一下，这个最终打包到小程序的js属性里面了么
   behaviors: ['wx://form-field'],
@@ -161,7 +158,7 @@ export default {
     // 标题宽度
     titleWidth: {
       type: [String, Number],
-      default: '90px',
+      default: 'min-content',
     },
     // 内容垂直居中
     center: {
@@ -413,13 +410,6 @@ export default {
         },
       ]);
     },
-    computedIsShowRightIcon() {
-      return this.rightIcon || this.$slots['right-icon'];
-    },
-  },
-  mounted() {
-    // todo 需要验证支付宝等其他小程序的情况
-    console.log(this.$slots);
   },
   methods: {
     handleInput(e) {
@@ -469,6 +459,7 @@ export default {
 
   #{$comp} {
     font-size: $font-size-md;
+
     &-body {
       display: flex;
       align-items: center;
@@ -480,6 +471,13 @@ export default {
 
       &-textarea.uv-filed-body-ios {
         margin-top: -4.5px;
+      }
+    }
+
+    &-slot {
+      &_label:empty,
+      &_left-icon:empty {
+        display: none;
       }
     }
 
