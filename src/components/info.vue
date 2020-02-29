@@ -13,7 +13,7 @@
   </view>
 </template>
 <script>
-import bem from './utils/bem';
+import { bem } from './utils';
 
 export default {
   name: 'uv-info',
