@@ -8,6 +8,7 @@
       html
       weixin
       zhifubao
+      android
     />
     <uv-section title="按钮类型">
       <uv-button>默认按钮</uv-button>
