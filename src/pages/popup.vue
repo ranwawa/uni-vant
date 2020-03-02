@@ -4,6 +4,7 @@
       html
       weixin
       zhifubao
+      android
     />
     <uv-section title="基础用法">
       <uv-cell

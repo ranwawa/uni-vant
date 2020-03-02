@@ -144,7 +144,7 @@
     {
       "path": "pages/index",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationBarTitleText": "uni-vant"
       }
     },
     {

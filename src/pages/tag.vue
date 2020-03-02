@@ -2,6 +2,7 @@
   <view class="uv-doc">
     <uv-platform
       html
+      android
     />
     <uv-section title="基础用法">
       <uv-tag>标签</uv-tag>

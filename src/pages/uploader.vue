@@ -7,6 +7,7 @@
     <uv-platform
       html
       weixin
+      android
     />
     <uv-section title="基础用法">
       <uv-uploader
