@@ -7,40 +7,53 @@
     <uv-platform
       html
       weixin
+      zhifubao
+      android
     />
     <uv-section title="基础用法">
-      <uv-icon name="chat-o" />
+      <uv-icon
+        name="chat-o"
+        size="18px"
+      />
       <uv-icon
         name="https://img.yzcdn.cn/vant/logo.png"
-        size="1em"
+        size="18px"
       />
     </uv-section>
     <uv-section title="提示信息">
       <uv-icon
         name="chat-o"
+        size="18px"
         dot
       />
       <uv-icon
         name="chat-o"
+        size="18px"
         info="9"
       />
       <uv-icon
         name="chat-o"
+        size="18px"
         info="99+"
       />
     </uv-section>
     <uv-section title="图标颜色">
       <uv-icon
         name="chat-o"
+        size="18px"
         color="red"
       />
       <uv-icon
         name="chat-o"
+        size="18px"
         color="rgb(7, 193, 96)"
       />
     </uv-section>
     <uv-section title="图标大小">
-      <uv-icon name="chat-o" />
+      <uv-icon
+        name="chat-o"
+        size="18px"
+      />
       <uv-icon
         name="chat-o"
         size="44px"
@@ -48,14 +61,16 @@
     </uv-section>
     <uv-section title="自定义图标">
       <uv-icon
-        name="qr"
+        name="html"
         class-prefix="iconfont"
         size="32px"
+        color="red"
       />
       <uv-icon
-        name="img"
+        name="zhifubao"
         class-prefix="iconfont"
         size="32px"
+        color="blue"
       />
     </uv-section>
   </view>

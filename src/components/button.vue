@@ -11,7 +11,6 @@
     hover-class="uv-btn-active hover-class"
     :type="type"
     :size="size"
-    :disabled="disabled"
     :lang="lang"
     :open-type="openType"
     :session-from="sessionFrom"
@@ -50,8 +49,8 @@
         custom-style="line-height: inherit;"
         custom-class="uv-btn-icon"
       />
-      <!-- the gutter between icon and text-->
-      <text :class="{'uv-btn-text': !!$slots.default && icon}">
+      <!-- the gutter between icon and text -->
+      <text class="uv-btn-text">
         <slot />
       </text>
     </template>
@@ -230,7 +229,7 @@ export default {
         // 边框,背景为设置的颜色
         // 前景色为白色
         if (!this.plain) {
-          style = `border-color: ${color} !important; background: ${color} !important;`;
+          style = `border-color: ${color}; background: ${color};`;
           textColor = '#fff';
         }
         style += `color: ${textColor}; border-color: ${textColor};`;
@@ -300,8 +299,7 @@ export default {
     "large": 100% 50px (0) $font-size-lg,
     "normal": auto 44px (0 15px) $font-size-md,
     "small": 60px 30px (0 $padding-xs) $font-size-sm,
-    // compatible with WeiXin button[size=mini]
-    "mini": 50px (22px !important) (0) ($font-size-xs !important),
+    "mini": 50px (22px) (0) ($font-size-xs),
   );
   $btn-types: (
     /* border-color background-color color */
@@ -309,11 +307,11 @@ export default {
     "info": $info $info $white,
     "warning": $warning $warning $white,
     "danger": $danger $danger $white,
-    "default": $border-color ($white !important) $text-color,
+    "default": $border-color ($white) $text-color,
   );
 
   @mixin get-plain($class-name, $color) {
-    #{$comp}-plain {
+    #{$comp} #{$comp}-plain {
       background-color: $white;
 
       &#{$class-name} {
@@ -329,7 +327,8 @@ export default {
     $bg-color: nth($values, 2);
     $color: nth($values, 3);
 
-    #{$class-name} {
+    // compatible with weixin button[default]
+    #{$comp}#{$class-name} {
       border: 1px solid $bd-color;
       background-color: $bg-color;
       color: $color;
@@ -343,7 +342,8 @@ export default {
 
   /* size相关样式 */
   @each $size, $values in $btn-sizes {
-    #{$comp}-#{$size} {
+    // compatible with WeiXin button[size=mini]
+    #{$comp}#{$comp}-#{$size} {
       min-width: nth($values, 1);
       height: nth($values, 2);
       padding: nth($values, 3);

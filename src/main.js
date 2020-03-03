@@ -7,6 +7,14 @@ Vue.component('uv-section', section);
 Vue.component('uv-platform', platform);
 Vue.config.productionTip = false;
 App.mpType = 'app';
+Vue.mixin({
+  onPullDownRefresh() {
+    this.timer = setTimeout(uni.stopPullDownRefresh, 888);
+  },
+  onUnLoad() {
+    this.timer && clearTimeout(this.timer);
+  },
+});
 const app = new Vue({
   ...App,
 });

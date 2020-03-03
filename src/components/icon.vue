@@ -9,6 +9,7 @@
     :style="customStyle"
     :id="customId"
     @click="$emit('click')"
+    @touchstart="$emit('touchstart')"
   >
     <uv-info
       v-if="isShowInfo"
@@ -36,7 +37,7 @@ import uvInfo from './info.vue';
 import { addUnit, computeStyle, baseMixin } from './utils/index';
 
 export default {
-  name: 'icon',
+  name: 'uv-icon',
   mixins: [baseMixin],
   components: {
     uvInfo,

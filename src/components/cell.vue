@@ -14,9 +14,8 @@
     <!-- 左侧图标 -->
     <uv-icon
       v-if="icon"
-      class="uv-cell_left-icon-wrap"
       :name="icon"
-      custom-class="van-cell_left-icon"
+      custom-class="uv-cell_left-icon uv-cell_left-icon-wrap"
     />
     <slot
       v-else
@@ -65,8 +64,7 @@
     <uv-icon
       v-if="isLink"
       :name="computedRightIconName"
-      :class="rightIconClass"
-      custom-class="uv-cell_right-icon"
+      :custom-class="computedRightIconClass"
     />
     <slot
       v-else
@@ -240,6 +238,9 @@ export default {
         ? `max-width: ${this.titleWidth}; min-width: ${this.titleWidth};`
         : '';
     },
+    computedRightIconClass() {
+      return `${this.rightIconClass} uv-cell_right-icon`;
+    },
   },
   methods: {
     handleClick(e) {
@@ -338,18 +339,6 @@ export default {
       #{$comp}-title {
         font-size: $cell-large-title-font-size;
       }
-    }
-
-    &_left-icon-wrap,
-    &_right-icon-wrap {
-      display: flex;
-      align-items: center;
-      height: $cell-line-height;
-      font-size: $cell-icon-size;
-    }
-
-    &_left-icon-wrap {
-      margin-right: 5px;
     }
   }
 </style>
