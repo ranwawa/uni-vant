@@ -451,7 +451,7 @@ export default {
     handleBlur(e) {
       const { value = '' } = e.detail || {};
       this.focused = false;
-      this.$emit('blue', value);
+      this.$emit('blur', value);
     },
     handleFocus(e) {
       const { value = '' } = e.detail || {};
