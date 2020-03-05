@@ -37,14 +37,18 @@
         {{ contentDesc }}
       </view>
     </template>
-    <slot v-if="useButtonSlot" name="button"/>
+    <slot
+      v-if="useButtonSlot"
+      name="button"
+    />
     <uv-button
       v-else
       :type="buttonType"
       size="large"
       custom-style="margin-top: 30px;"
-      @click="handleClick"
-    > {{ buttonText }}
+      @click="$emit('click')"
+    >
+      {{ buttonText }}
     </uv-button>
   </view>
 </template>
@@ -105,14 +109,6 @@ export default {
       type: String,
       default: '确定',
     },
-    buttonUrl: {
-      type: String,
-      default: '',
-    },
-    buttonFunction: {
-      type: [Object, Function],
-      default: null,
-    },
   },
   computed: {
     computedClass() {
@@ -141,19 +137,8 @@ export default {
             break;
         }
         this.iconName = this.name || iconName;
-        console.log(val, this.iconName);
         this.buttonType = buttonType;
       },
-    },
-  },
-  methods: {
-    handleClick() {
-      const { buttonFunction, buttonUrl } = this;
-      if (buttonFunction) {
-        buttonFunction();
-      } else if (buttonUrl) {
-        uni.redirectTo({ url: buttonUrl });
-      }
     },
   },
 };
@@ -172,8 +157,8 @@ export default {
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-top: 40px;
     justify-content: center;
+    padding-top: 40px;
     font-size: $font-size-md;
 
     &-title {
