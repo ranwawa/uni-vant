@@ -50,9 +50,9 @@
         custom-class="uv-btn-icon"
       />
       <!-- the gutter between icon and text -->
-      <text class="uv-btn-text">
+      <view class="uv-btn-text">
         <slot />
-      </text>
+      </view>
     </template>
   </button>
   <!-- todo 这里有很多小程序的属性需要迁移过来 -->
