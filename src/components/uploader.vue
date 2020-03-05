@@ -362,8 +362,8 @@ export default {
     },
     checkFileSize(file, maxSize) {
       return file instanceof Array
-        ? file.every((ele) => ele.size <= maxSize)
-        : file.size <= maxSize;
+        ? file.every((ele) => ele.size >= maxSize)
+        : file.size >= maxSize;
     },
   },
 };
