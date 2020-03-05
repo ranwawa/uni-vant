@@ -174,6 +174,7 @@ export default {
     maxSize: {
       type: Number,
       default: -1,
+      validate: (value) => value === -1 || value > 0,
     },
     // 文件上传数量限制
     maxCount: {
