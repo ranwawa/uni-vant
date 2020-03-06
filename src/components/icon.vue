@@ -9,7 +9,7 @@
     :style="customStyle"
     :id="customId"
     @click="$emit('click')"
-    @touchstart="$emit('touchstart')"
+    @touchstart="$emit('touchstart', $event)"
   >
     <uv-info
       v-if="isShowInfo"
