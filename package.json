@@ -1,6 +1,6 @@
 {
   "name": "uni-vant",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "基于uni-app,参考vant-weapp,uni-ui的跨端ui组件库",
   "main": "lib/",
   "directories": {
