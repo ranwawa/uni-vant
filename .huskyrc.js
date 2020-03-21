@@ -4,7 +4,7 @@ module.exports = {
     "pre-commit": "pretty-quick --staged",
     "pre-push": tasks([
       "rm -rf npm/lib",
-      "cp -rf examples/src/components/. npm/lib",
+      "cp -rf src/components/. npm/lib",
       "cd npm",
       "npm version patch",
       "npm publish"
