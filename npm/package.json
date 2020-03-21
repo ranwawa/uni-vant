@@ -1,0 +1,31 @@
+{
+  "name": "uni-vant",
+  "version": "1.1.1",
+  "description": "基于uni-app,参考vant-weapp,uni-ui的跨端ui组件库",
+  "main": "lib/",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "files": [
+    "lib",
+    "test"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ranwawa/uni-vant.git"
+  },
+  "keywords": [
+    "uni-app",
+    "ui-components"
+  ],
+  "author": "ranwawa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ranwawa/uni-vant/issues"
+  },
+  "homepage": "https://github.com/ranwawa/uni-vant#readme"
+}
