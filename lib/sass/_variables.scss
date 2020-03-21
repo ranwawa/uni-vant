@@ -1,0 +1,145 @@
+$black: #000 !default;
+$white: #fff !default;
+$gray-1: #f7f8fa !default;
+$gray-2: #f2f3f5 !default;
+$gray-3: #ebedf0 !default;
+$gray-4: #dcdee0 !default;
+$gray-5: #c8c9cc !default;
+$gray-6: #969799 !default;
+$gray-7: #646566 !default;
+$gray-8: #323233 !default;
+$green: #07c160 !default;
+$blue: #1989fa !default;
+$red: #ee0a24 !default;
+$orange: #ff976a !default;
+$colors: () !default;
+$colors: map-merge(
+		(
+			"blue": $blue,
+			"red": $red,
+			"orange": $orange,
+			"green": $green,
+			"white": $white,
+		),
+		$colors
+);
+$primary: $green !default;
+$info: $blue !default;
+$danger: $red !default;
+$warning: $orange !default;
+$theme-colors: () !default;
+$theme-colors: map-merge(
+		(
+			"primary": $primary,
+			"info": $info,
+			"warning": $warning,
+			"danger": $danger,
+		),
+		$theme-colors
+);
+
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark: $gray-8 !default;
+$yiq-text-light: $white !default;
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold: 150 !default;
+
+// Cell
+$cell-line-height: 24px !default;
+$cell-icon-size: 16px !default;
+
+// Border
+$border-color: $gray-3 !default !default;
+$border-width-base: 1px !default !default;
+$border-radius-sm: 2px !default;
+$border-radius-md: 4px !default;
+$border-radius-max: 999px !default;
+
+// Component Colors
+$text-color: $gray-8 !default;
+$active-color: $gray-2 !default;
+$active-opacity: .7 !default;
+$disabled-opacity: .5 !default;
+$background-color: $gray-1 !default;
+$background-color-light: #fafafa !default;
+
+// Font
+$font-size-xs: 10px !default;
+$font-size-sm: 12px !default;
+$font-size-md: 14px !default;
+$font-size-lg: 16px !default;
+$font-weight-bold: 500 !default;
+
+// Padding
+$padding-base: 4px !default;
+$padding-xs: $padding-base * 2 !default;
+$padding-sm: $padding-base * 3 !default;
+$padding-md: $padding-base * 4 !default;
+$padding-lg: $padding-base * 6 !default;
+$padding-xl: $padding-base * 8 !default;
+
+// Animation
+$animation-duration-base: .3s !default;
+$animation-duration-fast: .2s !default;
+
+// cell
+$cell-font-size: $font-size-md !default;
+$cell-line-height: 24px !default;
+$cell-vertical-padding: 10px !default;
+$cell-horizontal-padding: $padding-md !default;
+$cell-text-color: $text-color !default;
+$cell-background-color: $white !default;
+$cell-border-color: $border-color !default;
+$cell-active-color: $active-color !default;
+$cell-required-color: $red !default;
+$cell-label-color: $gray-6 !default;
+$cell-label-font-size: $font-size-sm !default;
+$cell-label-line-height: 18px !default;
+$cell-label-margin-top: 3px !default;
+$cell-value-color: $gray-6 !default;
+$cell-icon-size: 16px !default;
+$cell-right-icon-color: $gray-6 !default;
+$cell-large-vertical-padding: $padding-sm !default;
+$cell-large-title-font-size: $font-size-lg !default;
+$cell-large-label-font-size: $font-size-md !default;
+
+// CellGroup
+$cell-group-background-color: $white !default;
+$cell-group-title-color: $gray-6 !default;
+$cell-group-title-padding: $padding-md $padding-md $padding-xs !default;
+$cell-group-title-font-size: $font-size-md !default;
+$cell-group-title-line-height: 16px !default;
+
+// Field
+$field-input-text-color: $text-color !default;
+$field-input-error-text-color: $red !default;
+$field-input-disabled-text-color: $gray-6 !default;
+$field-placeholder-text-color: $gray-6 !default;
+$field-clear-icon-color: $gray-5 !default;
+$field-icon-container-color: $gray-6 !default;
+$field-error-message-color: $red !default;
+$field-error-message-text-font-size: $font-size-sm !default;
+$field-text-area-min-height: 18px !default;
+
+// Uploader
+$uploader-size: 80px !default;
+$uploader-icon-size: 24px !default;
+$uploader-icon-color: $gray-6 !default;
+$uploader-text-color: $gray-6 !default;
+$uploader-text-font-size: $font-size-sm !default;
+$uploader-upload-border-color: $gray-3 !default;
+$uploader-upload-border-radius: 4px !default;
+$uploader-upload-background-color: $white !default;
+$uploader-delete-color: $gray-6 !default;
+$uploader-delete-icon-size: 18px !default;
+$uploader-delete-background-color: $white !default;
+$uploader-file-background-color: $background-color !default;
+$uploader-file-icon-size: 20px !default;
+$uploader-file-icon-color: $gray-7 !default;
+$uploader-file-name-font-size: $font-size-sm !default;
+$uploader-file-name-text-color: $gray-7 !default;
+
+// Overlay
+$overlay-background-color: rgba(0, 0, 0, 0.7) !default;
+
+$PREFIX: ".uv-";

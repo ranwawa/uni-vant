@@ -1,0 +1,203 @@
+$black: #000 !default;
+$white: #fff !default;
+$gray-1: #f7f8fa !default;
+$gray-2: #f2f3f5 !default;
+$gray-3: #ebedf0 !default;
+$gray-4: #dcdee0 !default;
+$gray-5: #c8c9cc !default;
+$gray-6: #969799 !default;
+$gray-7: #646566 !default;
+$gray-8: #323233 !default;
+$green: #07c160 !default;
+$blue: #1989fa !default;
+$red: #ee0a24 !default;
+$orange: #ff976a !default;
+$colors: () !default;
+$colors: map-merge(
+		(
+			"blue": $blue,
+			"red": $red,
+			"orange": $orange,
+			"green": $green,
+			"white": $white,
+		),
+		$colors
+);
+$primary: $green !default;
+$info: $blue !default;
+$danger: $red !default;
+$warning: $orange !default;
+$theme-colors: () !default;
+$theme-colors: map-merge(
+		(
+			"primary": $primary,
+			"info": $info,
+			"warning": $warning,
+			"danger": $danger,
+		),
+		$theme-colors
+);
+
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark: $gray-8 !default;
+$yiq-text-light: $white !default;
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold: 150 !default;
+
+
+// Cell
+$cell-line-height: px2rpx(24) !default;
+$cell-icon-size: px2rpx(24) !default;
+
+// Border
+$border-color: $gray-3 !default;
+$border-width-base: 1px !default;
+$border-radius-sm: px2rpx(2) !default;
+$border-radius-md: px2rpx(4) !default;
+$border-radius-max: px2rpx(999) !default;
+
+// Component Colors
+$text-color: $gray-8 !default;
+$active-color: $gray-2 !default;
+$active-opacity: .7 !default;
+$disabled-opacity: .5 !default;
+$background-color: $gray-1 !default;
+$background-color-light: #fafafa !default;
+
+// Font
+$font-size-xs: px2rpx(10) !default;
+$font-size-sm: px2rpx(12) !default;
+$font-size-md: px2rpx(14) !default;
+$font-size-lg: px2rpx(16) !default;
+$font-weight-bold: 500 !default;
+
+// Padding
+$padding-base: 4 !default;
+$padding-xs: px2rpx($padding-base * 2) !default;
+$padding-sm: px2rpx($padding-base * 3) !default;
+$padding-md: px2rpx($padding-base * 4) !default;
+$padding-lg: px2rpx($padding-base * 6) !default;
+$padding-xl: px2rpx($padding-base * 8) !default;
+
+// Animation
+$animation-duration-base: .3s !default;
+$animation-duration-fast: .2s !default;
+
+// Button
+$button-height-large: px2rpx(50) !default;
+$button-height-normal: px2rpx(44) !default;
+$button-height-small: px2rpx(30) !default;
+$button-height-mini: px2rpx(22) !default;
+$button-min-width-small: px2rpx(60) !default;
+$button-min-width-mini: px2rpx(50) !default;
+$button-padding-normal: px2rpx(50) !default;
+$button-text-margin-left: px2rpx(4) !default;
+
+// Cell
+$cell-font-size: $font-size-md !default;
+$cell-line-height: px2rpx(24) !default;
+$cell-vertical-padding: px2rpx(10) !default;
+$cell-horizontal-padding: $padding-md !default;
+$cell-text-color: $text-color !default;
+$cell-background-color: $white !default;
+$cell-border-color: $border-color !default;
+$cell-active-color: $active-color !default;
+$cell-required-color: $red !default;
+$cell-label-color: $gray-6 !default;
+$cell-label-font-size: $font-size-sm !default;
+$cell-label-line-height: 18px !default;
+$cell-label-margin-top: 3px !default;
+$cell-value-color: $gray-6 !default;
+$cell-icon-size: 16px !default;
+$cell-right-icon-color: $gray-6 !default;
+$cell-large-vertical-padding: $padding-sm !default;
+$cell-large-title-font-size: $font-size-lg !default;
+$cell-large-label-font-size: $font-size-md !default;
+
+// CellGroup
+$cell-group-background-color: $white !default;
+$cell-group-title-color: $gray-6 !default;
+$cell-group-title-padding: $padding-md $padding-md $padding-xs !default;
+$cell-group-title-font-size: $font-size-md !default;
+$cell-group-title-line-height: px2rpx(16) !default;
+
+// Field
+$field-input-text-color: $text-color !default;
+$field-input-error-text-color: $red !default;
+$field-input-disabled-text-color: $gray-6 !default;
+$field-placeholder-text-color: $gray-6 !default;
+$field-clear-icon-color: $gray-5 !default;
+$field-icon-container-color: $gray-6 !default;
+$field-error-message-color: $red !default;
+$field-error-message-text-font-size: $font-size-sm !default;
+$field-text-area-min-height: px2rpx(18) !default;
+
+// Icon
+$info-size: $font-size-lg !default;
+$info-color: $white !default;
+$info-padding: 0 px2rpx(3) !default;
+$info-font-size: $font-size-sm !default;
+$info-font-weight: 500 !default;
+$info-border-width: 1px !default;
+$info-background-color: $red !default;
+$info-dot-color: $red !default;
+$info-dot-size: px2rpx(8) !default;
+$info-font-family: PingFang SC, Helvetica Neue, Arial, sans-serif !default;
+
+// Loading
+$loading-text-color: $gray-6 !default;
+$loading-text-font-size: $font-size-md !default;
+$loading-text-line-height: px2rpx(20) !default;
+$loading-spinner-color: $gray-5 !default;
+$loading-spinner-size: px2rpx(30) !default;
+$loading-spinner-animation-duration: .8s !default;
+
+// Popup
+$popup-background-color: $white !default;
+$popup-round-border-radius: px2rpx(20) !default;
+$popup-close-icon-size: $font-size-lg !default;
+$popup-close-icon-color: $gray-6 !default;
+$popup-close-icon-margin: px2rpx(16) !default;
+$popup-close-icon-z-index: 1 !default;
+
+// Result
+$result-padding-top: px2rpx(40) !default;
+$result-title-size: $font-size-lg !default;
+$result-title-line-height: px2rpx(25) !default;
+
+// Swiper-dot
+$swiper-dot-box-bottom: px2rpx(10) !default;
+$swiper-dot-item-width: px2rpx(8) !default;
+$swiper-dot-item-margin: px2rpx(6) !default;
+$swiper-dot-item-radius: px2rpx(100) !default;
+$swiper-dot-default-radius: px2rpx(50) !default;
+$swiper-dot-nav-height: px2rpx(40) !default;
+$swiper-dot-item-size: $font-size-md !default;
+$swiper-dot-item-margin: px2rpx(15) !default;
+$swiper-dot-text-size: $font-size-sm !default;
+
+// Tag
+$tag-margin: px2rpx(2) !default;
+// Uploader
+$uploader-size: px2rpx(80) !default;
+$uploader-icon-size: px2rpx(24) !default;
+$uploader-icon-color: $gray-6 !default;
+$uploader-text-color: $gray-6 !default;
+$uploader-text-font-size: $font-size-sm !default;
+$uploader-upload-border-color: $gray-3 !default;
+$uploader-upload-border-radius: px2rpx(4) !default;
+$uploader-upload-background-color: $white !default;
+$uploader-delete-color: $gray-6 !default;
+$uploader-delete-icon-size: px2rpx(18) !default;
+$uploader-delete-background-color: $white !default;
+$uploader-file-background-color: $background-color !default;
+$uploader-file-icon-size: px2rpx(20) !default;
+$uploader-file-icon-color: $gray-7 !default;
+$uploader-file-name-font-size: $font-size-sm !default;
+$uploader-file-name-text-color: $gray-7 !default;
+$upload-file-name-padding: px2rpx(5) !default;
+
+// Overlay
+$overlay-background-color: rgba(0, 0, 0, 0.7) !default;
+
+$PREFIX: ".uv-";
