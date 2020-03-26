@@ -12,3 +12,7 @@
 		@return $light;
 	}
 }
+
+@function px2rpx($size) {
+ @return #{$size * 2}rpx;
+}

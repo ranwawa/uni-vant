@@ -140,6 +140,6 @@ export default {
   .doc-platform {
     display: flex;
     justify-content: space-between;
-    padding: 16px 0;
+    padding: 32rpx 0;
   }
 </style>

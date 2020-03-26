@@ -62,16 +62,7 @@ export default {
   @import "sass/index";
 
   $comp: #{$PREFIX}info;
-  $info-size: 16px;
-  $info-color: $white;
-  $info-padding: 0 3px;
-  $info-font-size: 12px;
-  $info-font-weight: 500;
-  $info-border-width: 1px;
-  $info-background-color: $red;
-  $info-dot-color: $red;
-  $info-dot-size: 8px;
-  $info-font-family: PingFang SC, Helvetica Neue, Arial, sans-serif;
+
 
   #{$comp} {
     position: absolute;

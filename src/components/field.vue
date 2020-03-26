@@ -82,7 +82,7 @@
       <!-- 清空图标 -->
       <uv-icon
         v-if="computedIsShowClearIcon"
-        size="16px"
+        size="32rpx"
         name="clear"
         custom-class="van-field_clear-root van-field_icon-root"
         @touchstart.stop="handleClear"
@@ -94,7 +94,7 @@
       >
         <uv-icon
           v-if="rightIcon"
-          size="16px"
+          size="32rpx"
           :name="rightIcon"
           :custom-class="computedRightIconClass"
         />
@@ -264,7 +264,7 @@ export default {
     // 提示文字样式
     placeholderStyle: {
       type: String,
-      default: 'font-size: 14px;',
+      default: 'font-size: 28rpx;',
     },
     // 自适应高度
     autosize: {
@@ -502,7 +502,7 @@ export default {
       }
 
       &-textarea.uv-filed-body-ios {
-        margin-top: -4.5px;
+        margin-top: px2rpx(-4.5);
       }
     }
 

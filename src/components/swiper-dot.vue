@@ -8,40 +8,40 @@
     <slot />
     <view
       v-if="mode === 'default'"
-      :style="{'bottom':dots.bottom + 'px'}"
+      :style="{'bottom':dots.bottom + 'rpx'}"
       class="uv-swiper__dots-box"
     >
       <view
         v-for="(item,index) in info"
         :key="index"
         :style="{
-        'width': (index === current? dots.width*2:dots.width ) + 'px','height':dots.width/3 +'px' ,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border-radius':'0px'}"
+        'width': (index === current? dots.width*2:dots.width ) + 'rpx','height':dots.width/3 +'rpx' ,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border-radius':'0'}"
         class="uv-swiper__dots-item uv-swiper__dots-bar"
       />
     </view>
     <view
       v-else-if="mode === 'dot'"
-      :style="{'bottom':dots.bottom + 'px'}"
+      :style="{'bottom':dots.bottom + 'rpx'}"
       class="uv-swiper__dots-box"
     >
       <view
         v-for="(item,index) in info"
         :key="index"
         :style="{
-        'width': dots.width + 'px','height':dots.height +'px' ,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border':index !==current ? dots.border:dots.selectedBorder}"
+        'width': dots.width + 'rpx','height':dots.height +'rpx' ,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border':index !==current ? dots.border:dots.selectedBorder}"
         class="uv-swiper__dots-item"
       />
     </view>
     <view
       v-else-if="mode === 'round'"
-      :style="{'bottom':dots.bottom + 'px'}"
+      :style="{'bottom':dots.bottom + 'rpx'}"
       class="uv-swiper__dots-box"
     >
       <view
         v-for="(item,index) in info"
         :key="index"
         :class="[index === current&&'uv-swiper__dots-long']"
-        :style="{'width':(index === current? dots.width*3:dots.width ) + 'px','height':dots.height +'px' ,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border':index !==current ? dots.border:dots.selectedBorder}"
+        :style="{'width':(index === current? dots.width*3:dots.width ) + 'rpx','height':dots.height +'rpx' ,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border':index !==current ? dots.border:dots.selectedBorder}"
         class="uv-swiper__dots-item "
       />
     </view>
@@ -58,14 +58,13 @@
     </view>
     <view
       v-else-if="mode === 'indexes'"
-      :style="{'bottom':dots.bottom + 'px'}"
+      :style="{'bottom':dots.bottom + 'rpx'}"
       class="uv-swiper__dots-box"
     >
       <view
         v-for="(item,index) in info"
         :key="index"
-        :style="{
-        'width':dots.width + 'px','height':dots.height +'px' ,'color':index === current?dots.selectedColor:dots.color,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border':index !==current ? dots.border:dots.selectedBorder}"
+        :style="{ 'width':dots.width + 'rpx','height':dots.height +'rpx' ,'color':index === current?dots.selectedColor:dots.color,'background-color':index !== current?dots.backgroundColor:dots.selectedBackgroundColor,'border':index !==current ? dots.border:dots.selectedBorder}"
         class="uv-swiper__dots-item uv-swiper__dots-indexes"
       >
         <text class="uv-swiper__dots-indexes-text">{{ index+1 }}</text>
@@ -126,9 +125,9 @@ export default {
   data() {
     return {
       dots: {
-        width: 8,
-        height: 8,
-        bottom: 10,
+        width: 16,
+        height: 16,
+        bottom: 20,
         color: '#fff',
         backgroundColor: 'rgba(0, 0, 0, .3)',
         border: '1px rgba(0, 0, 0, .3) solid',
@@ -143,18 +142,18 @@ export default {
     },
     mode(newVal) {
       if (newVal === 'indexes') {
-        this.dots.width = 20;
-        this.dots.height = 20;
+        this.dots.width = 40;
+        this.dots.height = 40;
       } else {
-        this.dots.width = 8;
-        this.dots.height = 8;
+        this.dots.width = 16;
+        this.dots.height = 16;
       }
     },
   },
   created() {
     if (this.mode === 'indexes') {
-      this.dots.width = 20;
-      this.dots.height = 20;
+      this.dots.width = 40;
+      this.dots.height = 40;
     }
     this.dots = Object.assign(this.dots, this.dotsStyles);
   },
@@ -184,7 +183,7 @@ export default {
     &__dots-box {
       position: absolute;
       right: 0;
-      bottom: 10px;
+      bottom: $swiper-dot-box-bottom;
       left: 0;
       /* #ifndef APP-NVUE */
       display: flex;
@@ -196,9 +195,9 @@ export default {
     }
 
     &__dots-item {
-      width: 8px;
-      margin-left: 6px;
-      border-radius: 100px;
+      width: $swiper-dot-item-width;
+      margin-left: $swiper-dot-item-margin;
+      border-radius: $swiper-dot-item-radius;
       background-color: rgba(0, 0, 0, 0.4);;
       // transition: width 0.2s linear;  不要取消注释，不然会不能变色
     }
@@ -208,19 +207,19 @@ export default {
     }
 
     &__dots-default {
-      border-radius: 100px;
+      border-radius: $swiper-dot-item-radius;
     }
 
     &__dots-long {
-      border-radius: 50px;
+      border-radius: $swiper-dot-default-radius;
     }
 
     &__dots-bar {
-      border-radius: 50px;
+      border-radius: $swiper-dot-default-radius;
     }
 
     &__dots-nav {
-      bottom: 0px;
+      bottom: 0;
       display: flex;
       /* #ifndef APP-NVUE */
       align-items: center;
@@ -228,14 +227,14 @@ export default {
       flex: 1;
       flex-direction: row;
       justify-content: flex-start;
-      height: 40px;
+      height: $swiper-dot-nav-height;
       background-color: rgba(0, 0, 0, 0.2);
     }
 
     &__dots-nav-item {
-      margin: 0 15px;
+      margin: 0 $swiper-dot-item-margin;
       color: #fff;
-      font-size: 14px;
+      font-size: $swiper-dot-item-size;
     }
 
     &__dots-indexes {
@@ -247,7 +246,7 @@ export default {
 
       &-text {
         color: #fff;
-        font-size: 12px;
+        font-size: $swiper-dot-text-size;
       }
     }
   }

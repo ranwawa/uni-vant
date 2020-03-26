@@ -90,9 +90,9 @@ export default {
     pointer-events: none;
   }
   .content {
-    width: 200px;
-    height: 200px;
-    margin: 200px auto auto;
+    width: 400rpx;
+    height: 400rpx;
+    margin: 400rpx auto auto;
     background-color: blue;
   }
 </style>

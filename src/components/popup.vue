@@ -159,13 +159,6 @@ export default {
 >
   @import './sass/_index.scss';
 
-  $popup-background-color: $white;
-  $popup-round-border-radius: 20px;
-  $popup-close-icon-size: 18px;
-  $popup-close-icon-color: $gray-6;
-  $popup-close-icon-margin: 16px;
-  $popup-close-icon-z-index: 1;
-
   $comp: #{$PREFIX}popup;
 
   #{$comp} {

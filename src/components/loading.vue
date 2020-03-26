@@ -117,12 +117,7 @@ export default {
   @import "./sass/index";
 
   $comp: #{$PREFIX}loading;
-  $loading-text-color: $gray-6;
-  $loading-text-font-size: $font-size-md;
-  $loading-text-line-height: 20px;
-  $loading-spinner-color: $gray-5;
-  $loading-spinner-size: 30px;
-  $loading-spinner-animation-duration: .8s;
+
 
   @keyframes van-rotate {
     from {
@@ -169,7 +164,7 @@ export default {
 
         &::before {
           display: block;
-          width: 2px;
+          width: px2rpx(2);
           height: 25%;
           margin: 0 auto;
           content: ' ';

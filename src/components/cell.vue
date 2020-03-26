@@ -264,8 +264,6 @@ export default {
 
   $comp: #{$PREFIX}cell;
 
-  $cell-line-height: 24px;
-  $cell-icon-size: 16px;
 
   #{$comp} {
     position: relative;

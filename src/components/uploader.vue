@@ -114,7 +114,7 @@ export default {
     // 览图和上传区域的尺寸，默认单位为px
     previewSize: {
       type: [String, Number],
-      default: '80px',
+      default: '160rpx',
     },
     // 预览图裁剪模式，可选值参考小程序image组件的mode属性
     imageFit: {
@@ -439,7 +439,7 @@ export default {
         box-sizing: border-box;
         width: 100%;
         margin-top: $padding-xs;
-        padding: 0 5px;
+        padding: 0 px2rpx(5);
         text-align: center;
         color: $uploader-file-name-text-color;
         font-size: $uploader-file-name-font-size;

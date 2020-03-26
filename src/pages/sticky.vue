@@ -13,7 +13,7 @@
     </uv-section>
     <uv-section title="吸顶距离">
       <uv-sticky :offset-top="50" custom-class="b">
-        <uv-button type="info" custom-style="margin-left: 120px;">吸顶距离
+        <uv-button type="info" custom-style="margin-left: 240rpx;">吸顶距离
         </uv-button>
       </uv-sticky>
     </uv-section>
@@ -47,7 +47,7 @@ export default {
 
 <style lang="scss">
   /deep/ .uv-sticky-wrap-fixed .wrapper {
-    padding: 0 16px;
+    padding: 0 32rpx;
   }
   .padding {
     height: 200vh;

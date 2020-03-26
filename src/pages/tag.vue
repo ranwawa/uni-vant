@@ -66,6 +66,6 @@ export default {
   lang="scss"
 >
   /deep/ .uv-tag {
-    margin-right: 10px;
+    margin-right: 20rpx;
   }
 </style>

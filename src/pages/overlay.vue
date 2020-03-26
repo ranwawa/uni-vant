@@ -63,8 +63,8 @@ export default {
     right: 0;
     bottom: 0;
     left: 0;
-    width: 200px;
-    height: 200px;
+    width: 400rpx;
+    height: 400rpx;
     margin: auto;
     background-color: #fff;
   }

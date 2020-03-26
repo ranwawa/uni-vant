@@ -149,8 +149,6 @@ export default {
 >
   @import "./sass/index";
 
-  $uv-result-title-size: 18px;
-
   $comp: #{$PREFIX}result;
 
   #{$comp} {
@@ -158,14 +156,14 @@ export default {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    padding-top: 40px;
+    padding-top: $result-padding-top;
     font-size: $font-size-md;
 
     &-title {
       margin: 15px auto 5px;
-      font-size: $uv-result-title-size;
+      font-size: $result-title-size;
       font-weight: bold;
-      line-height: 25px;
+      line-height: $result-title-line-height;
     }
 
     &-desc {

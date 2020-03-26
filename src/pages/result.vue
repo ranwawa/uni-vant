@@ -48,6 +48,6 @@ export default {
   scoped
 >
   /deep/ .uv-result {
-    margin: 20px auto;
+    margin: 40rpx auto;
   }
 </style>

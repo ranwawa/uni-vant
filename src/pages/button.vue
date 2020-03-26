@@ -93,6 +93,6 @@ export default {
   scoped
 >
   /deep/ .uv-btn {
-    margin: 0 12px 12px 0;
+    margin: 0 24rpx 24rpx 0;
   }
 </style>

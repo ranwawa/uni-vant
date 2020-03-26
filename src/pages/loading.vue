@@ -58,6 +58,6 @@ export default {
   /*  margin-left: 16px;*/
   /*}*/
   .demo-loading {
-    margin-right: 16px;
+    margin-right: 32rpx;
   }
 </style>

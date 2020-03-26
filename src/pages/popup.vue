@@ -130,6 +130,6 @@ export default {
 >
   .content {
     position: static;
-    padding: 30px;
+    padding: 60rpx;
   }
 </style>

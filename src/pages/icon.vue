@@ -13,46 +13,46 @@
     <uv-section title="基础用法">
       <uv-icon
         name="chat-o"
-        size="18px"
+        size="36rpx"
       />
       <uv-icon
         name="https://img.yzcdn.cn/vant/logo.png"
-        size="18px"
+        size="36rpx"
       />
     </uv-section>
     <uv-section title="提示信息">
       <uv-icon
         name="chat-o"
-        size="18px"
+        size="36rpx"
         dot
       />
       <uv-icon
         name="chat-o"
-        size="18px"
+        size="36rpx"
         info="9"
       />
       <uv-icon
         name="chat-o"
-        size="18px"
+        size="36rpx"
         info="99+"
       />
     </uv-section>
     <uv-section title="图标颜色">
       <uv-icon
         name="chat-o"
-        size="18px"
+        size="36rpx"
         color="red"
       />
       <uv-icon
         name="chat-o"
-        size="18px"
+        size="36rpx"
         color="rgb(7, 193, 96)"
       />
     </uv-section>
     <uv-section title="图标大小">
       <uv-icon
         name="chat-o"
-        size="18px"
+        size="36rpx"
       />
       <uv-icon
         name="chat-o"

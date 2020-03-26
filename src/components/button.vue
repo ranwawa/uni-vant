@@ -160,7 +160,7 @@ export default {
     // 加载状态大小
     loadingSize: {
       type: String,
-      default: '20px',
+      default: '20rpx',
     },
     // 返回用户信息的语言
     lang: {
@@ -289,17 +289,14 @@ export default {
   @import "sass/index";
   @import "sass/hariline";
 
-
-  $border-radius-sm: 2px;
-
   // 样式前缀
   $comp: #{$PREFIX}btn;
   $btn-sizes: (
     /* min-width height padding font-size */
-    "large": 100% 50px (0) $font-size-lg,
-    "normal": auto 44px (0 15px) $font-size-md,
-    "small": 60px 30px (0 $padding-xs) $font-size-sm,
-    "mini": 50px (22px) (0) ($font-size-xs),
+    "large": 100% $button-height-large (0) $font-size-lg,
+    "normal": auto $button-height-normal (0 $button-padding-normal) $font-size-md,
+    "small": $button-min-width-small $button-height-small (0 $padding-xs) $font-size-sm,
+    "mini": $button-min-width-mini $button-height-mini (0) ($font-size-xs),
   );
   $btn-types: (
     /* border-color background-color color */
@@ -426,7 +423,7 @@ export default {
       &::after {
         border-width: 1px;
         border-color: inherit;
-        border-radius: $border-radius-sm * 2;
+        border-radius: $border-radius-md;
       }
 
       &.uv-btn-round::after {
@@ -439,7 +436,7 @@ export default {
     }
 
     &-text {
-      margin-left: 4px;
+      margin-left: $button-text-margin-left;
     }
   }
 </style>

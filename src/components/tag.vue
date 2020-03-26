@@ -204,7 +204,7 @@ export default {
     }
 
     &-close {
-      margin-left: 2px;
+      margin-left: $tag-margin;
     }
   }
 </style>
