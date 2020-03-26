@@ -59,7 +59,7 @@ import uvIcon from './icon.vue';
 import uvButton from './button.vue';
 
 export default {
-  name: 'uv-result',
+  name: 'UvResult',
   components: {
     uvIcon,
     uvButton,

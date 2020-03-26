@@ -21,7 +21,7 @@ import uvIcon from './icon.vue';
 const TYPE_LIST = ['default', 'primary', 'success', 'danger', 'warning'];
 const SIZE_LIST = ['', 'medium', 'large'];
 export default {
-  name: 'uv-tag',
+  name: 'UvTag',
   mixins: [baseMixin],
   components: {
     uvIcon,

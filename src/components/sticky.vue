@@ -23,7 +23,7 @@ const OBSERVER = {
 };
 const ROOT_ELEMENT = '.uv-sticky';
 export default {
-  name: 'uv-sticky',
+  name: 'UvSticky',
   mixins: [baseMixin, getRect],
   data() {
     return {

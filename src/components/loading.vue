@@ -43,7 +43,7 @@
 import { addUnit, bem, computeStyle } from './utils/index';
 
 export default {
-  name: 'uv-loading',
+  name: 'UvLoading',
   props: {
     // 颜色
     color: {

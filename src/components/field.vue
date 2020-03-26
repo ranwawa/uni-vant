@@ -129,7 +129,7 @@ import { getCharacterLen } from './utils/utils';
 // #endif
 
 export default {
-  name: 'uv-field',
+  name: 'UvField',
   mixins: [baseMixin],
   // todo 要验证一下，这个最终打包到小程序的js属性里面了么
   behaviors: ['wx://form-field'],

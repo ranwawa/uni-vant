@@ -69,7 +69,7 @@ import uvIcon from './icon.vue';
 import uvLoading from './loading.vue';
 
 export default {
-  name: 'uv-btn',
+  name: 'UvBtn',
   mixins: [baseMixin],
   components: {
     uvIcon,

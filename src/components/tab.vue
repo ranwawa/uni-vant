@@ -15,7 +15,7 @@ import {
 } from './utils/index';
 
 export default {
-  name: 'uv-tab',
+  name: 'UvTab',
   mixins: [baseMixin],
   data() {
     return {

@@ -15,7 +15,7 @@
 import { baseMixin, transition } from './utils/mixins';
 
 export default {
-  name: 'uv-transition',
+  name: 'UvTransition',
   mixins: [baseMixin, transition],
 };
 </script>

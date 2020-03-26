@@ -79,7 +79,7 @@ import { baseMixin } from './utils/mixins';
 import uvIcon from './icon.vue';
 
 export default {
-  name: 'uv-cell',
+  name: 'UvCell',
   components: {
     uvIcon,
   },

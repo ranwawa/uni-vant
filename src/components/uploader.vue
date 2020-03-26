@@ -94,7 +94,7 @@ function adaptorCheckImageType(item) {
   return item.path.indexOf(prefix) === 0;
 }
 export default {
-  name: 'uv-uploader',
+  name: 'UvUploader',
   components: {
     uvIcon,
   },

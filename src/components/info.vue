@@ -16,7 +16,7 @@
 import { bem } from './utils';
 
 export default {
-  name: 'uv-info',
+  name: 'UvInfo',
   props: {
     // 小红点
     dot: {

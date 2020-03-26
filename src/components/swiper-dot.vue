@@ -91,7 +91,7 @@
  * @event {Function} clickItem 组件触发点击事件时触发，e={currentIndex}
  */
 export default {
-  name: 'uv-swiper-dot',
+  name: 'UvSwiperDot',
   props: {
     info: {
       type: Array,

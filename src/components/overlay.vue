@@ -19,7 +19,7 @@ import { baseMixin, bem } from './utils/index';
 import uvTransition from './transition.vue';
 
 export default {
-  name: 'uv-overlay',
+  name: 'UvOverlay',
   components: {
     uvTransition,
   },

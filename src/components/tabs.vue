@@ -79,7 +79,7 @@ import uvInfo from './info.vue';
 
 const touch = new Touch();
 export default {
-  name: 'uv-tabs',
+  name: 'UvTabs',
   components: {
     uvInfo,
     uvSticky,

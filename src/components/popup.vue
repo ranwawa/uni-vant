@@ -33,7 +33,7 @@ import uvOverlay from './overlay.vue';
 import uvIcon from './icon.vue';
 
 export default {
-  name: 'uv-popup',
+  name: 'UvPopup',
   components: {
     uvOverlay,
     uvIcon,
