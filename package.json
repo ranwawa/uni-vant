@@ -1,31 +1,86 @@
 {
-  "name": "uni-vant",
+  "name": "my-project",
   "version": "0.0.1",
-  "description": "基于uni-app,参考vant-weapp,uni-ui的跨端ui组件库",
-  "main": "lib/",
-  "directories": {
-    "example": "examples",
-    "test": "test"
-  },
-  "files": [
-    "lib",
-    "test"
-  ],
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "npm run dev:h5",
+    "build": "npm run build:h5",
+    "lint": "",
+    "build:app-plus": "cross-env NODE_ENV=production UNI_PLATFORM=app-plus vue-cli-service uni-build",
+    "build:custom": "cross-env NODE_ENV=production uniapp-cli custom",
+    "build:h5": "cross-env NODE_ENV=production UNI_PLATFORM=h5 vue-cli-service uni-build",
+    "build:mp-alipay": "cross-env NODE_ENV=production UNI_PLATFORM=mp-alipay vue-cli-service uni-build",
+    "build:mp-baidu": "cross-env NODE_ENV=production UNI_PLATFORM=mp-baidu vue-cli-service uni-build",
+    "build:mp-qq": "cross-env NODE_ENV=production UNI_PLATFORM=mp-qq vue-cli-service uni-build",
+    "build:mp-toutiao": "cross-env NODE_ENV=production UNI_PLATFORM=mp-toutiao vue-cli-service uni-build",
+    "build:mp-weixin": "cross-env NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build",
+    "dev:app-plus": "cross-env NODE_ENV=development UNI_PLATFORM=app-plus vue-cli-service uni-build --watch",
+    "dev:custom": "cross-env NODE_ENV=development uniapp-cli custom",
+    "dev:h5": "cross-env NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-serve",
+    "dev:mp-alipay": "cross-env NODE_ENV=development UNI_PLATFORM=mp-alipay vue-cli-service uni-build --watch",
+    "dev:mp-baidu": "cross-env NODE_ENV=development UNI_PLATFORM=mp-baidu vue-cli-service uni-build --watch",
+    "dev:mp-qq": "cross-env NODE_ENV=development UNI_PLATFORM=mp-qq vue-cli-service uni-build --watch",
+    "dev:mp-toutiao": "cross-env NODE_ENV=development UNI_PLATFORM=mp-toutiao vue-cli-service uni-build --watch",
+    "dev:mp-weixin": "cross-env NODE_ENV=development UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch",
+    "info": "node node_modules/@dcloudio/vue-cli-plugin-uni/commands/info.js",
+    "test": "jest ./test/unit/specs/touch.spec.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ranwawa/uni-vant.git"
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@dcloudio/uni-app-plus": "^2.0.0-alpha-26320200228001",
+    "@dcloudio/uni-h5": "^2.0.0-alpha-26320200228001",
+    "@dcloudio/uni-helper-json": "*",
+    "@dcloudio/uni-mp-alipay": "^2.0.0-alpha-26320200228001",
+    "@dcloudio/uni-mp-baidu": "^2.0.0-alpha-26320200228001",
+    "@dcloudio/uni-mp-qq": "^2.0.0-alpha-26320200228001",
+    "@dcloudio/uni-mp-toutiao": "^2.0.0-alpha-26320200228001",
+    "@dcloudio/uni-mp-weixin": "^2.0.0-alpha-26320200228001",
+    "@dcloudio/uni-stat": "^2.0.0-alpha-25120200103006",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "@vue/test-utils": "^1.0.0-beta.30",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^24.9.0",
+    "babel-preset-env": "^1.7.0",
+    "bootstrap": "^4.4.1",
+    "flyio": "^0.6.2",
+    "jest": "^24.9.0",
+    "node-sass": "^4.13.0",
+    "npm-check-updates": "^4.0.3",
+    "regenerator-runtime": "^0.12.1",
+    "sass-loader": "^8.0.0",
+    "sinon": "^8.1.1",
+    "vue": "^2.6.10",
+    "vue-jest": "^3.0.5",
+    "vuex": "^3.0.1"
   },
-  "keywords": [
-    "uni-app",
-    "ui-components"
+  "devDependencies": {
+    "@dcloudio/uni-cli-shared": "^2.0.0-alpha-26320200228001",
+    "@dcloudio/uni-migration": "^2.0.0-alpha-26320200228001",
+    "@dcloudio/uni-template-compiler": "^2.0.0-alpha-26320200228001",
+    "@dcloudio/vue-cli-plugin-hbuilderx": "^2.0.0-alpha-26320200228001",
+    "@dcloudio/vue-cli-plugin-uni": "^2.0.0-alpha-26320200228001",
+    "@dcloudio/vue-cli-plugin-uni-optimize": "^2.0.0-alpha-26320200228001",
+    "@dcloudio/webpack-uni-mp-loader": "^2.0.0-alpha-26320200228001",
+    "@dcloudio/webpack-uni-pages-loader": "^2.0.0-alpha-26320200228001",
+    "@types/html5plus": "*",
+    "@types/uni-app": "*",
+    "@vue/cli-plugin-babel": "3.5.1",
+    "@vue/cli-plugin-eslint": "^4.2.3",
+    "@vue/cli-service": "^4.2.3",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-import": "^1.11.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.1",
+    "mini-types": "*",
+    "miniprogram-api-typings": "^2.8.0-2",
+    "postcss-comment": "^2.0.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "browserslist": [
+    "Android >= 4",
+    "ios >= 8"
   ],
-  "author": "ranwawa",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ranwawa/uni-vant/issues"
-  },
-  "homepage": "https://github.com/ranwawa/uni-vant#readme"
+  "uni-app": {
+    "scripts": {}
+  }
 }
