@@ -200,4 +200,22 @@ $upload-file-name-padding: px2rpx(5) !default;
 // Overlay
 $overlay-background-color: rgba(0, 0, 0, 0.7) !default;
 
+// skeleton
+$skeleton-padding: 0 $padding-md;
+$skeleton-row-height: px2rpx(16);
+$skeleton-row-background-color: $gray-2;
+$skeleton-row-margin-top: $padding-sm;
+$skeleton-avatar-background-color: $gray-2;
+$skeleton-animation-duration: 1.2s;
+
+// NavBar
+$nav-bar-height: px2rpx(46);
+$nav-bar-background-color: $white;
+$nav-bar-arrow-size: px2rpx(16);
+$nav-bar-icon-color: $blue;
+$nav-bar-text-color: $blue;
+$nav-bar-title-font-size: $font-size-lg;
+$nav-bar-title-text-color: $text-color;
+$nav-bar-z-index: 1;
+
 $PREFIX: ".uv-";

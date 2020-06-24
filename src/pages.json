@@ -226,9 +226,20 @@
       }
     },
     {
+      "path": "pages/skeleton",
+      "style": {
+        "navigationBarTitleText": "skeleton"
+      }
+    },
+    {
       "path": "pages/tag",
       "style": {
         "navigationBarTitleText": "tag"
+      }
+    },{
+      "path": "pages/nav-bar",
+      "style": {
+        "navigationBarTitleText": "nav-bar"
       }
     }
   ]
