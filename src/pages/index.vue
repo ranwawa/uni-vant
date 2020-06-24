@@ -53,9 +53,14 @@ export default {
         展示组件: [
           { name: 'Sticky 粘性布局', isComplete: true },
           { name: 'tag 标签', isComplete: true },
+          { name: 'Skeleton 骨架屏', isComplete: true },
+        ],
+        导航组件: [
+          { name: 'NavBar 导航栏', isComplete: true },
         ],
         业务组件: [
           { name: 'result 操作结果', isComplete: true, desc: '自定义' },
+          { name: 'price 价格', isComplete: true, desc: '自定义' },
         ],
       },
     };

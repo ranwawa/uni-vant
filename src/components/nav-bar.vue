@@ -164,7 +164,9 @@ export default {
       left: 0;
       width: 100%;
     }
-
+    &-border::after {
+      @include hairline-bottom;
+    }
     &__title {
       max-width: 60%;
       margin: 0 auto;
