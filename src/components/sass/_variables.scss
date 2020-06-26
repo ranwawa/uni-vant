@@ -208,7 +208,7 @@ $skeleton-avatar-background-color: $gray-2;
 $skeleton-animation-duration: 1.2s;
 
 // NavBar
-$nav-bar-height: px2rpx(46);
+$nav-bar-height: 92px; // 这里不能使用rpx,以防在大屏下高度太高,和小程序右边的胶囊无法对齐
 $nav-bar-background-color: $white;
 $nav-bar-arrow-size: px2rpx(16);
 $nav-bar-icon-color: $blue;

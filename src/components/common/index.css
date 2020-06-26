@@ -165,3 +165,10 @@
 .uv-result_icon-danger {
   color: #ee0a24;
 }
+/* nav-bar */
+.uv-icon.uv-nav-tab__arrow {
+  min-width: 1em;
+  margin-right: 8px;
+  color: #1989fa;
+  font-size: 32px !important;
+}
