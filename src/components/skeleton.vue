@@ -33,10 +33,10 @@
 </template>
 
 <script>
-import { baseMixin, bem } from "./utils";
+import { baseMixin, bem } from './utils';
 
 export default {
-  name: "UvSkeleton",
+  name: 'UvSkeleton',
   mixins: [baseMixin],
   props: {
     row: {
@@ -61,29 +61,29 @@ export default {
     },
     avatarSize: {
       type: String,
-      default: "64rpx",
+      default: '64rpx',
     },
     avatarShape: {
       type: String,
-      default: "round",
+      default: 'round',
     },
     titleWidth: {
       type: String,
-      default: "40%",
+      default: '40%',
     },
     rowWidth: {
       type: [String, Array],
-      default: "100%",
+      default: '100%',
     },
   },
   computed: {
     computedClass() {
       const { animate, customClass } = this;
-      const bemClass = bem("skeleton", [{ animate }]);
+      const bemClass = bem('skeleton', [{ animate }]);
       return `${bemClass} ${customClass}`;
     },
     computedAvatarClass() {
-      return bem("skeleton__avatar", [this.avatarShape]);
+      return bem('skeleton__avatar', [this.avatarShape]);
     },
     computedIsArray() {
       return this.rowWidth instanceof Array;

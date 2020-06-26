@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import UvSkeleton from "@/components/skeleton.vue";
-import UvButton from "@/components/button.vue";
+import UvSkeleton from '@/components/skeleton.vue';
+import UvButton from '@/components/button.vue';
 
 export default {
   components: {
