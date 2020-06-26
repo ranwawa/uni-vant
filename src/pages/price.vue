@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import UvPrice from "../components/price.vue";
+import UvPrice from '../components/price.vue';
 
 export default {
   components: {

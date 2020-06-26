@@ -20,19 +20,19 @@
   </view>
 </template>
 <script>
-import { baseMixin, bem } from "./utils";
+import { baseMixin, bem } from './utils';
 
 export default {
-  name: "UvPrice",
+  name: 'UvPrice',
   mixins: [baseMixin],
   props: {
     unit: {
       type: String,
-      default: "￥",
+      default: '￥',
     },
     amount: {
       type: [String, Number],
-      default: "0.00",
+      default: '0.00',
     },
     decimal: {
       type: Number,
@@ -44,13 +44,13 @@ export default {
     },
     color: {
       type: String,
-      default: "",
+      default: '',
     },
   },
   data() {
     return {
       inte: 0,
-      deci: "00",
+      deci: '00',
     };
   },
   watch: {
@@ -66,12 +66,12 @@ export default {
       const { size } = this;
       const type = typeof size;
       let fontSize;
-      if (type === "string") {
+      if (type === 'string') {
         fontSize = `${size}px`;
       } else {
         fontSize = /[a-zA-Z]{2,3}/.test(size) ? size : `${size}px`;
       }
-      const color = this.color ? `color: ${this.color};` : "";
+      const color = this.color ? `color: ${this.color};` : '';
       return `${this.customStyle}; font-size: ${fontSize}; ${color}`;
     },
   },
