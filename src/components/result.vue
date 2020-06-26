@@ -9,57 +9,38 @@
     class="uv-result"
     :id="customId"
   >
-    <slot
-      v-if="useIconSlot"
-      name="icon"
-    />
-    <uv-icon
-      v-else
-      :name="iconName"
-      :custom-class="computedClass"
-      size="66"
-    />
-    <slot
-      v-if="useContentSlot"
-      name="desc"
-    />
+    <slot v-if="useIconSlot" name="icon" />
+    <uv-icon v-else :name="iconName" :custom-class="computedClass" size="66" />
+    <slot v-if="useContentSlot" name="desc" />
     <template v-else>
-      <view
-        v-if="contentTitle"
-        class="uv-result-title"
-      >
+      <view v-if="contentTitle" class="uv-result-title">
         {{ contentTitle }}
       </view>
-      <view
-        v-if="contentDesc"
-        class="uv-result-desc"
-      >
+      <view v-if="contentDesc" class="uv-result-desc">
         {{ contentDesc }}
       </view>
     </template>
-    <slot
-      v-if="useButtonSlot"
-      name="button"
-    />
-    <uv-button
-      v-else
-      :type="buttonType"
-      size="large"
-      custom-style="margin-top: 30px;"
-      @click="$emit('click')"
-    >
-      {{ buttonText }}
-    </uv-button>
+    <slot v-if="useButtonSlot" name="button" />
+    <view v-else class="uv-result__button">
+      <uv-button
+        :type="buttonType"
+        size="large"
+        custom-style="margin-top: 30px;"
+        @click="$emit('click')"
+      >
+        {{ buttonText }}
+      </uv-button>
+    </view>
   </view>
 </template>
 <script>
-import { RESULT_TYPE } from './utils/constants';
-import { baseMixin, bem } from './utils';
-import uvIcon from './icon.vue';
-import uvButton from './button.vue';
+import { RESULT_TYPE } from "./utils/constants";
+import { baseMixin, bem } from "./utils";
+import uvIcon from "./icon.vue";
+import uvButton from "./button.vue";
 
 export default {
-  name: 'UvResult',
+  name: "UvResult",
   components: {
     uvIcon,
     uvButton,
@@ -67,18 +48,18 @@ export default {
   mixins: [baseMixin],
   data() {
     return {
-      iconName: '',
-      buttonType: '',
+      iconName: "",
+      buttonType: "",
     };
   },
   props: {
     name: {
       type: String,
-      default: '',
+      default: "",
     },
     type: {
       type: String,
-      default: 'success',
+      default: "success",
       validate: (value) => RESULT_TYPE.includes(value),
     },
     useIconSlot: {
@@ -95,24 +76,24 @@ export default {
     },
     pageTitle: {
       type: String,
-      default: '操作成功',
+      default: "操作成功",
     },
     contentTitle: {
       type: String,
-      default: '操作成功',
+      default: "操作成功",
     },
     contentDesc: {
       type: String,
-      default: '',
+      default: "",
     },
     buttonText: {
       type: String,
-      default: '确定',
+      default: "确定",
     },
   },
   computed: {
     computedClass() {
-      return bem('result_icon', [this.type]);
+      return bem("result_icon", [this.type]);
     },
   },
   watch: {
@@ -127,11 +108,11 @@ export default {
         let buttonType = val;
         switch (val) {
           case RESULT_TYPE[0]:
-            iconName = 'checked';
-            buttonType = 'primary';
+            iconName = "checked";
+            buttonType = "primary";
             break;
           case RESULT_TYPE[3]:
-            iconName = 'clear';
+            iconName = "clear";
             break;
           default:
             break;
@@ -143,32 +124,33 @@ export default {
   },
 };
 </script>
-<style
-  lang="scss"
-  scoped
->
-  @import "./sass/index";
+<style lang="scss" scoped>
+@import "./sass/index";
 
-  $comp: #{$PREFIX}result;
+$comp: #{$PREFIX}result;
 
-  #{$comp} {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: $result-padding-top;
-    font-size: $font-size-md;
+#{$comp} {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: $result-padding-top;
+  font-size: $font-size-md;
+  text-align: center;
 
-    &-title {
-      margin: 15px auto 5px;
-      font-size: $result-title-size;
-      font-weight: bold;
-      line-height: $result-title-line-height;
-    }
-
-    &-desc {
-      color: $gray-7;
-      font-size: $font-size-md;
-    }
+  &-title {
+    margin: 15px auto 5px;
+    font-size: $result-title-size;
+    font-weight: bold;
+    line-height: $result-title-line-height;
   }
+
+  &-desc {
+    color: $gray-7;
+    font-size: $font-size-md;
+  }
+  &__button {
+    border: 1px solid #000;
+  }
+}
 </style>
