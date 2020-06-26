@@ -150,7 +150,7 @@ $comp: #{$PREFIX}result;
     font-size: $font-size-md;
   }
   &__button {
-    border: 1px solid #000;
+    width: 100%;
   }
 }
 </style>
