@@ -243,6 +243,11 @@
       "style": {
         "navigationBarTitleText": "price"
       }
+    },{
+      "path": "pages/empty",
+      "style": {
+        "navigationBarTitleText": "empty"
+      }
     }
   ]
 }

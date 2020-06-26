@@ -222,4 +222,14 @@ $price-color: #f05b28 !default;
 $price-size: 24rpx;
 $price-unit-margin: 2rpx;
 
+// Empty
+$empty-padding: $padding-xl 0;
+$empty-image-size: 320rpx;
+$empty-description-margin-top: $padding-md;
+$empty-description-padding: 0 120px;
+$empty-description-color: $gray-6;
+$empty-description-font-size: 28rpx;
+$empty-description-line-height: 40px;
+$empty-bottom-margin-top: 48px;
+
 $PREFIX: ".uv-";
