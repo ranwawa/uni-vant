@@ -14,14 +14,14 @@ $red: #ee0a24 !default;
 $orange: #ff976a !default;
 $colors: () !default;
 $colors: map-merge(
-		(
-			"blue": $blue,
-			"red": $red,
-			"orange": $orange,
-			"green": $green,
-			"white": $white,
-		),
-		$colors
+  (
+    "blue": $blue,
+    "red": $red,
+    "orange": $orange,
+    "green": $green,
+    "white": $white,
+  ),
+  $colors
 );
 $primary: $green !default;
 $info: $blue !default;
@@ -29,13 +29,13 @@ $danger: $red !default;
 $warning: $orange !default;
 $theme-colors: () !default;
 $theme-colors: map-merge(
-		(
-			"primary": $primary,
-			"info": $info,
-			"warning": $warning,
-			"danger": $danger,
-		),
-		$theme-colors
+  (
+    "primary": $primary,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+  ),
+  $theme-colors
 );
 
 // Customize the light and dark text colors for use in our YIQ color contrast function.
@@ -43,7 +43,6 @@ $yiq-text-dark: $gray-8 !default;
 $yiq-text-light: $white !default;
 // The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
 $yiq-contrasted-threshold: 150 !default;
-
 
 // Cell
 $cell-line-height: px2rpx(24) !default;
@@ -59,8 +58,8 @@ $border-radius-max: px2rpx(999) !default;
 // Component Colors
 $text-color: $gray-8 !default;
 $active-color: $gray-2 !default;
-$active-opacity: .7 !default;
-$disabled-opacity: .5 !default;
+$active-opacity: 0.7 !default;
+$disabled-opacity: 0.5 !default;
 $background-color: $gray-1 !default;
 $background-color-light: #fafafa !default;
 
@@ -80,8 +79,8 @@ $padding-lg: px2rpx($padding-base * 6) !default;
 $padding-xl: px2rpx($padding-base * 8) !default;
 
 // Animation
-$animation-duration-base: .3s !default;
-$animation-duration-fast: .2s !default;
+$animation-duration-base: 0.3s !default;
+$animation-duration-fast: 0.2s !default;
 
 // Button
 $button-height-large: px2rpx(50) !default;
@@ -150,7 +149,7 @@ $loading-text-font-size: $font-size-md !default;
 $loading-text-line-height: px2rpx(20) !default;
 $loading-spinner-color: $gray-5 !default;
 $loading-spinner-size: px2rpx(30) !default;
-$loading-spinner-animation-duration: .8s !default;
+$loading-spinner-animation-duration: 0.8s !default;
 
 // Popup
 $popup-background-color: $white !default;
@@ -217,5 +216,10 @@ $nav-bar-text-color: $blue;
 $nav-bar-title-font-size: $font-size-lg;
 $nav-bar-title-text-color: $text-color;
 $nav-bar-z-index: 1;
+
+// Price
+$price-color: #f05b28 !default;
+$price-size: 24rpx;
+$price-unit-margin: 2rpx;
 
 $PREFIX: ".uv-";

@@ -95,16 +95,11 @@
       "backgroundImageUrl": "https://img6.xiujiadian.com/temp/ranwawa/20200227.png", // 下拉背景图(string) todo 测试未生效
       "backgroundImageColor": "#ff00ee" // 下拉背景图底色(HexColor) todo 测试未生效
     },
-    "mp-weixin": {
-    },
-    "mp-baidu": {
-    },
-    "mp-toutiao": {
-    },
-    "mp-qq": {
-    },
-    "usingComponents": {
-    }
+    "mp-weixin": {},
+    "mp-baidu": {},
+    "mp-toutiao": {},
+    "mp-qq": {},
+    "usingComponents": {}
   },
   // 自动引入注册组件
   "easycom": {
@@ -236,10 +231,17 @@
       "style": {
         "navigationBarTitleText": "tag"
       }
-    },{
+    },
+    {
       "path": "pages/nav-bar",
       "style": {
         "navigationBarTitleText": "nav-bar"
+      }
+    },
+    {
+      "path": "pages/price",
+      "style": {
+        "navigationBarTitleText": "price"
       }
     }
   ]
