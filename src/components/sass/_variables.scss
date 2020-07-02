@@ -200,36 +200,36 @@ $upload-file-name-padding: px2rpx(5) !default;
 $overlay-background-color: rgba(0, 0, 0, 0.7) !default;
 
 // skeleton
-$skeleton-padding: 0 $padding-md;
-$skeleton-row-height: px2rpx(16);
-$skeleton-row-background-color: $gray-2;
-$skeleton-row-margin-top: $padding-sm;
-$skeleton-avatar-background-color: $gray-2;
-$skeleton-animation-duration: 1.2s;
+$skeleton-padding: 0 $padding-md !default;
+$skeleton-row-height: px2rpx(16) !default;
+$skeleton-row-background-color: $gray-2 !default;
+$skeleton-row-margin-top: $padding-sm !default;
+$skeleton-avatar-background-color: $gray-2 !default;
+$skeleton-animation-duration: 1.2s !default;
 
 // NavBar
-$nav-bar-height: 92px; // 这里不能使用rpx,以防在大屏下高度太高,和小程序右边的胶囊无法对齐
-$nav-bar-background-color: $white;
-$nav-bar-arrow-size: px2rpx(16);
-$nav-bar-icon-color: $blue;
-$nav-bar-text-color: $blue;
-$nav-bar-title-font-size: $font-size-lg;
-$nav-bar-title-text-color: $text-color;
-$nav-bar-z-index: 1;
+$nav-bar-height: 92px !default; // 这里不能使用rpx,以防在大屏下高度太高,和小程序右边的胶囊无法对齐
+$nav-bar-background-color: $white !default;
+$nav-bar-arrow-size: px2rpx(16) !default;
+$nav-bar-icon-color: $blue !default;
+$nav-bar-text-color: $blue !default;
+$nav-bar-title-font-size: $font-size-lg !default;
+$nav-bar-title-text-color: $text-color !default;
+$nav-bar-z-index: 1 !default;
 
 // Price
 $price-color: #f05b28 !default;
-$price-size: 24rpx;
-$price-unit-margin: 2rpx;
+$price-size: 24rpx !default;
+$price-unit-margin: 2rpx !default;
 
 // Empty
-$empty-padding: $padding-xl 0;
-$empty-image-size: 320rpx;
-$empty-description-margin-top: $padding-md;
-$empty-description-padding: 0 120px;
-$empty-description-color: $gray-6;
-$empty-description-font-size: 28rpx;
-$empty-description-line-height: 40px;
-$empty-bottom-margin-top: 48px;
+$empty-padding: $padding-xl 0 !default;
+$empty-image-size: 320rpx !default;
+$empty-description-margin-top: $padding-md !default;
+$empty-description-padding: 0 120px !default;
+$empty-description-color: $gray-6 !default;
+$empty-description-font-size: 28rpx !default;
+$empty-description-line-height: 40px !default;
+$empty-bottom-margin-top: 48px !default;
 
 $PREFIX: ".uv-";
