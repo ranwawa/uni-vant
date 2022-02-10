@@ -44,7 +44,7 @@
     "bootstrap": "^4.4.1",
     "flyio": "^0.6.2",
     "jest": "^24.9.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "npm-check-updates": "^4.0.3",
     "regenerator-runtime": "^0.12.1",
     "sass-loader": "^8.0.0",
